@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "464675599600",
+    "project_id": "mobdeve-internshipconnect",
+    "storage_bucket": "mobdeve-internshipconnect.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:464675599600:android:92797b281019968e6bbe35",
+        "android_client_info": {
+          "package_name": "ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "464675599600-hvv02rspbcb4c95tsa0ohr92g64brsnv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZUfi9DSzMbNPCcO7KswNb7KuLk_FPUSE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "464675599600-hvv02rspbcb4c95tsa0ohr92g64brsnv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
