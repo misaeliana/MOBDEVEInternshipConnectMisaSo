@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MOBDEVEInternshipConnectMisaSo">
         <activity
+            android:name=".intern.InternMenu"
+            android:exported="false" />
+        <activity
+            android:name=".company.CompanyMenu"
+            android:exported="false" />
+        <activity
             android:name=".RegisterCompany"
             android:exported="false" />
         <activity
