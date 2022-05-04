@@ -13,14 +13,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="24dp"
-        android:text="Register"
+        android:text="@string/register"
         android:gravity="center"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="18dp"
-        android:text="Company"
+        android:text="@string/company"
         android:gravity="center"/>
 
     <EditText
@@ -175,7 +175,7 @@
         android:id="@+id/btn_registerCompany"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Register"
+        android:text="@string/register"
         android:layout_marginTop="10dp"
         />
 

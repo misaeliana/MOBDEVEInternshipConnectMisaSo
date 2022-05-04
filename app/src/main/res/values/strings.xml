@@ -1,3 +1,27 @@
 <resources>
     <string name="app_name">MOBDEVE-InternshipConnect-Misa-So</string>
+    <string name="login">Login</string>
+    <string name="logout">Logout</string>
+    <string name="register">Register</string>
+    <string name="internship_connect">Internship\nConnect</string>
+
+    <string name="jobs">Jobs</string>
+    <string name="my_jobs">My Jobs</string>
+    <string name="companies">Companies</string>
+    <string name="profile">Profile</string>
+
+    <string name="company">Company</string>
+    <string name="intern">Intern</string>
+
+    <string name="edit_profile">Edit Profile</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+
+    <string name="add_internship">Add Internship</string>
+
+    <string-array name="function_list">
+        <item>Function 1</item>
+        <item>Function 2</item>
+        <item>Function 3</item>
+    </string-array>
 </resources>

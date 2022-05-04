@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".company.CompanyAddJobPosting"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:text="@string/add_internship"
+        android:gravity="center"/>
+
+    <EditText
+        android:id="@+id/et_addInternshipTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Title"
+        android:ems="10"
+        android:inputType="text"
+        android:layout_marginTop="20dp"/>
+
+    <EditText
+        android:id="@+id/et_addInternshipDescription"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:hint="Description"
+        android:ems="10"
+        android:inputType="text|textMultiLine"
+        android:layout_marginTop="20dp"
+        android:gravity="top|left"
+        android:lines="20"
+        android:minLines="5"
+        android:scrollHorizontally="false"
+        android:scrollbars="vertical"/>
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/et_addInternshipFunction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_marginTop="20dp"
+        android:entries="@array/function_list"/>
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/et_addInternshipType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_marginTop="20dp"
+        android:entries="@array/function_list"/>
+
+</LinearLayout>
