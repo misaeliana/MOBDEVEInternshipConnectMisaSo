@@ -19,20 +19,20 @@ class RegisterIntern : AppCompatActivity() {
         binding = ActivityRegisterInternBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.buttonRegister.setOnClickListener{
-            val name = binding.textName.text.toString()
-            val email = binding.textEmail.text.toString()
-            val number = Integer.parseInt(binding.textContactNumber.text.toString())
-            val password = binding.textPassword.text.toString()
+        binding.btnRegisterIntern.setOnClickListener{
+            val name = binding.etRegisterInternName.text.toString()
+            val email = binding.etRegisterInternEmail.text.toString()
+            val number = Integer.parseInt(binding.etRegisterInternNumber.text.toString())
+            val password = binding.etRegisterInternPassword.text.toString()
 
             //getInstance defines the link of the db
             database = FirebaseDatabase.getInstance("https://mobdeve-internshipconnect-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Interns")
             val user = Intern(name, email, number, password)
             database.child(email).setValue(user).addOnSuccessListener {
-                binding.textName.text.clear()
-                binding.textEmail.text.clear()
-                binding.textContactNumber.text.clear()
-                binding.textPassword.text.clear()
+                binding.etRegisterInternName.text.clear()
+                binding.etRegisterInternEmail.text.clear()
+                binding.etRegisterInternNumber.text.clear()
+                binding.etRegisterInternPassword.text.clear()
 
                 val intent = Intent (this, MainActivity::class.java)
                 startActivity (intent)

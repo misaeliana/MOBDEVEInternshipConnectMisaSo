@@ -11,5 +11,7 @@ class CompanyMenu : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityCompanyMenuBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
     }
 }

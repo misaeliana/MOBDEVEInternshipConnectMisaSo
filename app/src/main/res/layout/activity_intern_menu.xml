@@ -24,7 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="24dp"
-        android:text="Hello <name>!"
+        android:text="Hello name!"
         app:layout_constraintTop_toBottomOf="@+id/tv_internMenuTitle"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>

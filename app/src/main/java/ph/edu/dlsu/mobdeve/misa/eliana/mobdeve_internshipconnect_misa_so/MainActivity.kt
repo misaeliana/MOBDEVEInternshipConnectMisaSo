@@ -6,6 +6,7 @@ import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.company.*
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.databinding.ActivityMainBinding
+import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.intern.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -15,13 +16,13 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        button_register.setOnClickListener {
+        btn_register.setOnClickListener {
             val intent = Intent (this, RegisterCompany::class.java)
             startActivity (intent)
         }
 
-        button_login.setOnClickListener{
-            val intent = Intent (this, AddInternship::class.java)
+        btn_login.setOnClickListener{
+            val intent = Intent (this, InternViewCompanies::class.java)
             startActivity (intent)
         }
     }
