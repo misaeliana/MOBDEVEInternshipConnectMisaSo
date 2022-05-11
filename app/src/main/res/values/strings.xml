@@ -10,6 +10,9 @@
     <string name="my_jobs">My Jobs</string>
     <string name="companies">Companies</string>
     <string name="profile">Profile</string>
+    <string name="about">About</string>
+    <string name="contactUs">Contact Us</string>
+    <string name="learnMore">Learn More</string>
 
     <string name="company">Company</string>
     <string name="intern">Intern</string>

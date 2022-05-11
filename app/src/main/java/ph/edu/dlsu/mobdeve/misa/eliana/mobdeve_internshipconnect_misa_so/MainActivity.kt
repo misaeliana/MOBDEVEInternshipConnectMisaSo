@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         btn_register.setOnClickListener {
-            val intent = Intent (this, RegisterCompany::class.java)
+            val intent = Intent (this, RegisterIntern::class.java)
             startActivity (intent)
         }
 
