@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         btn_login.setOnClickListener{
-            val intent = Intent (this, CompanyJobListing::class.java)
+            val intent = Intent (this, Login::class.java)
             startActivity (intent)
         }
     }
