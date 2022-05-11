@@ -15,6 +15,7 @@ class CompanyJobListing : AppCompatActivity() {
     private lateinit var jobListingAdapter: JobAdapter
 
     private lateinit var dbref: DatabaseReference
+    private var dblink:String ="https://mobdeve-internshipconnect-default-rtdb.asia-southeast1.firebasedatabase.app/"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +27,7 @@ class CompanyJobListing : AppCompatActivity() {
     private fun getCompanyJobListing() {
         var jobArrayList = ArrayList<Internship>()
 
-        dbref = FirebaseDatabase.getInstance("https://mobdeve-internshipconnect-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Internships")
+        dbref = FirebaseDatabase.getInstance(dblink).getReference("Internships")
         dbref.addValueEventListener(object: ValueEventListener {
 
             override fun onDataChange(snapshot: DataSnapshot) {

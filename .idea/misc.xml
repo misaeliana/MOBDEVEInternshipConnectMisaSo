@@ -9,6 +9,7 @@
         <entry key="..\:/Users/User/Desktop/College/3rd Year 2nd Term/MOBDEVE/MOBDEVEInternshipConnectMisaSo/app/src/main/res/layout/activity_company_edit_profile.xml" value="0.25" />
         <entry key="..\:/Users/User/Desktop/College/3rd Year 2nd Term/MOBDEVE/MOBDEVEInternshipConnectMisaSo/app/src/main/res/layout/activity_company_menu.xml" value="0.25" />
         <entry key="..\:/Users/User/Desktop/College/3rd Year 2nd Term/MOBDEVE/MOBDEVEInternshipConnectMisaSo/app/src/main/res/layout/activity_company_profile.xml" value="0.25" />
+        <entry key="..\:/Users/User/Desktop/College/3rd Year 2nd Term/MOBDEVE/MOBDEVEInternshipConnectMisaSo/app/src/main/res/layout/activity_intern_edit_profile.xml" value="0.25" />
         <entry key="..\:/Users/User/Desktop/College/3rd Year 2nd Term/MOBDEVE/MOBDEVEInternshipConnectMisaSo/app/src/main/res/layout/activity_intern_menu.xml" value="0.25" />
         <entry key="..\:/Users/User/Desktop/College/3rd Year 2nd Term/MOBDEVE/MOBDEVEInternshipConnectMisaSo/app/src/main/res/layout/activity_intern_view_comapnies.xml" value="0.25" />
         <entry key="..\:/Users/User/Desktop/College/3rd Year 2nd Term/MOBDEVE/MOBDEVEInternshipConnectMisaSo/app/src/main/res/layout/activity_intern_view_companies.xml" value="0.25" />
@@ -35,6 +36,9 @@
         <entry key="app/src/main/res/layout/activity_register_intern.xml" value="0.3105204418920577" />
       </map>
     </option>
+  </component>
+  <component name="ProjectPlainTextFileTypeManager">
+    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_job_listing.xml" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />

@@ -41,8 +41,9 @@ class AddInternship : AppCompatActivity() {
                 binding.textBenefits.text.clear()
                 binding.textLink.text.clear()
 
-//                val intent = Intent (this, MainActivity::class.java)
-//                startActivity (intent)
+                val intent = Intent (this, CompanyJobListing::class.java)
+                startActivity (intent)
+                finish()
 
                 Toast.makeText(this, "Internship added", Toast.LENGTH_SHORT).show()
 

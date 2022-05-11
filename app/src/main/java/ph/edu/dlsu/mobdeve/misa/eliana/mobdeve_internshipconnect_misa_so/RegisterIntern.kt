@@ -18,6 +18,7 @@ class RegisterIntern : AppCompatActivity() {
 
     private lateinit var binding : ActivityRegisterInternBinding
     private lateinit var database : DatabaseReference
+    private var dblink:String ="https://mobdeve-internshipconnect-default-rtdb.asia-southeast1.firebasedatabase.app/"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,6 +57,15 @@ class RegisterIntern : AppCompatActivity() {
                         if (task.isSuccessful) {
                             //registers the user
                             var firebaseUser: FirebaseUser = task.result!!.user!!
+                            val intern = Intern(name, email, number)
+
+                            FirebaseDatabase.getInstance(dblink).getReference("Interns").child(
+                                FirebaseAuth.getInstance().currentUser!!.uid).setValue(intern).addOnSuccessListener {
+                                binding.etRegisterInternName.text.clear()
+                                binding.etRegisterInternEmail.text.clear()
+                                binding.etRegisterInternNumber.text.clear()
+                                binding.etRegisterInternPassword.text.clear()
+                            }
 
                             Toast.makeText(this, "You are registered", Toast.LENGTH_SHORT).show()
                             val intent = Intent (this, MainActivity::class.java)
@@ -66,7 +76,6 @@ class RegisterIntern : AppCompatActivity() {
                             Toast.makeText(this, task.exception!!.message.toString(), Toast.LENGTH_SHORT).show()
                         }
                     }
-                    //save other info later
                 }
             }
 
