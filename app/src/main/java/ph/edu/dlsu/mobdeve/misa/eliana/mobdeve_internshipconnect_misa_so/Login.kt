@@ -6,13 +6,16 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.company.CompanyMenu
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.databinding.ActivityLoginBinding
+import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.intern.InternMenu
 
 class Login : AppCompatActivity() {
 
-    private lateinit var binding : ActivityLoginBinding
-    private var dblink:String ="https://mobdeve-internshipconnect-default-rtdb.asia-southeast1.firebasedatabase.app/"
+    private lateinit var binding: ActivityLoginBinding
+    private var dblink: String =
+        "https://mobdeve-internshipconnect-default-rtdb.asia-southeast1.firebasedatabase.app/"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,22 +48,35 @@ class Login : AppCompatActivity() {
                     email.trim { it <= ' ' }
                     password.trim { it <= ' ' }
 
-                    FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener { task ->
+                    FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
                             if (task.isSuccessful) {
-                                val intent = Intent(this, CompanyMenu::class.java)
-                                startActivity(intent)
-                                finish()
-                            } else {
-                                //not successfully registered
-                                Toast.makeText(
-                                    this,
-                                    task.exception!!.message.toString(),
-                                    Toast.LENGTH_SHORT
-                                ).show()
+                                val currentUser: String = FirebaseAuth.getInstance().currentUser!!.uid
+                                val companyDB = FirebaseDatabase.getInstance(dblink).getReference("Companies")
+                                    companyDB.child(currentUser).get().addOnSuccessListener {
+                                    if (it.exists()) {
+                                        val intent = Intent(this, CompanyMenu::class.java)
+                                        startActivity(intent)
+                                        finish()
+                                    } else {
+                                        val currentUser: String = FirebaseAuth.getInstance().currentUser!!.uid
+                                        val internDB = FirebaseDatabase.getInstance(dblink).getReference("Interns")
+                                        internDB.child(currentUser).get().addOnSuccessListener {
+                                            if (it.exists()) {
+                                                val intent = Intent(this, InternMenu::class.java)
+                                                startActivity(intent)
+                                                finish()
+                                            } else
+                                                Toast.makeText(
+                                                    this,
+                                                    "User does not exist",
+                                                    Toast.LENGTH_SHORT
+                                                ).show()
+                                        }
+                                    }
+                                }
                             }
+                            //save other info later
                         }
-                    //save other info later
                 }
             }
         }

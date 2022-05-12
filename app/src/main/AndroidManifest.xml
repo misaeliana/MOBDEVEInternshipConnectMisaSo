@@ -43,7 +43,7 @@
             android:name=".RegisterCompany"
             android:exported="false" />
         <activity
-            android:name=".RegisterIntern"
+            android:name=".Register"
             android:exported="false" />
         <activity
             android:name=".company.AddInternship"

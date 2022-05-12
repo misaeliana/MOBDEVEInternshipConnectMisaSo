@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18sp"
-            android:text="<Company Name>"
+            android:text="Company Name"
             android:textColor="@color/black"
             android:layout_weight="1"/>
 
@@ -46,7 +46,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="16dp"
-        android:text="<Industry>"
+        android:text="Industry"
         android:textColor="@color/black"/>
 
     <TextView
@@ -54,7 +54,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="16dp"
-        android:text="<Location>"
+        android:text="Location"
         android:textColor="@color/black"/>
 
     <TextView
@@ -120,7 +120,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="14dp"
-        android:text="<Youtube Video>"
+        android:text="Youtube Video"
         android:textColor="@color/black"/>
 
 </LinearLayout>

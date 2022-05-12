@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".RegisterIntern"
+    tools:context=".Register"
     android:padding="20dp">
 
     <TextView
@@ -17,25 +17,15 @@
         android:gravity="center"
         android:textColor="@color/blue"/>
 
-    <TextView
+    <!--<TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="18dp"
         android:text="@string/intern"
         android:gravity="center"
-        android:textColor="@color/black"/>
+        android:textColor="@color/black"/>-->
 
-    <EditText
-        android:id="@+id/et_registerInternName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Name"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:layout_marginTop="20dp"
-       />
-
-<!--    <EditText-->
+    <!--    <EditText-->
 <!--        android:id="@+id/et_textName"-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="wrap_content"-->
@@ -51,6 +41,26 @@
 <!--        app:layout_constraintHorizontal_bias="1.0"-->
 <!--        app:layout_constraintStart_toStartOf="parent"-->
 <!--        app:layout_constraintTop_toTopOf="parent" />-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="I am applying as"/>
+
+    <Spinner
+        android:id="@+id/sp_accountType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+    <EditText
+        android:id="@+id/et_registerInternName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="Name"
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/et_registerInternEmail"

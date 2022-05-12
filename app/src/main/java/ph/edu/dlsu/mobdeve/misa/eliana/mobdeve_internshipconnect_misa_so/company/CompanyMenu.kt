@@ -6,9 +6,7 @@ import android.os.Bundle
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.ktx.Firebase
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.MainActivity
-import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.RegisterCompany
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.databinding.ActivityCompanyMenuBinding
 
 class CompanyMenu : AppCompatActivity() {

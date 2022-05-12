@@ -25,12 +25,12 @@ class CompanyProfile : AppCompatActivity() {
         val companyDB = FirebaseDatabase.getInstance(dblink).getReference("Companies")
         companyDB.child(currentUser).get().addOnSuccessListener {
             if (it.exists()) {
-                binding.tvCompanyName.text = it.child("name").value.toString()
-                binding.tvIndustry.text = it.child("industry").value.toString()
-                binding.tvLocation.text = it.child("location").value.toString()
-                binding.tvCompanyAboutText.text = it.child("about").value.toString()
-                binding.tvCompanyContactUs.text = it.child("number").value.toString()
-                binding.tvLearnMore.text = it.child("learnMore").value.toString()
+                binding.tvCompanyProfileCompanyName.text = it.child("name").value.toString()
+                binding.tvCompanyProfileIndustry.text = it.child("industry").value.toString()
+                binding.tvCompanyProfileLocation.text = it.child("location").value.toString()
+                binding.tvCompanyProfileCompanyAboutText.text = it.child("about").value.toString()
+                binding.tvCompanyProfileContactNumber.text = it.child("number").value.toString()
+                binding.tvCompanyProfileVideo.text = it.child("learnMore").value.toString()
             }
             else
                 Toast.makeText(this, "User does not exist", Toast.LENGTH_SHORT).show()
