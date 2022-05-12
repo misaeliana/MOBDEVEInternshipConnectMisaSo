@@ -45,7 +45,7 @@
         android:id="@+id/et_editInternAbout"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:text="About Intern\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat"
         android:ems="10"
         android:inputType="text|textMultiLine"
         android:gravity="top|left"

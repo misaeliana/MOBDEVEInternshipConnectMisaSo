@@ -21,7 +21,9 @@
         android:layout_height="wrap_content"
         android:textSize="16dp"
         android:text="Title"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp"
+        android:textColor="@color/black"
+        />
 
 
     <EditText
@@ -30,14 +32,16 @@
         android:layout_height="wrap_content"
         android:hint="Title"
         android:ems="10"
-        android:inputType="text"/>
+        android:inputType="text"
+        android:textSize="14dp"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="16dp"
         android:text="Description"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="20dp"
+        android:textColor="@color/black"/>
 
     <EditText
         android:id="@+id/textJobDescription"
@@ -50,14 +54,16 @@
         android:lines="20"
         android:minLines="5"
         android:scrollHorizontally="false"
-        android:scrollbars="vertical"/>
+        android:scrollbars="vertical"
+        android:textSize="14dp"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="16dp"
         android:text="Function"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"/>
 
     <androidx.appcompat.widget.AppCompatSpinner
         android:id="@+id/textFunction"
@@ -65,14 +71,16 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:entries="@array/function_list"
-        android:layout_marginTop="5dp"/>
+        android:layout_marginTop="5dp"
+        android:textSize="14dp"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="16dp"
         android:text="Type"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"/>
 
     <androidx.appcompat.widget.AppCompatSpinner
         android:id="@+id/textType"
@@ -80,14 +88,16 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:entries="@array/function_list"
-        android:layout_marginTop="5dp"/>
+        android:layout_marginTop="5dp"
+        android:textSize="14dp"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="16dp"
         android:text="Link"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"/>
 
     <EditText
         android:id="@+id/textLink"
@@ -95,7 +105,8 @@
         android:layout_height="wrap_content"
         android:hint="Link"
         android:ems="10"
-        android:inputType="textUri"/>
+        android:inputType="textUri"
+        android:textSize="14dp"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonAddInternship"
