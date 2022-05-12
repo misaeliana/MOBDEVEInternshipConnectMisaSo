@@ -2,7 +2,6 @@ package ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.compan
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-<<<<<<< Updated upstream
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
@@ -12,19 +11,11 @@ class CompanyProfile : AppCompatActivity() {
 
     private lateinit var binding:ActivityCompanyProfileBinding
     private var dblink:String ="https://mobdeve-internshipconnect-default-rtdb.asia-southeast1.firebasedatabase.app/"
-=======
-import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.databinding.ActivityAddInternshipBinding
-import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.databinding.ActivityCompanyProfileBinding
-
-class CompanyProfile : AppCompatActivity() {
-    private lateinit var binding : ActivityCompanyProfileBinding
->>>>>>> Stashed changes
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCompanyProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
-<<<<<<< Updated upstream
 
         getMyCompanyData()
     }
@@ -46,7 +37,5 @@ class CompanyProfile : AppCompatActivity() {
         }.addOnFailureListener{
             Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
         }
-=======
->>>>>>> Stashed changes
     }
 }

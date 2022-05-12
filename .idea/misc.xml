@@ -26,19 +26,12 @@
         <entry key="..\:/Users/User/Desktop/College/3rd Year 2nd Term/MOBDEVE/MOBDEVEInternshipConnectMisaSo/app/src/main/res/layout/item_job_listing.xml" value="0.4" />
         <entry key="..\:/Users/User/Desktop/College/3rd Year 2nd Term/MOBDEVE/MOBDEVEInternshipConnectMisaSo/app/src/main/res/layout/register_popup.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_add_internship.xml" value="0.16540020263424518" />
-        <entry key="app/src/main/res/layout/activity_company_add_internship.xml" value="0.1911231884057971" />
         <entry key="app/src/main/res/layout/activity_company_add_job_posting.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/activity_company_edit_profile.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/activity_company_menu.xml" value="0.4036458333333333" />
-<<<<<<< Updated upstream
         <entry key="app/src/main/res/layout/activity_company_profile.xml" value="0.3974434230638587" />
-=======
-        <entry key="app/src/main/res/layout/activity_company_profile.xml" value="0.1911231884057971" />
-        <entry key="app/src/main/res/layout/activity_company_specific_job_posting.xml" value="0.1911231884057971" />
->>>>>>> Stashed changes
         <entry key="app/src/main/res/layout/activity_intern_edit_profile.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/activity_intern_menu.xml" value="0.38958333333333334" />
-        <entry key="app/src/main/res/layout/activity_intern_view_specific_internship.xml" value="0.1911231884057971" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2577494457983077" />
         <entry key="app/src/main/res/layout/activity_register_company.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/activity_register_intern.xml" value="0.3105204418920577" />

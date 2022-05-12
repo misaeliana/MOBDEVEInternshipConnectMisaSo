@@ -10,7 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MOBDEVEInternshipConnectMisaSo">
         <activity
-<<<<<<< Updated upstream
             android:name=".Login"
             android:exported="false" />
         <activity
@@ -27,18 +26,6 @@
             android:exported="false" />
         <activity
             android:name=".company.CompanyAddJobPosting"
-=======
-            android:name=".intern.InternViewSpecificInternship"
-            android:exported="false" />
-        <activity
-            android:name=".company.CompanySpecificJobPosting"
-            android:exported="false" />
-        <activity
-            android:name=".company.CompanyProfile"
-            android:exported="false" />
-        <activity
-            android:name=".company.CompanyAddInternship"
->>>>>>> Stashed changes
             android:exported="false" />
         <activity
             android:name=".intern.InternEditProfile"

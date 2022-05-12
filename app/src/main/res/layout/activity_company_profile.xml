@@ -8,7 +8,6 @@
     android:orientation="vertical"
     android:padding="20dp">
 
-<<<<<<< Updated upstream
 <!--    <TextView-->
 <!--        android:id="@+id/tv_profileTitle"-->
 <!--        android:layout_width="match_parent"-->
@@ -107,52 +106,10 @@
         android:textSize="14dp"
         android:text="www.coolcompanywebsite.com"
         android:textColor="@color/black"/>
-=======
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_companyProfileEdit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/edit"/>
-
-    <TextView
-        android:id="@+id/companyProfileName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:text="<Company Name>"
-        android:textAlignment="textStart"/>
-
-    <TextView
-        android:id="@+id/companyProfileIndustry"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:text="<Industry>"
-        android:textAlignment="textStart"/>
-
-    <TextView
-        android:id="@+id/companyProfileLocation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:text="<Location>"
-        android:textAlignment="textStart"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:text="ABOUT"
-        android:textAlignment="textStart"
-        android:layout_marginTop="30dp"/>
-
-    <!--    BIG TEXT BOX HERE-->
->>>>>>> Stashed changes
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-<<<<<<< Updated upstream
         android:textSize="16dp"
         android:text="@string/learn_more"
         android:textColor="@color/black"
@@ -165,19 +122,5 @@
         android:textSize="14dp"
         android:text="<Youtube Video>"
         android:textColor="@color/black"/>
-=======
-        android:textSize="16sp"
-        android:text="CONTACT US"
-        android:textAlignment="textStart"
-        android:layout_marginTop="30dp"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:text="LEARN MORE"
-        android:textAlignment="textStart"
-        android:layout_marginTop="30dp"/>
->>>>>>> Stashed changes
 
 </LinearLayout>

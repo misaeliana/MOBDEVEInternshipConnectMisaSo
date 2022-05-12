@@ -3,13 +3,14 @@ package ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.compan
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.databinding.ActivityAddInternshipBinding
+import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.databinding.ActivityCompanyAddJobPostingBinding
 
-class CompanyAddInternship : AppCompatActivity() {
-    private lateinit var binding : ActivityAddInternshipBinding
+class CompanyAddJobPosting : AppCompatActivity() {
+    private lateinit var binding : ActivityCompanyAddJobPostingBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityAddInternshipBinding.inflate(layoutInflater)
+        binding = ActivityCompanyAddJobPostingBinding.inflate(layoutInflater)
         setContentView(binding.root)
     }
 }

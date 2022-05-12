@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".company.CompanyAddInternship"
+    tools:context=".company.CompanyAddJobPosting"
     android:orientation="vertical"
     android:padding="20dp">
 
@@ -53,42 +53,5 @@
         android:ems="10"
         android:layout_marginTop="20dp"
         android:entries="@array/function_list"/>
-
-    <EditText
-        android:id="@+id/et_addInternshipBenefits"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Benefits"
-        android:ems="10"
-        android:inputType="text"
-        android:layout_marginTop="20dp"/>
-    <EditText
-        android:id="@+id/et_addInternshipLink"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Link"
-        android:ems="10"
-        android:inputType="textUri"
-        android:layout_marginTop="20dp"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dip"
-        android:gravity="center|bottom"
-        android:orientation="vertical"
-        android:layout_weight="1">
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_addInternshipSave"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/save"/>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_addInternshipCancel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/cancel"/>
-    </LinearLayout>
 
 </LinearLayout>
