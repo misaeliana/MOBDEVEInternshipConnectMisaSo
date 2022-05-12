@@ -46,7 +46,7 @@
     <EditText
         android:id="@+id/textJobDescription"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="150dp"
         android:hint="Description"
         android:ems="10"
         android:inputType="text|textMultiLine"
