@@ -1,120 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".company.CompanyProfile">
+    tools:context=".company.CompanyProfile"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+<!--    <TextView-->
+<!--        android:id="@+id/tv_profileTitle"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:textSize="24dp"-->
+<!--        android:text="@string/profile"-->
+<!--        android:gravity="center"-->
+<!--        android:textColor="@color/blue"/>-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_companyProfile_companyName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="<Company Name>"
+            android:textColor="@color/black"
+            android:layout_weight="1"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_companyMenuLogout"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:text="Edit"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/blue"/>
+
+    </LinearLayout>
 
     <TextView
-        android:id="@+id/tv_profileTitle"
-        android:layout_width="wrap_content"
+        android:id="@+id/tv_companyProfile_industry"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/profile"
-        android:textSize="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="16dp"
+        android:text="<Industry>"
+        android:textColor="@color/black"/>
 
     <TextView
-        android:id="@+id/tv_companyName"
-        android:layout_width="wrap_content"
+        android:id="@+id/tv_companyProfile_location"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="company name"
-        android:textSize="18dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintHorizontal_bias="0.101"
-        app:layout_constraintTop_toBottomOf="@+id/tv_profileTitle" />
+        android:textSize="16dp"
+        android:text="<Location>"
+        android:textColor="@color/black"/>
 
     <TextView
-        android:id="@+id/tv_industry"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="industry"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.082"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_companyName" />
-
-    <TextView
-        android:id="@+id/tv_location"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="location"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.093"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_industry" />
-
-    <TextView
-        android:id="@+id/tv_companyAboutTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
+        android:textSize="16dp"
         android:text="@string/about"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.09"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_location" />
+        android:textColor="@color/black"
+        android:layout_marginTop="20dp"/>
 
     <TextView
-        android:id="@+id/tv_companyAboutText"
-        android:layout_width="wrap_content"
+        android:id="@+id/tv_companyProfile_companyAboutText"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="about text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.096"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_companyAboutTitle" />
+        android:textSize="14dp"
+        android:layout_marginTop="10dp"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        android:textColor="@color/black"/>
 
     <TextView
-        android:id="@+id/tv_contactUsTitle"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="92dp"
-        android:text="@string/contactUs"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.087"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_companyAboutText" />
+        android:textSize="16dp"
+        android:text="@string/contact_us"
+        android:textColor="@color/black"
+        android:layout_marginTop="20dp"/>
 
     <TextView
-        android:id="@+id/tv_companyContactUs"
-        android:layout_width="wrap_content"
+        android:id="@+id/tv_companyProfile_contactNumber"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="contact text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.082"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_contactUsTitle" />
+        android:textSize="14dp"
+        android:text="09191998777"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"/>
 
     <TextView
-        android:id="@+id/tv_learnMoreTitle"
-        android:layout_width="wrap_content"
+        android:id="@+id/tv_companyProfile_email"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="84dp"
-        android:text="@string/learnMore"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.058"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_companyContactUs" />
+        android:textSize="14dp"
+        android:text="companyemail@gmail.com"
+        android:textColor="@color/black"/>
 
     <TextView
-        android:id="@+id/tv_learnMore"
-        android:layout_width="wrap_content"
+        android:id="@+id/tv_companyProfile_website"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="learn more text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.076"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_learnMoreTitle" />
+        android:textSize="14dp"
+        android:text="www.coolcompanywebsite.com"
+        android:textColor="@color/black"/>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:text="@string/learn_more"
+        android:textColor="@color/black"
+        android:layout_marginTop="20dp"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/tv_companyProfile_video"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14dp"
+        android:text="<Youtube Video>"
+        android:textColor="@color/black"/>
+
+</LinearLayout>
