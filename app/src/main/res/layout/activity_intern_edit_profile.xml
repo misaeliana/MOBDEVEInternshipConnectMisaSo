@@ -13,16 +13,33 @@
         android:layout_height="wrap_content"
         android:textSize="24dp"
         android:text="@string/edit_profile"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textColor="@color/blue"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:text="Number"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/black"/>
 
     <EditText
         android:id="@+id/et_editInternContactNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="09173098555"
+        android:textSize="14dp"
         android:ems="10"
-        android:inputType="text|number"
-        android:layout_marginTop="20dp"/>
+        android:inputType="text|number"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:text="About"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/black"/>
 
     <EditText
         android:id="@+id/et_editInternAbout"
@@ -31,12 +48,71 @@
         android:text="About Intern\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat"
         android:ems="10"
         android:inputType="text|textMultiLine"
-        android:layout_marginTop="20dp"
         android:gravity="top|left"
+        android:textSize="14dp"
         android:lines="20"
         android:minLines="5"
         android:scrollHorizontally="false"
         android:scrollbars="vertical"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:text="Education"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:text="School"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"/>
+
+    <EditText
+        android:id="@+id/et_editInternSchool"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="School Name"
+        android:textSize="14dp"
+        android:ems="10"
+        android:inputType="text"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:text="Course"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"/>
+
+    <EditText
+        android:id="@+id/et_editInternCourse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Course Name"
+        android:textSize="14dp"
+        android:ems="10"
+        android:inputType="text"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:text="Expected Graduation Year"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"/>
+
+    <EditText
+        android:id="@+id/et_editInternGradYear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Grad "
+        android:textSize="14dp"
+        android:ems="10"
+        android:inputType="date"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -49,7 +125,9 @@
             android:id="@+id/btn_editInternSave"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/save"/>
+            android:text="@string/save"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/blue"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_editInternCancel"

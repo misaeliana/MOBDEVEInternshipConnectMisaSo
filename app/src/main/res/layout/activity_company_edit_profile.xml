@@ -14,7 +14,8 @@
         android:layout_height="wrap_content"
         android:textSize="24sp"
         android:text="@string/edit_profile"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textColor="@color/blue"/>
 
     <EditText
         android:id="@+id/et_editCompanyContactNumber"
@@ -23,12 +24,14 @@
         android:text="09173098555"
         android:ems="10"
         android:inputType="text|number"
+        android:textSize="14dp"
         android:layout_marginTop="20dp"/>
 
     <EditText
         android:id="@+id/et_editCompanyAbout"
         android:layout_width="match_parent"
         android:layout_height="200dp"
+        android:textSize="14dp"
         android:text="Company About\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat"
         android:ems="10"
         android:inputType="text|textMultiLine"
@@ -45,6 +48,7 @@
         android:layout_height="wrap_content"
         android:text="Location"
         android:ems="10"
+        android:textSize="14dp"
         android:inputType="text"
         android:layout_marginTop="20dp"/>
 
@@ -53,6 +57,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="www.companywebsite.com"
+        android:textSize="14dp"
         android:ems="10"
         android:inputType="textUri"
         android:layout_marginTop="20dp"
@@ -69,7 +74,9 @@
             android:id="@+id/btn_editCompanySave"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/save"/>
+            android:text="@string/save"
+            android:backgroundTint="@color/blue"
+            android:textColor="@color/white"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_editCompanyCancel"
