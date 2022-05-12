@@ -21,6 +21,8 @@
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
 
+    <string name="edit">Edit</string>
+
     <string name="add_internship">Add Internship</string>
     <string name="contact_us">Contact Us</string>
     <string name="learn_more">Learn More</string>
