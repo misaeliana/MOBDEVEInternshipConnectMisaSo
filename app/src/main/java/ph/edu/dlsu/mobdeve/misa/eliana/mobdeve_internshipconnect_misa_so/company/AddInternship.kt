@@ -23,22 +23,22 @@ class AddInternship : AppCompatActivity() {
         binding.buttonAddInternship.setOnClickListener{
             val positionTitle = binding.textPositionTitle.text.toString()
             val jobDesc = binding.textJobDescription.text.toString()
-            val function = binding.textFunction.text.toString()
-            val type = binding.textType.text.toString()
-            val benefits = binding.textBenefits.text.toString()
+            val function = binding.textFunction.toString() // removed .text first
+            val type = binding.textType.toString() // removed .text first
+            //val benefits = binding.textBenefits.text.toString()
             val link = binding.textLink.text.toString()
 
 
             //getInstance defines the link of the db
             database = FirebaseDatabase.getInstance("https://mobdeve-internshipconnect-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Internships")
-            val internship = Internship(positionTitle, jobDesc, function, type, benefits, link)
+            val internship = Internship(positionTitle, jobDesc, function, type, link)
             database.child(positionTitle).setValue(internship).addOnSuccessListener {
 
                 binding.textPositionTitle.text.clear()
                 binding.textJobDescription.text.clear()
-                binding.textFunction.text.clear()
-                binding.textType.text.clear()
-                binding.textBenefits.text.clear()
+                //binding.textFunction.text.clear() COMMENTED OUT SINCE MAY ERROR
+                //binding.textType.text.clear()
+                //binding.textBenefits.text.clear()
                 binding.textLink.text.clear()
 
                 val intent = Intent (this, CompanyJobListing::class.java)

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".intern.InternViewInternships"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/tv_internships"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Internship Openings"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:textSize="24sp"
+        android:gravity="center"
+        android:textColor="@color/blue"
+        android:paddingBottom="5dp"/>
+
+    <LinearLayout
+        android:id="@+id/linear_layout_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/tv_internships"
+        android:gravity="center"
+        android:paddingBottom="20dp">
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/spinner_function"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:entries="@array/function_list"
+            android:layout_marginTop="5dp"
+            android:textSize="14dp"
+            />
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/spinner_type"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:entries="@array/function_list"
+            android:layout_marginTop="5dp"
+            android:textSize="14dp"
+            app:layout_constraintLeft_toRightOf="@+id/spinner_function"
+            android:layout_marginLeft="5dp"/>
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
+        app:layout_constraintTop_toBottomOf="@+id/linear_layout_1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
