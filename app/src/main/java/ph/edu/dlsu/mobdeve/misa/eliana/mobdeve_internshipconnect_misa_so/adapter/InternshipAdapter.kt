@@ -4,14 +4,14 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.model.Internship
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.databinding.ItemInternshipBinding
-import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.model.Internship2
 
 class InternshipAdapter: RecyclerView.Adapter<InternshipAdapter.InternshipViewHolder> {
-    private var internshipArrayList = ArrayList<Internship2>()
+    private var internshipArrayList = ArrayList<Internship>()
     private lateinit var context: Context
 
-    public constructor(context: Context, internshipArrayList: ArrayList<Internship2>) {
+    public constructor(context: Context, internshipArrayList: ArrayList<Internship>) {
         this.context = context
         this.internshipArrayList = internshipArrayList
     }
@@ -39,8 +39,9 @@ class InternshipAdapter: RecyclerView.Adapter<InternshipAdapter.InternshipViewHo
     class InternshipViewHolder(private val itemBinding: ItemInternshipBinding)
         : RecyclerView.ViewHolder(itemBinding.root) {
 
-        fun bindInternship(internship: Internship2){
+        fun bindInternship(internship: Internship){
             itemBinding.textTitle.text = internship.title
+            itemBinding.textCompany.text = internship.companyName
             itemBinding.textFunction.text = internship.function
             itemBinding.textType.text = internship.type
         }

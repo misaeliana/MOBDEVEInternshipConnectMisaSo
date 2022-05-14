@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.adapter.JobAdapter
-import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.data.Internship
+import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.model.Internship
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.databinding.ActivityCompanyJobListingBinding
 
 class CompanyJobListing : AppCompatActivity() {
@@ -35,7 +35,7 @@ class CompanyJobListing : AppCompatActivity() {
 
         dbref = FirebaseDatabase.getInstance(dblink).getReference("Internships")
         var currentUser = FirebaseAuth.getInstance().currentUser!!.uid
-        dbref.orderByChild("company").equalTo(currentUser).addValueEventListener(object: ValueEventListener {
+        dbref.orderByChild("companyName").equalTo(currentUser).addValueEventListener(object: ValueEventListener {
 
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {

@@ -8,7 +8,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.databinding.ActivityAddInternshipBinding
-import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.data.Internship
+import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.model.Internship
 
 
 class AddInternship : AppCompatActivity() {
@@ -23,7 +23,7 @@ class AddInternship : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.buttonAddInternship.setOnClickListener{
-            val company  = FirebaseAuth.getInstance().currentUser!!.uid
+            val companyName  = FirebaseAuth.getInstance().currentUser!!.uid
             val positionTitle = binding.textPositionTitle.text.toString()
             val jobDesc = binding.textJobDescription.text.toString()
             //val function = binding.textFunction.toString() // removed .text first
@@ -34,7 +34,7 @@ class AddInternship : AppCompatActivity() {
 
             //getInstance defines the link of the db
             database = FirebaseDatabase.getInstance(dblink).getReference("Internships")
-            val internship = Internship(company, positionTitle, jobDesc, link)
+            val internship = Internship(companyName, positionTitle, jobDesc, link)
             database.push().setValue(internship)
 
             binding.textPositionTitle.text.clear()

@@ -8,12 +8,14 @@ import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.dao.Int
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.dao.InternshipsDAOArrayImpl
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.databinding.ActivityInternMenuBinding
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.databinding.ActivityInternMyInternshipsBinding
+import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.model.Internship
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.model.Internship2
 
 class InternMyInternships : AppCompatActivity() {
     private lateinit var binding : ActivityInternMyInternshipsBinding
     private lateinit var internshipAdapter: InternshipAdapter
-    private lateinit var internshipArrayList: ArrayList<Internship2>
+    private lateinit var internshipArrayList: ArrayList<Internship>
+    private lateinit var internshipArrayList2: ArrayList<Internship2>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,6 +45,6 @@ class InternMyInternships : AppCompatActivity() {
         dao.addInternship(internship)
         dao.addInternship(internship)
 
-        internshipArrayList = dao.getInternships()
+        internshipArrayList2 = dao.getInternships()
     }
 }
