@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".company.CompanyProfile"
+    tools:context=".intern.InternProfile"
     android:orientation="vertical"
     android:padding="20dp">
 
@@ -14,17 +14,17 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/tv_companyProfile_companyName"
+            android:id="@+id/tv_internProfile_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18sp"
-            android:text="Company Name"
+            android:text="Intern Name"
             android:textColor="@color/black"
             android:layout_weight="1"
             android:textStyle="bold"/>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_companyProfile_edit"
+            android:id="@+id/btn_internProfile_edit"
             android:layout_width="100dp"
             android:layout_height="40dp"
             android:text="Edit"
@@ -34,19 +34,19 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/tv_companyProfile_industry"
+        android:id="@+id/tv_internProfile_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="16dp"
-        android:text="Industry"
+        android:text="myemail@email.com"
         android:textColor="@color/black"/>
 
     <TextView
-        android:id="@+id/tv_companyProfile_location"
+        android:id="@+id/tv_internProfile_number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="16dp"
-        android:text="Location"
+        android:text="091188882229"
         android:textColor="@color/black"/>
 
     <TextView
@@ -59,7 +59,7 @@
         android:textStyle="bold"/>
 
     <TextView
-        android:id="@+id/tv_companyProfile_companyAboutText"
+        android:id="@+id/tv_internProfile_about"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="14dp"
@@ -67,55 +67,72 @@
         android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
         android:textColor="@color/black"/>
 
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="Experience"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_weight="1"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_internProfile_update"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:text="Update"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/blue"/>
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_intern_profile_experiences"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
+        app:layout_constraintTop_toBottomOf="@+id/tv_my_internships"/>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="16dp"
-        android:text="@string/contact_us"
+        android:text="Education"
         android:textColor="@color/black"
         android:layout_marginTop="20dp"
         android:textStyle="bold"/>
 
     <TextView
-        android:id="@+id/tv_companyProfile_contactNumber"
+        android:id="@+id/tv_internProfile_school"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="14dp"
-        android:text="09191998777"
         android:layout_marginTop="10dp"
+        android:text="School"
         android:textColor="@color/black"/>
 
     <TextView
-        android:id="@+id/tv_companyProfile_email"
+        android:id="@+id/tv_internProfile_course"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="14dp"
-        android:text="companyemail@gmail.com"
+        android:text="Course"
         android:textColor="@color/black"/>
 
     <TextView
-        android:id="@+id/tv_companyProfile_website"
+        android:id="@+id/tv_internProfile_gradYear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="14dp"
-        android:text="www.coolcompanywebsite.com"
-        android:textColor="@color/black"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="16dp"
-        android:text="@string/learn_more"
-        android:textColor="@color/black"
-        android:layout_marginTop="20dp"
-        android:textStyle="bold"/>
-
-    <TextView
-        android:id="@+id/tv_companyProfile_video"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="14dp"
-        android:text="Youtube Video"
+        android:text="2023"
         android:textColor="@color/black"/>
 
 </LinearLayout>
