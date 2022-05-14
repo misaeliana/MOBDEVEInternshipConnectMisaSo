@@ -15,7 +15,7 @@ import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.model.I
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.model.Internship2
 
 class InternViewInternships : AppCompatActivity() {
-    private lateinit var binding : ActivityInternViewInternshipsBinding
+    private lateinit var binding: ActivityInternViewInternshipsBinding
     private lateinit var internshipAdapter: InternshipAdapter
     private lateinit var internshipArrayList: ArrayList<Internship>
     private lateinit var internshipArrayList2: ArrayList<Internship2>
