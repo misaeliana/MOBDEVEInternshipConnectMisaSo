@@ -7,11 +7,12 @@
     card_view:cardCornerRadius="10dp"
     android:background="@drawable/border"
     android:backgroundTint="@color/light_blue"
-    android:layout_marginBottom="10dp">
+    android:layout_marginBottom="10dp"
+    android:orientation="horizontal">
 
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
 
             <TextView
                 android:id="@+id/tv_experienceTitle"
@@ -39,5 +40,17 @@
                 android:layout_below="@id/tv_experience_companyName"
                 android:layout_marginStart="10dp"
                 android:text="January 2021-February 2022"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_updateExperience_add"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:text="X"
+                android:backgroundTint="@color/red"
+                android:textColor="@color/white"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:layout_marginRight="5dp"
+                />
         </RelativeLayout>
 </androidx.cardview.widget.CardView>
