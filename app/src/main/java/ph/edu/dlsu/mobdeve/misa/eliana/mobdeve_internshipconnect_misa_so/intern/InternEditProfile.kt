@@ -1,10 +1,12 @@
 package ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.intern
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatDelegate
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
+import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.company.CompanyMenu
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.databinding.ActivityAddInternshipBinding
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.databinding.ActivityInternEditProfileBinding
 
@@ -18,6 +20,17 @@ class InternEditProfile : AppCompatActivity() {
         binding = ActivityInternEditProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
         getInternData()
+
+        binding.btnEditInternCancel.setOnClickListener {
+            val intent = Intent (this, InternMenu::class.java)
+            startActivity (intent)
+        }
+
+        binding.btnEditInternSave.setOnClickListener {
+            //add code to update info
+            val intent = Intent (this, InternMenu::class.java)
+            startActivity (intent)
+        }
     }
 
     fun getInternData() {
