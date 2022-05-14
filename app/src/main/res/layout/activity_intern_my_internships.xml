@@ -18,7 +18,8 @@
         android:textSize="24sp"
         android:gravity="center"
         android:textColor="@color/blue"
-        android:paddingBottom="20dp"/>
+        android:paddingBottom="20dp"
+        android:textStyle="bold"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_list"

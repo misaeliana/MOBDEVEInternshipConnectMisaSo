@@ -14,7 +14,8 @@
         android:textSize="24sp"
         android:text="@string/add_internship"
         android:gravity="center"
-        android:textColor="@color/blue"/>
+        android:textColor="@color/blue"
+        android:textStyle="bold"/>
 
     <TextView
         android:layout_width="match_parent"

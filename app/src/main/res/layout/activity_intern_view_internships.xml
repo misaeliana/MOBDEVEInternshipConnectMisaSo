@@ -18,7 +18,8 @@
         android:textSize="24sp"
         android:gravity="center"
         android:textColor="@color/blue"
-        android:paddingBottom="5dp"/>
+        android:paddingBottom="5dp"
+        android:textStyle="bold"/>
 
     <LinearLayout
         android:id="@+id/linear_layout_1"

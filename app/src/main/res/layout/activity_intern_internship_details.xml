@@ -20,7 +20,8 @@
             android:textSize="18sp"
             android:text="Internship Title"
             android:textColor="@color/black"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:textStyle="bold"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_tv_internshipDetails_apply"
@@ -63,7 +64,8 @@
         android:textSize="16dp"
         android:text="Description"
         android:textColor="@color/black"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/tv_internshipDetails_description"
@@ -80,7 +82,8 @@
         android:textSize="16dp"
         android:text="@string/learn_more"
         android:textColor="@color/black"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/tv_internshipDetails_link"

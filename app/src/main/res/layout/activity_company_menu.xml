@@ -18,7 +18,8 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="50dp"
-        android:textColor="@color/blue"/>
+        android:textColor="@color/blue"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/tv_companyMenuGreeting"

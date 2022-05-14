@@ -14,7 +14,8 @@
         android:textSize="24dp"
         android:text="@string/edit_profile"
         android:gravity="center"
-        android:textColor="@color/blue"/>
+        android:textColor="@color/blue"
+        android:textStyle="bold"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -76,7 +77,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="16dp"
-        android:text="Education"
+        android:text="EDUCATION"
         android:layout_marginTop="20dp"
         android:textColor="@color/black"/>
 
