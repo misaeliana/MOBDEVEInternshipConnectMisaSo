@@ -1,5 +1,6 @@
 package ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.company
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -18,6 +19,11 @@ class CompanyProfile : AppCompatActivity() {
         setContentView(binding.root)
 
         getMyCompanyData()
+
+        binding.btnCompanyProfileEdit.setOnClickListener {
+            val intent = Intent (this, CompanyEditProfile::class.java)
+            startActivity (intent)
+        }
     }
 
     private fun getMyCompanyData() {
