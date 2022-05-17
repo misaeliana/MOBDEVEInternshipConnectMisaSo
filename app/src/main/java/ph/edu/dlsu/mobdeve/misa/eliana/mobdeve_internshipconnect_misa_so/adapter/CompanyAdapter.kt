@@ -17,6 +17,10 @@ class CompanyAdapter: RecyclerView.Adapter<CompanyAdapter.CompanyViewHolder> {
         this.companyArrayList = companyArrayList
     }
 
+    override fun getItemCount(): Int {
+        return companyArrayList.size
+    }
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -31,18 +35,13 @@ class CompanyAdapter: RecyclerView.Adapter<CompanyAdapter.CompanyViewHolder> {
 
     }
 
-    override fun getItemCount(): Int {
-        return companyArrayList.size
-    }
-
-    class CompanyViewHolder(private val itemBinding:ItemCompanyBinding):RecyclerView.ViewHolder(itemBinding.root){
+    class CompanyViewHolder(private val itemBinding:ItemCompanyBinding)
+        :RecyclerView.ViewHolder(itemBinding.root){
 
         fun bindCompany(company:Company) {
             itemBinding.tvCompanyName.text = company.name
-            itemBinding.tvIndustry.text = ""
+            itemBinding.tvIndustry.text = company.industry
             itemBinding.tvLocation.text = company.location
         }
     }
-
-
 }
