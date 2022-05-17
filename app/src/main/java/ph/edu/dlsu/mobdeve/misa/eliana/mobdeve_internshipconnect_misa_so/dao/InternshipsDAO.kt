@@ -4,18 +4,18 @@ import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.model.I
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.model.Internship2
 
 interface InternshipsDAO {
-    fun addInternship(internship: Internship2)
-    fun getInternships(): ArrayList<Internship2>
+    fun addInternship(internship: Internship)
+    fun getInternships(): ArrayList<Internship>
 }
 
 class InternshipsDAOArrayImpl: InternshipsDAO {
-    private var arrayListInternships = ArrayList<Internship2>()
+    private var arrayListInternships = ArrayList<Internship>()
 
-    override fun addInternship(internship: Internship2) {
+    override fun addInternship(internship: Internship) {
         arrayListInternships.add(0, internship)
     }
 
-    override fun getInternships(): ArrayList<Internship2> {
+    override fun getInternships(): ArrayList<Internship> {
         return arrayListInternships
     }
 

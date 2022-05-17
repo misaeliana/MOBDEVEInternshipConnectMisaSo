@@ -52,6 +52,7 @@
         <entry key="app/src/main/res/layout/activity_register_intern.xml" value="0.3105204418920577" />
         <entry key="app/src/main/res/layout/fragment_second.xml" value="0.21822916666666667" />
         <entry key="app/src/main/res/layout/item_company.xml" value="0.3917572463768116" />
+        <entry key="app/src/main/res/layout/item_company_internship.xml" value="0.15806159420289856" />
         <entry key="app/src/main/res/layout/item_experience.xml" value="0.4079147640791476" />
         <entry key="app/src/main/res/layout/item_experience_update.xml" value="0.22541506925492885" />
         <entry key="app/src/main/res/layout/item_internship.xml" value="0.17695770263671876" />

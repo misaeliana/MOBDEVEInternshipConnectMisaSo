@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.model.Internship
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.databinding.ItemInternshipBinding
 
-class InternshipAdapter: RecyclerView.Adapter<InternshipAdapter.InternshipViewHolder> {
+class InternInternshipAdapter: RecyclerView.Adapter<InternInternshipAdapter.InternshipViewHolder> {
     private var internshipArrayList = ArrayList<Internship>()
     private lateinit var context: Context
 
@@ -23,7 +23,7 @@ class InternshipAdapter: RecyclerView.Adapter<InternshipAdapter.InternshipViewHo
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): InternshipAdapter.InternshipViewHolder {
+    ): InternInternshipAdapter.InternshipViewHolder {
         val itemBinding = ItemInternshipBinding
             .inflate(
                 LayoutInflater.from(parent.context),
@@ -31,7 +31,7 @@ class InternshipAdapter: RecyclerView.Adapter<InternshipAdapter.InternshipViewHo
         return InternshipViewHolder(itemBinding)
     }
 
-    override fun onBindViewHolder(holder: InternshipAdapter.InternshipViewHolder,
+    override fun onBindViewHolder(holder: InternInternshipAdapter.InternshipViewHolder,
                                   position: Int) {
         holder.bindInternship(internshipArrayList[position])
     }
