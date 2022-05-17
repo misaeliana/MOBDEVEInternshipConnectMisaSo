@@ -8,121 +8,132 @@
     android:orientation="vertical"
     android:padding="20dp">
 
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:text="Update Experience"
-        android:gravity="center"
-        android:textColor="@color/blue"
-        android:textStyle="bold"/>
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:text="Company Name"
-        android:textColor="@color/black"
-        android:layout_marginTop="20dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/et_updateExperience_companyName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="09173098555"
-        android:ems="10"
-        android:inputType="text|number"
-        android:textSize="14dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:text="Update Experience"
+                android:gravity="center"
+                android:textColor="@color/blue"
+                android:textStyle="bold"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:text="Contact Number"
-        android:textColor="@color/black"
-        android:layout_marginTop="20dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:text="Company Name"
+                android:textColor="@color/black"
+                android:layout_marginTop="20dp"/>
 
-    <EditText
-        android:id="@+id/et_updateExperience_position"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="09173098555"
-        android:ems="10"
-        android:inputType="text|number"
-        android:textSize="14dp"/>
+            <EditText
+                android:id="@+id/et_updateExperience_companyName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="09173098555"
+                android:ems="10"
+                android:inputType="text|number"
+                android:textSize="14dp"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:text="Start Date"
-        android:textColor="@color/black"
-        android:layout_marginTop="20dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:text="Contact Number"
+                android:textColor="@color/black"
+                android:layout_marginTop="20dp"/>
 
-    <EditText
-        android:id="@+id/et_updateExperience_startDate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="09173098555"
-        android:ems="10"
-        android:inputType="text|number"
-        android:textSize="14dp"/>
+            <EditText
+                android:id="@+id/et_updateExperience_position"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="09173098555"
+                android:ems="10"
+                android:inputType="text|number"
+                android:textSize="14dp"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:text="End Date"
-        android:textColor="@color/black"
-        android:layout_marginTop="20dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:text="Start Date"
+                android:textColor="@color/black"
+                android:layout_marginTop="20dp"/>
 
-    <EditText
-        android:id="@+id/et_updateExperience_endDate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="09173098555"
-        android:ems="10"
-        android:inputType="text|number"
-        android:textSize="14dp"/>
+            <EditText
+                android:id="@+id/et_updateExperience_startDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="09173098555"
+                android:ems="10"
+                android:inputType="text|number"
+                android:textSize="14dp"/>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_updateExperience_add"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Add"
-        android:backgroundTint="@color/blue"
-        android:textColor="@color/white"
-        android:layout_marginTop="10dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:text="End Date"
+                android:textColor="@color/black"
+                android:layout_marginTop="20dp"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:text="Experience"
-        android:gravity="center"
-        android:textColor="@color/black"
-        android:layout_marginTop="20dp"
-        android:textStyle="bold"
-        />
+            <EditText
+                android:id="@+id/et_updateExperience_endDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="09173098555"
+                android:ems="10"
+                android:inputType="text|number"
+                android:textSize="14dp"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_company_intern_experiences"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_updateExperience_add"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Add"
+                android:backgroundTint="@color/blue"
+                android:textColor="@color/white"
+                android:layout_marginTop="10dp"/>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_updateExperience_save"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Save"
-        android:backgroundTint="@color/blue"
-        android:textColor="@color/white"
-        android:layout_marginTop="10dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:text="Experience"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
+                />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_updateExperience_cancel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/cancel"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_company_intern_experiences"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"/>
 
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_updateExperience_save"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Save"
+                android:backgroundTint="@color/blue"
+                android:textColor="@color/white"
+                android:layout_marginTop="10dp"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_updateExperience_cancel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/cancel"/>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
