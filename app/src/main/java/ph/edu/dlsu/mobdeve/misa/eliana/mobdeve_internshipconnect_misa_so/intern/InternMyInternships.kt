@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.adapter.InternInternshipAdapter
+import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.adapter.InternMyInternshipsAdapter
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.dao.InternshipsDAO
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.dao.InternshipsDAOArrayImpl
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.databinding.ActivityInternMyInternshipsBinding
@@ -11,8 +12,8 @@ import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.model.I
 
 class InternMyInternships : AppCompatActivity() {
     private lateinit var binding : ActivityInternMyInternshipsBinding
-    private lateinit var internInternshipAdapter: InternInternshipAdapter
-    private lateinit var internshipArrayList: ArrayList<Internship>
+    private lateinit var internMyInternshipsAdapter: InternMyInternshipsAdapter
+    private lateinit var myInternshipArrayList: ArrayList<Internship>
     //private lateinit var internshipArrayList2: ArrayList<Internship2>
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,8 +24,8 @@ class InternMyInternships : AppCompatActivity() {
         binding.rvList.setLayoutManager(LinearLayoutManager(applicationContext))
         // binding.rvList.setLayoutManager(GridLayoutManager(getApplicationContext(), 2))
 
-        internInternshipAdapter = InternInternshipAdapter(applicationContext, internshipArrayList)
-        binding.rvList.setAdapter(internInternshipAdapter)
+        internMyInternshipsAdapter = InternMyInternshipsAdapter(applicationContext, myInternshipArrayList)
+        binding.rvList.setAdapter(internMyInternshipsAdapter)
     }
 
     private fun init() {
@@ -44,6 +45,6 @@ class InternMyInternships : AppCompatActivity() {
         dao.addInternship(internship)
         dao.addInternship(internship)
 
-        internshipArrayList = dao.getInternships()
+        myInternshipArrayList = dao.getInternships()
     }
 }
