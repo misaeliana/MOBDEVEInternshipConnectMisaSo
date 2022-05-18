@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_internHome"
+        android:title="Home"/>
+
+    <item
+        android:id="@+id/nav_viewInternships"
+        android:title="Internship Openings"/>
+
+    <item
+        android:id="@+id/nav_internPastInternships"
+        android:title="My Past Internships"/>
+
+    <item
+        android:id="@+id/nav_viewCompanies"
+        android:title="Companies"/>
+
+    <item
+        android:id="@+id/nav_internProfile"
+        android:title="Profile"/>
+
+    <item
+        android:id="@+id/nav_internLogout"
+        android:title="Logout"/>
+
+</menu>
