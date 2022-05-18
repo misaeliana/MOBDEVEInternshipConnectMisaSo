@@ -63,7 +63,7 @@ class InternEditProfile : AppCompatActivity() {
         val currentUser:String = FirebaseAuth.getInstance().currentUser!!.uid
 
         val internDB = FirebaseDatabase.getInstance(dblink).getReference("Interns")
-        val company = mapOf<String, String>(
+        val intern = mapOf<String, String>(
             "number" to number,
             "about" to about,
             "school" to school,
@@ -71,10 +71,11 @@ class InternEditProfile : AppCompatActivity() {
             "gradYear" to gradYear
         )
 
-        internDB.child(currentUser).updateChildren(company).addOnSuccessListener {
+        internDB.child(currentUser).updateChildren(intern).addOnSuccessListener {
             Toast.makeText(this, "Profile Updated", Toast.LENGTH_SHORT)
             val intent = Intent (this, InternProfile::class.java)
             startActivity (intent)
+            finish()
         }.addOnFailureListener{
             Toast.makeText(this, "Profile updated failed", Toast.LENGTH_SHORT)
         }

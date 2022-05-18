@@ -20,12 +20,24 @@ class InternViewCompany : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityInternViewCompanyBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        var bundle: Bundle = intent.extras!!
+        binding.tvViewCompanyProfileCompanyName.text = bundle.getString("name")
+        binding.tvViewCompanyProfileIndustry.text = bundle.getString("industry")
+        binding.tvViewCompanyProfileLocation.text = bundle.getString("location")
+        binding.tvViewCompanyProfileCompanyAboutText.text = bundle.getString("about")
+        binding.tvViewCompanyProfileContactNumber.text = bundle.getString("number")
+        binding.tvViewCompanyProfileEmail.text = bundle.getString("email")
+        binding.tvViewCompanyProfileWebsite.text = bundle.getString("website")
+
+        //to get internships offered by company
         init()
 
         binding.rvInternViewCompanyInternships.setLayoutManager(LinearLayoutManager(applicationContext))
         internViewCompanyInternshipsAdapter = InternCompanyDetailsInternshipsAdapter(applicationContext, internViewCompanyInternshipsArrayList)
         binding.rvInternViewCompanyInternships.setAdapter(internViewCompanyInternshipsAdapter)
     }
+
 
     private fun init() {
         var dao: InternshipsDAO = InternshipsDAOArrayImpl()

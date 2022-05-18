@@ -32,6 +32,11 @@ class InternMenu : AppCompatActivity() {
             Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
         }
 
+        binding.btnInternMenuMyJobs.setOnClickListener {
+            val intent = Intent (this, InternMyInternships::class.java)
+            startActivity (intent)
+        }
+
         binding.btnInternMenuJobs.setOnClickListener {
             val intent = Intent (this, InternViewInternships::class.java)
             startActivity (intent)

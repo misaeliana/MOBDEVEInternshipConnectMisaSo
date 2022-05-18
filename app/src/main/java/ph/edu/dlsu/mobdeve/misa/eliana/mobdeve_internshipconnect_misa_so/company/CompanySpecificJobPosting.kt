@@ -3,27 +3,33 @@ package ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.compan
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
-import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.adapter.CompanySpecifcJobPostingApplicantsAdapter
-import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.adapter.CompanyViewApplicantExperienceAdapter
+import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.adapter.CompanySpecificJobPostingApplicantsAdapter
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.dao.*
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.databinding.ActivityCompanySpecificJobPostingBinding
-import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.model.Experience
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.model.Intern
 
 class CompanySpecificJobPosting : AppCompatActivity() {
     private lateinit var binding: ActivityCompanySpecificJobPostingBinding
-    private lateinit var companySpecificJobPostingAdapter: CompanySpecifcJobPostingApplicantsAdapter
+    private lateinit var companySpecificJobPostingAdapter: CompanySpecificJobPostingApplicantsAdapter
     private lateinit var companySpecificJobPostingArrayList: ArrayList<Intern>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCompanySpecificJobPostingBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        var bundle: Bundle = intent.extras!!
+        binding.tvInternshipDetailsTitle.text = bundle.getString("title")
+        binding.tvInternshipDetailsFunction.text = bundle.getString("function")
+        binding.tvInternshipDetailsType.text = bundle.getString("type")
+        binding.tvInternshipDetailsDescription.text = bundle.getString("description")
+        binding.tvInternshipDetailsLink.text = bundle.getString("link")
+
         init()
 
         binding.rvCompanySpecificJobPostingApplicants.setLayoutManager(LinearLayoutManager(applicationContext))
 
-        companySpecificJobPostingAdapter = CompanySpecifcJobPostingApplicantsAdapter(applicationContext, companySpecificJobPostingArrayList)
+        companySpecificJobPostingAdapter = CompanySpecificJobPostingApplicantsAdapter(applicationContext, companySpecificJobPostingArrayList)
         binding.rvCompanySpecificJobPostingApplicants.setAdapter(companySpecificJobPostingAdapter)
     }
 

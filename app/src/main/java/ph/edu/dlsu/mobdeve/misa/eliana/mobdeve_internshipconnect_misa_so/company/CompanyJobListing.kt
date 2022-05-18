@@ -1,5 +1,6 @@
 package ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.company
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -31,10 +32,10 @@ class CompanyJobListing : AppCompatActivity() {
 
         //getCompanyJobListing()
 
-//        binding.btnAddInternship.setOnClickListener{
-//            val intent = Intent (this, AddInternship::class.java)
-//            startActivity (intent)
-//        }
+        binding.btnAddInternship.setOnClickListener{
+            val intent = Intent (this, AddInternship::class.java)
+            startActivity (intent)
+        }
     }
 
     private fun init() {

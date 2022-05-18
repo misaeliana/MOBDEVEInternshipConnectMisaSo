@@ -1,5 +1,6 @@
 package ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.intern
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -29,6 +30,17 @@ class InternUpdateExperience : AppCompatActivity() {
 
         internUpdateExperienceAdapter = InternUpdateProfileExperienceAdapter(applicationContext, internUpdateExperienceArrayList)
         binding.rvCompanyInternExperiences.setAdapter(internUpdateExperienceAdapter)
+
+        binding.btnUpdateExperienceSave.setOnClickListener {
+            //save updated data in db
+            val intent = Intent (this, InternProfile::class.java)
+            startActivity (intent)
+        }
+
+        binding.btnUpdateExperienceCancel.setOnClickListener{
+            val intent = Intent (this, InternProfile::class.java)
+            startActivity (intent)
+        }
     }
 
     private fun init() {

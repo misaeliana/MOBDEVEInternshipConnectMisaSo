@@ -1,11 +1,15 @@
 package ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.adapter
 
 import android.content.Context
+import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.model.Company
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.databinding.ItemCompanyBinding
+import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.intern.InternViewCompany
 
 class CompanyAdapter: RecyclerView.Adapter<CompanyAdapter.CompanyViewHolder> {
 
@@ -35,13 +39,37 @@ class CompanyAdapter: RecyclerView.Adapter<CompanyAdapter.CompanyViewHolder> {
 
     }
 
-    class CompanyViewHolder(private val itemBinding:ItemCompanyBinding)
-        :RecyclerView.ViewHolder(itemBinding.root){
+    inner class CompanyViewHolder(private val itemBinding:ItemCompanyBinding) :RecyclerView.ViewHolder(itemBinding.root), View.OnClickListener{
+
+        var company = Company()
+
+        init {
+            itemView.setOnClickListener(this)
+        }
 
         fun bindCompany(company:Company) {
+            this.company = company
             itemBinding.tvCompanyName.text = company.name
             itemBinding.tvIndustry.text = company.industry
             itemBinding.tvLocation.text = company.location
+        }
+
+        override fun onClick(p0: View?) {
+            var goToCompany = Intent(context, InternViewCompany::class.java)
+            var bundle = Bundle()
+
+            bundle.putString("name", company.name)
+            bundle.putString("industry", company.industry)
+            bundle.putString("location", company.location)
+            bundle.putString("about", company.about)
+            bundle.putString("number", company.number)
+            bundle.putString("email", company.email)
+            bundle.putString("website", company.website)
+            //add for video
+
+            goToCompany.putExtras(bundle)
+            goToCompany.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            context.startActivity(goToCompany)
         }
     }
 }

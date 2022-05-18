@@ -20,6 +20,16 @@ class CompanyViewApplicantInformation : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityCompanyViewApplicantInformationBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        var bundle: Bundle = intent.extras!!
+        binding.tvCompanyInternProfileName.text = bundle.getString("name")
+        binding.tvCompanyInternProfileEmail.text = bundle.getString("email")
+        binding.tvCompanyInternProfileNumber.text = bundle.getString("number")
+        binding.tvCompanyInternProfileAbout.text = bundle.getString("about")
+        binding.tvCompanyInternProfileSchool.text = bundle.getString("school")
+        binding.tvCompanyInternProfileCourse.text = bundle.getString("course")
+        binding.tvCompanyInternProfileGradYear.text = bundle.getString("gradYear")
+
         init()
 
         binding.rvCompanyInternExperiences.setLayoutManager(LinearLayoutManager(applicationContext))

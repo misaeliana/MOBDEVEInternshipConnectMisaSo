@@ -41,6 +41,11 @@ class InternProfile : AppCompatActivity() {
             val intent = Intent (this, InternEditProfile::class.java)
             startActivity (intent)
         }
+
+        binding.btnInternProfileUpdate.setOnClickListener{
+            val intent = Intent (this, InternUpdateExperience::class.java)
+            startActivity (intent)
+        }
     }
 
     private fun init() {

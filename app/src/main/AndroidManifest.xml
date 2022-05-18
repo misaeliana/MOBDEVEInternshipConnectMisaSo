@@ -12,33 +12,32 @@
         <activity
             android:name=".company.CompanySpecificJobPosting"
             android:exported="true">
-             <intent-filter>
+             <!--<intent-filter>
                  <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
-             </intent-filter>
+             </intent-filter>-->
         </activity>
         <activity
             android:name=".intern.InternViewCompany"
             android:exported="true">
-            <intent-filter>
+            <!--<intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter>-->
         </activity>
         <activity
             android:name=".intern.InternProfile"
             android:exported="false" />
         <activity
             android:name=".company.CompanyViewApplicantInformation"
-            android:exported="false">
 
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
+            android:exported="true">
+            <!--<intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
         </activity>
         <activity
             android:name=".intern.InternMyInternships"
@@ -52,18 +51,13 @@
             <!-- </intent-filter> -->
         </activity>
         <activity
-            android:name=".item_internship"
-            android:exported="false" />
-        <activity
             android:name=".intern.InternViewInternships"
-            android:exported="false">
+            android:exported="true">
+           <!--<intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
+               <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
         </activity>
         <activity
             android:name=".intern.InternUpdateExperience"
@@ -80,7 +74,7 @@
             android:name=".intern.InternFeedback"
             android:exported="false" />
         <activity
-            android:name=".intern.internInternshipDetails"
+            android:name=".intern.InternInternshipDetails"
             android:exported="false" />
         <activity
             android:name=".Login"
@@ -90,25 +84,20 @@
             android:exported="false" />
         <activity
             android:name=".company.CompanyJobListing"
-            android:exported="false">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
+            android:exported="true">
+            <!--<intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
         </activity>
         <activity
             android:name=".intern.InternViewCompanies"
-            android:exported="false">
+            android:exported="true">
+            <!--<intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
+                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
         </activity>
         <activity
             android:name=".intern.InternEditProfile"
@@ -130,14 +119,12 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="false">
+            android:exported="true">
 
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
