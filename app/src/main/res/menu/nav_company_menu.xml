@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item
+        android:id="@+id/nav_companyHome"
+        android:title="Home"/>
+
+    <item
+        android:id="@+id/nav_companyProfile"
+        android:title="Profile"/>
+
+    <item
+        android:id="@+id/nav_companyOpenings"
+        android:title="Internship Openings"/>
+
+    <item
+        android:id="@+id/nav_companyLogout"
+        android:title="Logout"/>
+</menu>
