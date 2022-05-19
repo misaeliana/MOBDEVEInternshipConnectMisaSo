@@ -37,6 +37,18 @@ class InternUpdateExperience : AppCompatActivity() {
         internUpdateExperienceAdapter = InternUpdateProfileExperienceAdapter(applicationContext, internUpdateExperienceArrayList)
         binding.rvCompanyInternExperiences.setAdapter(internUpdateExperienceAdapter)
 
+        binding.btnUpdateExperienceAdd.setOnClickListener{
+            var experience = Experience()
+
+            experience.title = binding.etUpdateExperienceTitle.text.toString()
+            experience.companyName = binding.etUpdateExperienceCompanyName.text.toString()
+            experience.internName = "Intern name"
+            experience.startDate = binding.etUpdateExperienceStartDate.text.toString()
+            experience.endDate = binding.etUpdateExperienceEndDate.text.toString()
+
+            internUpdateExperienceAdapter.addExperience(experience)
+        }
+
         binding.btnUpdateExperienceSave.setOnClickListener {
             //save updated data in db
             val intent = Intent (this, InternProfile::class.java)

@@ -2,6 +2,7 @@ package ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.adapte
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.databinding.ItemExperienceUpdateBinding
@@ -16,6 +17,18 @@ class InternUpdateProfileExperienceAdapter: RecyclerView.Adapter<InternUpdatePro
         this.internUpdateExperienceArrayList = internUpdateExperienceArrayList
     }
 
+    fun removeExperience(position: Int){
+        internUpdateExperienceArrayList.removeAt(position)
+        notifyItemRemoved(position)
+        notifyDataSetChanged()
+    }
+
+    fun addExperience(experience: Experience){
+        internUpdateExperienceArrayList.add(0, experience)
+        notifyItemInserted(0)
+        notifyDataSetChanged()
+    }
+
     override fun getItemCount(): Int {
         return internUpdateExperienceArrayList.size
     }
@@ -28,7 +41,7 @@ class InternUpdateProfileExperienceAdapter: RecyclerView.Adapter<InternUpdatePro
             .inflate(
                 LayoutInflater.from(parent.context),
                 parent, false)
-        return InternUpdateProfileExperienceAdapter.InternUpdateExperienceViewHolder(itemBinding)
+        return InternUpdateExperienceViewHolder(itemBinding)
     }
 
     override fun onBindViewHolder(holder: InternUpdateProfileExperienceAdapter.InternUpdateExperienceViewHolder,
@@ -36,13 +49,17 @@ class InternUpdateProfileExperienceAdapter: RecyclerView.Adapter<InternUpdatePro
         holder.bindExperience(internUpdateExperienceArrayList[position])
     }
 
-    class InternUpdateExperienceViewHolder(private val itemBinding: ItemExperienceUpdateBinding)
-        : RecyclerView.ViewHolder(itemBinding.root) {
+    inner class InternUpdateExperienceViewHolder(private val itemBinding: ItemExperienceUpdateBinding)
+        : RecyclerView.ViewHolder(itemBinding.root), View.OnClickListener {
 
         fun bindExperience(experience: Experience){
             itemBinding.tvExperienceTitle.text = experience.title
             itemBinding.tvExperienceCompanyName.text = experience.companyName
             itemBinding.tvExperienceDuration.text = experience.startDate +" - " + experience.endDate
+        }
+
+        override fun onClick(p0: View?) {
+            TODO("Not yet implemented")
         }
     }
 }

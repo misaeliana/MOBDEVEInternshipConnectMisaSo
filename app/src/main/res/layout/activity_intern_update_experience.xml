@@ -36,6 +36,23 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
+                android:text="Title"
+                android:textColor="@color/black"
+                android:layout_marginTop="20dp"/>
+
+            <EditText
+                android:id="@+id/et_updateExperience_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Title"
+                android:ems="10"
+                android:inputType="text"
+                android:textSize="14dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
                 android:text="Company Name"
                 android:textColor="@color/black"
                 android:layout_marginTop="20dp"/>
@@ -44,26 +61,9 @@
                 android:id="@+id/et_updateExperience_companyName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="09173098555"
+                android:hint="Company Name"
                 android:ems="10"
-                android:inputType="text|number"
-                android:textSize="14dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:text="Contact Number"
-                android:textColor="@color/black"
-                android:layout_marginTop="20dp"/>
-
-            <EditText
-                android:id="@+id/et_updateExperience_position"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="09173098555"
-                android:ems="10"
-                android:inputType="text|number"
+                android:inputType="text"
                 android:textSize="14dp"/>
 
             <TextView
@@ -78,9 +78,9 @@
                 android:id="@+id/et_updateExperience_startDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="09173098555"
+                android:hint="Start Date"
                 android:ems="10"
-                android:inputType="text|number"
+                android:inputType="text"
                 android:textSize="14dp"/>
 
             <TextView
@@ -95,9 +95,9 @@
                 android:id="@+id/et_updateExperience_endDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="09173098555"
+                android:hint="End Date"
                 android:ems="10"
-                android:inputType="text|number"
+                android:inputType="text"
                 android:textSize="14dp"/>
 
             <androidx.appcompat.widget.AppCompatButton
