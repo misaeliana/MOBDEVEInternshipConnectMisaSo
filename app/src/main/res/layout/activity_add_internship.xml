@@ -14,118 +14,129 @@
     android:orientation="vertical"
     android:padding="20dp">
 
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:text="@string/add_internship"
-        android:gravity="center"
-        android:textColor="@color/blue"
-        android:textStyle="bold"/>
+        app:layout_constraintLeft_toLeftOf="parent">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="16dp"
-        android:text="Title"
-        android:layout_marginTop="20dp"
-        android:textColor="@color/black"
-        />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:text="@string/add_internship"
+                android:gravity="center"
+                android:textColor="@color/blue"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:text="Title"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/black"
+                />
 
 
-    <EditText
-        android:id="@+id/textPositionTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Title"
-        android:ems="10"
-        android:inputType="text"
-        android:textSize="14dp"/>
+            <EditText
+                android:id="@+id/textPositionTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Title"
+                android:ems="10"
+                android:inputType="text"
+                android:textSize="14dp"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="16dp"
-        android:text="Description"
-        android:layout_marginTop="20dp"
-        android:textColor="@color/black"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:text="Description"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/black"/>
 
-    <EditText
-        android:id="@+id/textJobDescription"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:hint="Description"
-        android:ems="10"
-        android:inputType="text|textMultiLine"
-        android:gravity="top|left"
-        android:lines="20"
-        android:minLines="5"
-        android:scrollHorizontally="false"
-        android:scrollbars="vertical"
-        android:textSize="14dp"/>
+            <EditText
+                android:id="@+id/textJobDescription"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:hint="Description"
+                android:ems="10"
+                android:inputType="text|textMultiLine"
+                android:gravity="top|left"
+                android:lines="20"
+                android:minLines="5"
+                android:scrollHorizontally="false"
+                android:scrollbars="vertical"
+                android:textSize="14dp"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="16dp"
-        android:text="Function"
-        android:layout_marginTop="10dp"
-        android:textColor="@color/black"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:text="Function"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"/>
 
-    <androidx.appcompat.widget.AppCompatSpinner
-        android:id="@+id/textFunction"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:entries="@array/function_list"
-        android:layout_marginTop="5dp"
-        android:textSize="14dp"/>
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/textFunction"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:entries="@array/function_list"
+                android:layout_marginTop="5dp"
+                android:textSize="14dp"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="16dp"
-        android:text="Type"
-        android:layout_marginTop="10dp"
-        android:textColor="@color/black"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:text="Type"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"/>
 
-    <androidx.appcompat.widget.AppCompatSpinner
-        android:id="@+id/textType"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:entries="@array/function_list"
-        android:layout_marginTop="5dp"
-        android:textSize="14dp"/>
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/textType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:entries="@array/function_list"
+                android:layout_marginTop="5dp"
+                android:textSize="14dp"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="16dp"
-        android:text="Link"
-        android:layout_marginTop="10dp"
-        android:textColor="@color/black"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:text="Link"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"/>
 
-    <EditText
-        android:id="@+id/textLink"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Link"
-        android:ems="10"
-        android:inputType="textUri"
-        android:textSize="14dp"/>
+            <EditText
+                android:id="@+id/textLink"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Link"
+                android:ems="10"
+                android:inputType="textUri"
+                android:textSize="14dp"/>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/buttonAddInternship"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Add"
-        android:layout_marginTop="10dp"
-        android:textColor="@color/white"
-        android:backgroundTint="@color/blue"
-        />
-
-</LinearLayout>
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/buttonAddInternship"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Add"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/blue"
+                />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_companySideMenu"

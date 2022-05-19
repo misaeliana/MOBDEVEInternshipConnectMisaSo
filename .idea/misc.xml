@@ -39,12 +39,13 @@
         <entry key="..\:/Users/User/Desktop/College/3rd Year 2nd Term/MOBDEVE/MOBDEVEInternshipConnectMisaSo/app/src/main/res/menu/nav_intern_menu.xml" value="0.25" />
         <entry key="..\:/Users/User/Desktop/College/3rd Year 2nd Term/MOBDEVE/MOBDEVEInternshipConnectMisaSo/app/src/main/res/menu/nav_menu.xml" value="0.25" />
         <entry key="app/src/main/res/drawable/border.xml" value="0.156" />
-        <entry key="app/src/main/res/layout/activity_add_internship.xml" value="0.30888519287109373" />
+        <entry key="app/src/main/res/layout/activity_add_internship.xml" value="0.17256011962890622" />
         <entry key="app/src/main/res/layout/activity_company_add_job_posting.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_company_edit_profile.xml" value="0.39683685302734373" />
+        <entry key="app/src/main/res/layout/activity_company_edit_profile.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_company_job_listing.xml" value="0.24635416666666668" />
         <entry key="app/src/main/res/layout/activity_company_menu.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/activity_company_profile.xml" value="0.37325671652089" />
+        <entry key="app/src/main/res/layout/activity_company_specific_job_posting.xml" value="0.11842105263157894" />
         <entry key="app/src/main/res/layout/activity_company_view_applicant.xml" value="0.3917572463768116" />
         <entry key="app/src/main/res/layout/activity_company_view_applicant_information.xml" value="0.3606913248697917" />
         <entry key="app/src/main/res/layout/activity_intern_edit_profile.xml" value="0.27810211181640626" />
@@ -64,6 +65,7 @@
         <entry key="app/src/main/res/layout/activity_register_company.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/activity_register_intern.xml" value="0.3105204418920577" />
         <entry key="app/src/main/res/layout/fragment_second.xml" value="0.21822916666666667" />
+        <entry key="app/src/main/res/layout/item_applicant.xml" value="0.11842105263157894" />
         <entry key="app/src/main/res/layout/item_company.xml" value="0.3917572463768116" />
         <entry key="app/src/main/res/layout/item_company_internship.xml" value="0.15806159420289856" />
         <entry key="app/src/main/res/layout/item_experience.xml" value="0.1924667358398437" />
