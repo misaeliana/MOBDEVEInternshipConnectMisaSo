@@ -32,4 +32,10 @@
         <item>Function 2</item>
         <item>Function 3</item>
     </string-array>
+
+    <string-array name="industry_list">
+        <item>Industry 1</item>
+        <item>Industry 2</item>
+        <item>Industry 3</item>
+    </string-array>
 </resources>

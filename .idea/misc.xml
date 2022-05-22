@@ -41,7 +41,7 @@
         <entry key="app/src/main/res/drawable/border.xml" value="0.156" />
         <entry key="app/src/main/res/layout/activity_add_internship.xml" value="0.17256011962890622" />
         <entry key="app/src/main/res/layout/activity_company_add_job_posting.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_company_edit_profile.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_company_edit_profile.xml" value="0.32207794189453126" />
         <entry key="app/src/main/res/layout/activity_company_job_listing.xml" value="0.24635416666666668" />
         <entry key="app/src/main/res/layout/activity_company_menu.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/activity_company_profile.xml" value="0.37325671652089" />
@@ -54,7 +54,7 @@
         <entry key="app/src/main/res/layout/activity_intern_menu.xml" value="0.38958333333333334" />
         <entry key="app/src/main/res/layout/activity_intern_my_internships.xml" value="0.2504528985507246" />
         <entry key="app/src/main/res/layout/activity_intern_profile.xml" value="0.1998346565048061" />
-        <entry key="app/src/main/res/layout/activity_intern_update_experience.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_intern_update_experience.xml" value="0.38805847167968754" />
         <entry key="app/src/main/res/layout/activity_intern_view_companies.xml" value="0.3890625" />
         <entry key="app/src/main/res/layout/activity_intern_view_company.xml" value="0.2177698771158854" />
         <entry key="app/src/main/res/layout/activity_intern_view_internships.xml" value="0.18135528564453127" />
