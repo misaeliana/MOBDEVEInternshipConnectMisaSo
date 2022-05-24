@@ -45,7 +45,6 @@
     <string name="intern_name">Intern Name</string>
     <string name="experience">Experience</string>
     <string name="education">Education</string>
-    <string name="name">Name</string>
     <string name="educationn">EDUCATION</string>
     <string name="school">School</string>
     <string name="course">Course</string>
@@ -68,14 +67,36 @@
     <string name="name">Name</string>
 
     <string-array name="function_list">
-        <item>Function 1</item>
-        <item>Function 2</item>
-        <item>Function 3</item>
+        <item>Technology/Software Development</item>
+        <item>Product</item>
+        <item>UI/UX</item>
+        <item>Marketing</item>
+        <item>Finance</item>
+        <item>People</item>
+        <item>Engineering</item>
+        <item>E-commerce</item>
+        <item>Education</item>
+        <item>Legal</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="type_list">
+        <item>Full-time</item>
+        <item>Part-time</item>
+        <item>Project-based</item>
+        <item>Flexible</item>
     </string-array>
 
     <string-array name="industry_list">
-        <item>Industry 1</item>
-        <item>Industry 2</item>
-        <item>Industry 3</item>
+        <item>Information Technology</item>
+        <item>Health Care</item>
+        <item>Finance</item>
+        <item>Communication</item>
+        <item>Manufacturing</item>
+        <item>Engineering</item>
+        <item>E-commerce</item>
+        <item>Education</item>
+        <item>Legal</item>
+        <item>Other</item>
     </string-array>
 </resources>

@@ -50,7 +50,7 @@ class CompanyProfile : AppCompatActivity() {
                 binding.tvCompanyProfileLocation.text = it.child("location").value.toString()
                 binding.tvCompanyProfileCompanyAboutText.text = it.child("about").value.toString()
                 binding.tvCompanyProfileContactNumber.text = it.child("number").value.toString()
-                binding.tvCompanyProfileVideo.text = it.child("learnMore").value.toString()
+                //binding.tvCompanyProfileVideo.text = it.child("learnMore").value.toString()
             }
             else
                 Toast.makeText(this, "User does not exist", Toast.LENGTH_SHORT).show()

@@ -104,7 +104,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:entries="@array/function_list"
+                android:entries="@array/type_list"
                 android:layout_marginTop="5dp"
                 android:textSize="14dp"/>
 
