@@ -38,7 +38,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="16sp"
-                    android:text="Company Name"
+                    android:text="@string/company_name"
                     android:textColor="@color/black"
                     android:layout_marginTop="20dp"/>
 
@@ -46,7 +46,6 @@
                     android:id="@+id/et_editCompanyCompanyName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Company Name"
                     android:ems="10"
                     android:inputType="text"
                     android:textSize="14dp"/>
@@ -55,7 +54,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="16sp"
-                    android:text="Industry"
+                    android:text="@string/industry"
                     android:textColor="@color/black"
                     android:layout_marginTop="20dp"/>
 
@@ -73,7 +72,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="16sp"
-                    android:text="Contact Number"
+                    android:text="@string/contact_number"
                     android:textColor="@color/black"
                     android:layout_marginTop="20dp"/>
 
@@ -81,7 +80,6 @@
                     android:id="@+id/et_editCompanyContactNumber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="09173098555"
                     android:ems="10"
                     android:inputType="text|number"
                     android:textSize="14dp"/>
@@ -90,7 +88,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="16sp"
-                    android:text="About"
+                    android:text="@string/about"
                     android:textColor="@color/black"
                     android:layout_marginTop="20dp"/>
 
@@ -99,7 +97,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:textSize="14dp"
-                    android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat"
                     android:ems="10"
                     android:inputType="text|textMultiLine"
                     android:gravity="top|left"
@@ -112,7 +109,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="16sp"
-                    android:text="Location"
+                    android:text="@string/location"
                     android:textColor="@color/black"
                     android:layout_marginTop="20dp"/>
 
@@ -120,7 +117,6 @@
                     android:id="@+id/et_editCompanyLocation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Location"
                     android:ems="10"
                     android:textSize="14dp"
                     android:inputType="text"/>
@@ -129,7 +125,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="16sp"
-                    android:text="Website"
+                    android:text="@string/website"
                     android:textColor="@color/black"
                     android:layout_marginTop="20dp"/>
 
@@ -137,7 +133,6 @@
                     android:id="@+id/et_editCompanyWebsite"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="www.companywebsite.com"
                     android:textSize="14dp"
                     android:ems="10"
                     android:inputType="textUri"/>

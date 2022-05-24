@@ -37,7 +37,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="16dp"
-                android:text="Title"
+                android:text="@string/title"
                 android:layout_marginTop="20dp"
                 android:textColor="@color/black"
                 />
@@ -56,7 +56,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="16dp"
-                android:text="Description"
+                android:text="@string/description"
                 android:layout_marginTop="20dp"
                 android:textColor="@color/black"/>
 
@@ -78,7 +78,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="16dp"
-                android:text="Function"
+                android:text="@string/function"
                 android:layout_marginTop="10dp"
                 android:textColor="@color/black"/>
 
@@ -95,7 +95,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="16dp"
-                android:text="Type"
+                android:text="@string/type"
                 android:layout_marginTop="10dp"
                 android:textColor="@color/black"/>
 
@@ -112,7 +112,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="16dp"
-                android:text="Link"
+                android:text="@string/link"
                 android:layout_marginTop="10dp"
                 android:textColor="@color/black"/>
 
@@ -129,7 +129,7 @@
                 android:id="@+id/buttonAddInternship"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Add"
+                android:text="@string/add"
                 android:layout_marginTop="10dp"
                 android:textColor="@color/white"
                 android:backgroundTint="@color/blue"

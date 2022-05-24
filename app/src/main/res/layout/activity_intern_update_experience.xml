@@ -27,7 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="24sp"
-                android:text="Update Experience"
+                android:text="@string/update_experience"
                 android:gravity="center"
                 android:textColor="@color/blue"
                 android:textStyle="bold"/>
@@ -36,7 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
-                android:text="Title"
+                android:text="@string/title"
                 android:textColor="@color/black"
                 android:layout_marginTop="20dp"/>
 
@@ -44,7 +44,7 @@
                 android:id="@+id/et_updateExperience_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Title"
+                android:hint="@string/title"
                 android:ems="10"
                 android:inputType="text"
                 android:textSize="14dp"/>
@@ -53,7 +53,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
-                android:text="Company Name"
+                android:text="@string/company_name"
                 android:textColor="@color/black"
                 android:layout_marginTop="20dp"/>
 
@@ -61,7 +61,7 @@
                 android:id="@+id/et_updateExperience_companyName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Company Name"
+                android:hint="@string/company_name"
                 android:ems="10"
                 android:inputType="text"
                 android:textSize="14dp"/>
@@ -70,7 +70,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
-                android:text="Start Date"
+                android:text="@string/start_date"
                 android:textColor="@color/black"
                 android:layout_marginTop="20dp"/>
 
@@ -78,7 +78,7 @@
                 android:id="@+id/et_updateExperience_startDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Start Date"
+                android:hint="@string/start_date"
                 android:ems="10"
                 android:inputType="text"
                 android:textSize="14dp"/>
@@ -87,7 +87,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
-                android:text="End Date"
+                android:text="@string/end_date"
                 android:textColor="@color/black"
                 android:layout_marginTop="20dp"/>
 
@@ -95,7 +95,7 @@
                 android:id="@+id/et_updateExperience_endDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="End Date"
+                android:hint="@string/end_date"
                 android:ems="10"
                 android:inputType="text"
                 android:textSize="14dp"/>
@@ -104,7 +104,7 @@
                 android:id="@+id/btn_updateExperience_add"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Add"
+                android:text="@string/add"
                 android:backgroundTint="@color/blue"
                 android:textColor="@color/white"
                 android:layout_marginTop="10dp"/>
@@ -113,7 +113,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
-                android:text="Experience"
+                android:text="@string/experience"
                 android:gravity="center"
                 android:textColor="@color/black"
                 android:layout_marginTop="10dp"
@@ -130,7 +130,7 @@
                 android:id="@+id/btn_updateExperience_save"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Save"
+                android:text="@string/save"
                 android:backgroundTint="@color/blue"
                 android:textColor="@color/white"
                 android:layout_marginTop="10dp"/>

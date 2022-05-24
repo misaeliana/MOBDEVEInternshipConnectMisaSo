@@ -94,7 +94,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="16dp"
-                    android:text="Experience"
+                    android:text="@string/experience"
                     android:textColor="@color/black"
                     android:textStyle="bold"/>
 
@@ -117,7 +117,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="16dp"
-                    android:text="Education"
+                    android:text="@string/education"
                     android:textColor="@color/black"
                     android:textStyle="bold"/>
 

@@ -43,7 +43,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="18sp"
-                            android:text="Company Name"
+                            android:text="@string/company_name"
                             android:textColor="@color/black"
                             android:layout_weight="1"
                             android:textStyle="bold"/>
@@ -52,7 +52,7 @@
                             android:id="@+id/btn_companyProfile_edit"
                             android:layout_width="100dp"
                             android:layout_height="40dp"
-                            android:text="Edit"
+                            android:text="@string/edit"
                             android:textColor="@color/white"
                             android:backgroundTint="@color/blue"/>
 
@@ -63,7 +63,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="16dp"
-                        android:text="Industry"
+                        android:text="@string/industry"
                         android:textColor="@color/black"/>
 
                     <TextView
@@ -71,7 +71,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="16dp"
-                        android:text="Location"
+                        android:text="@string/location"
                         android:textColor="@color/black"/>
                 </LinearLayout>
 
@@ -98,7 +98,6 @@
                         android:layout_height="wrap_content"
                         android:textSize="14dp"
                         android:layout_marginTop="10dp"
-                        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
                         android:textColor="@color/black"/>
                 </LinearLayout>
 
@@ -123,7 +122,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="14dp"
-                        android:text="09191998777"
                         android:layout_marginTop="10dp"
                         android:textColor="@color/black"/>
 
@@ -132,7 +130,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="14dp"
-                    android:text="companyemail@gmail.com"
                     android:textColor="@color/black"/>
 
                 <TextView
@@ -140,7 +137,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="14dp"
-                    android:text="www.coolcompanywebsite.com"
                     android:textColor="@color/black"/>
 
                 </LinearLayout>

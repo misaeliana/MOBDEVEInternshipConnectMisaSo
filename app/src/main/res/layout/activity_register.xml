@@ -23,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="I am applying as"
+        android:text="@string/i_am_applying_as"
         android:textColor="@color/black"/>
 
     <Spinner
@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:textSize="16dp"
-        android:text="Name"
+        android:text="@string/name"
         android:textColor="@color/black"/>
 
     <EditText
@@ -45,7 +45,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Name"
+        android:hint="@string/name"
         android:inputType="textPersonName"
         android:textSize="14dp"/>
 
@@ -54,14 +54,14 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:textSize="16dp"
-        android:text="Email"
+        android:text="@string/email"
         android:textColor="@color/black"/>
 
     <EditText
         android:id="@+id/et_registerInternEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Email"
+        android:hint="@string/email"
         android:ems="10"
         android:inputType="textEmailAddress"
         android:textSize="14dp"
@@ -72,14 +72,14 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:textSize="16dp"
-        android:text="Contact Number"
+        android:text="@string/contact_number"
         android:textColor="@color/black"/>
 
     <EditText
         android:id="@+id/et_registerInternNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Contact Number"
+        android:hint="@string/contact_number"
         android:ems="10"
         android:inputType="text|number"
         android:textSize="14dp" />
@@ -89,14 +89,14 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:textSize="16dp"
-        android:text="Password"
+        android:text="@string/password"
         android:textColor="@color/black"/>
 
     <EditText
         android:id="@+id/et_registerInternPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Password"
+        android:hint="@string/password"
         android:ems="10"
         android:inputType="textPassword"
         android:textSize="14dp" />

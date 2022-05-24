@@ -38,7 +38,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
-                    android:text="Internship Title"
+                    android:text="@string/internship_title"
                     android:textColor="@color/black"
                     android:layout_weight="1"
                     android:textStyle="bold"/>
@@ -48,7 +48,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="16dp"
-                    android:text="Function"
+                    android:text="@string/function"
                     android:textColor="@color/black"/>
 
                 <TextView
@@ -56,7 +56,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="16dp"
-                    android:text="Type"
+                    android:text="@string/type"
                     android:textColor="@color/black"/>
             </LinearLayout>
 
@@ -72,7 +72,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="16dp"
-                    android:text="Description"
+                    android:text="@string/description"
                     android:textColor="@color/black"
                     android:textStyle="bold"/>
 
@@ -82,7 +82,6 @@
                     android:layout_height="wrap_content"
                     android:textSize="14dp"
                     android:layout_marginTop="10dp"
-                    android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
                     android:textColor="@color/black"/>
             </LinearLayout>
 
@@ -108,7 +107,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="14dp"
-                    android:text="www.coolinternship.com"
                     android:textColor="@color/black"/>
             </LinearLayout>
 
@@ -124,7 +122,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="16dp"
-                    android:text="Applicants"
+                    android:text="@string/applicants"
                     android:textColor="@color/black"
                     android:textStyle="bold"/>
 
