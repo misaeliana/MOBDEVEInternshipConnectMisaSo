@@ -5,21 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="100dp"
     card_view:cardCornerRadius="10dp"
-    android:background="@drawable/border"
-    android:backgroundTint="@color/light_blue"
+    android:foreground="@drawable/border"
     android:layout_marginBottom="10dp"
     android:orientation="horizontal">
 
         <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+            android:layout_height="fill_parent"
+            android:padding="10dp">
 
             <TextView
                 android:id="@+id/tv_experienceTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
                 android:text="Experience Title"
                 android:textColor="@color/black"
                 android:textSize="16sp"
@@ -30,15 +28,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_experienceTitle"
-                android:layout_marginStart="10dp"
-                android:text="Company Name"/>
+                android:text="Company Name"
+                android:textSize="16sp"
+                android:textColor="@color/black"/>
 
             <TextView
                 android:id="@+id/tv_experience_duration"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tv_experience_companyName"
-                android:layout_marginStart="10dp"
+                android:textSize="16sp"
+                android:textColor="@color/black"
                 android:text="January 2021-February 2022"/>
 
             <androidx.appcompat.widget.AppCompatButton
@@ -50,7 +50,7 @@
                 android:textColor="@color/white"
                 android:layout_alignParentRight="true"
                 android:layout_centerInParent="true"
-                android:layout_marginRight="5dp"
+                android:layout_marginRight="10dp"
                 />
         </RelativeLayout>
 </androidx.cardview.widget.CardView>

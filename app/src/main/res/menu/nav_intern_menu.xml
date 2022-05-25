@@ -7,11 +7,11 @@
 
     <item
         android:id="@+id/nav_viewInternships"
-        android:title="Internship Openings"/>
+        android:title="Jobs"/>
 
     <item
         android:id="@+id/nav_internPastInternships"
-        android:title="My Past Internships"/>
+        android:title="My Jobs"/>
 
     <item
         android:id="@+id/nav_viewCompanies"

@@ -14,7 +14,7 @@
     tools:context=".intern.InternProfile"
     android:orientation="vertical"
     android:padding="10dp"
-    android:background="@color/grey">
+        android:background="@color/blue">
 
     <ScrollView
         android:layout_width="match_parent"

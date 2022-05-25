@@ -29,6 +29,7 @@ class InternInternshipDetails : AppCompatActivity() {
         binding.tvInternshipDetailsType.text = bundle.getString("type")
         binding.tvInternshipDetailsDescription.text = bundle.getString("description")
         binding.tvInternshipDetailsLink.text = bundle.getString("link")
+        binding.tvInternshipDetailsCompany.text = bundle.getString("company")
 
         var source = bundle.getString("source")
 

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MOBDEVE-InternshipConnect-Misa-So</string>
+    <string name="app_name">Internship Connect</string>
     <string name="login">Login</string>
     <string name="logout">Logout</string>
     <string name="register">Register</string>
