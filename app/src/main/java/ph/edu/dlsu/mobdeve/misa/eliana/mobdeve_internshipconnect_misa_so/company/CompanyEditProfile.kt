@@ -45,6 +45,7 @@ class CompanyEditProfile : AppCompatActivity() {
         val companyDB = FirebaseDatabase.getInstance(dblink).getReference("Companies")
         companyDB.child(currentUser).get().addOnSuccessListener {
             if (it.exists()) {
+                binding.etEditCompanyCompanyName.setText(it.child("name").value?.toString())
                 binding.etEditCompanyContactNumber.setText(it.child("number").value?.toString())
                 binding.etEditCompanyAbout.setText(it.child("about").value?.toString())
                 binding.etEditCompanyLocation.setText(it.child("location").value?.toString())

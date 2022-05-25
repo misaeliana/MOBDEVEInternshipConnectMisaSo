@@ -23,8 +23,8 @@ class InternMenu : AppCompatActivity() {
         val companyDB = FirebaseDatabase.getInstance(dblink).getReference("Interns")
         companyDB.child(currentUser).get().addOnSuccessListener {
             if (it.exists()) {
-                val interName = it.child("name").value
-                binding.tvInternMenuGreeting.text = "Hello " + interName.toString()
+                val internName = it.child("name").value
+                binding.tvInternMenuGreeting.text = "Hello " + internName.toString()
             }
             else
                 Toast.makeText(this, "User does not exist", Toast.LENGTH_SHORT).show()
