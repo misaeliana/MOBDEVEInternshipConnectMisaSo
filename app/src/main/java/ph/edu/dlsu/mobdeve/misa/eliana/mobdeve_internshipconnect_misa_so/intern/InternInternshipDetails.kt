@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import com.google.firebase.auth.FirebaseAuth
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.MainActivity
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.R
@@ -28,6 +29,26 @@ class InternInternshipDetails : AppCompatActivity() {
         binding.tvInternshipDetailsType.text = bundle.getString("type")
         binding.tvInternshipDetailsDescription.text = bundle.getString("description")
         binding.tvInternshipDetailsLink.text = bundle.getString("link")
+
+        var source = bundle.getString("source")
+
+        if (source == "myInternships") {
+            binding.btnTvInternshipDetailsApply.visibility = View.GONE
+            binding.btnTvInternshipDetailsFeedback.visibility = View.VISIBLE
+        } else {
+            binding.btnTvInternshipDetailsApply.visibility = View.VISIBLE
+            binding.btnTvInternshipDetailsFeedback.visibility = View.GONE
+        }
+
+        binding.btnTvInternshipDetailsFeedback.setOnClickListener {
+            val intent = Intent (this, InternFeedback::class.java)
+            startActivity (intent)
+        }
+
+        binding.btnTvInternshipDetailsApply.setOnClickListener {
+            val intent = Intent (this, InternMyInternships::class.java)
+            startActivity (intent)
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

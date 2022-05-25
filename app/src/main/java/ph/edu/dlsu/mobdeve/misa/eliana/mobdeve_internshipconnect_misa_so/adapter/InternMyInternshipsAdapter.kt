@@ -66,6 +66,7 @@ class InternMyInternshipsAdapter: RecyclerView.Adapter<InternMyInternshipsAdapte
             bundle.putString("type", internship.type)
             bundle.putString("description", internship.description)
             bundle.putString("link", internship.link)
+            bundle.putString("source", "myInternships")
 
             goToInternship.putExtras(bundle)
             goToInternship.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)

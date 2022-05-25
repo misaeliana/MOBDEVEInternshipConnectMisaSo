@@ -60,8 +60,8 @@ class InternViewInternships : AppCompatActivity() {
         dao.addInternship(companyInternship1)
 
         var companyInternship2 = Internship()
-        companyInternship2.companyName = "Procter & Gamble"
-        companyInternship2.title = "DATA SCIENCE MANAGEMENT INTERN - P&G SUMMER 2022"
+        companyInternship2.companyName = "Shopee"
+        companyInternship2.title = "Data Science Intern"
         companyInternship2.description = "Are you a data-savvy strategic player who understands technology and wants to be immersed in the day-to-day business with planning, product, sales and marketing? Are you ready to make a lasting impact by solving critical business questions for a global industry leader using data, science and technology? P&G Data Science team is looking for a curious and confident soul who loves cutting-edge technologies, has a solid foundation on computer science, statistics or mathematics, excellent in communicating, and passionate to lead and make things happen!"
         companyInternship2.function = "Technology/Software Development"
         companyInternship2.type = "Full-time"
@@ -70,7 +70,7 @@ class InternViewInternships : AppCompatActivity() {
 
         var companyInternship3 = Internship()
         companyInternship3.companyName = "Procter & Gamble"
-        companyInternship3.title = "MARKETING TECHNOLOGIST MANAGEMENT INTERN"
+        companyInternship3.title = "Marketing Intern"
         companyInternship3.description = "Are you a business-savvy strategic player who, understands technology and wants to be involved with planning, product development, sales and marketing? We are looking for someone with a deep understanding of digital marketing and eCommerce! A Marketing Technologist who possesses technical skills that can be applied in our digital business programs to enable our brands to successfully DTC, CRM, eCommerce, Search and Media performance marketing programs. Our roles are critical enablers at the intersection of marketing, data, and analytics!"
         companyInternship3.function = "Marketing"
         companyInternship3.type = "Part-time"
@@ -78,7 +78,7 @@ class InternViewInternships : AppCompatActivity() {
         dao.addInternship(companyInternship3)
 
         var companyInternship4 = Internship()
-        companyInternship4.companyName = "Procter & Gamble"
+        companyInternship4.companyName = "Shell"
         companyInternship4.title = "IT Managerial Summer Internship 2022"
         companyInternship4.description = "Are you willing to step into the shoes of an IT manager and help bring groundbreaking, technology-based capabilities to life? Do you want to combine your studies with work experience in a dynamic IT organization?\n" +
                 "\n" +

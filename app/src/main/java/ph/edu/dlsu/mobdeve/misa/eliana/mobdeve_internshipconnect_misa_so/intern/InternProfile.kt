@@ -62,22 +62,33 @@ class InternProfile : AppCompatActivity() {
     private fun init() {
         var dao: ExperiencesDAO = ExperiencesDAOArrayImpl()
 
-        var experience = Experience()
+        var experience1 = Experience()
 
-        experience.title = "title"
-        experience.companyName = "company name"
-        experience.internName = "intern name"
-        experience.startDate = "start date"
-        experience.endDate = "end date"
+        experience1.title = "Product Management Intern"
+        experience1.companyName = "On Demand Deals"
+        experience1.internName = "Eliana Misa"
+        experience1.startDate = "March 2022"
+        experience1.endDate = "June 2022"
 
-        dao.addExperience(experience)
-        dao.addExperience(experience)
-        dao.addExperience(experience)
-        dao.addExperience(experience)
-        dao.addExperience(experience)
-        dao.addExperience(experience)
-        dao.addExperience(experience)
-        dao.addExperience(experience)
+        dao.addExperience(experience1)
+
+        var experience2 = Experience()
+
+        experience2.title = "Product Intern"
+        experience2.companyName = "Shopee"
+        experience2.internName = "Eliana Misa"
+        experience2.startDate = "June 2022"
+        experience2.endDate = "September 2022"
+        dao.addExperience(experience2)
+
+        var experience3 = Experience()
+
+        experience3.title = "Systems Intern"
+        experience3.companyName = "Amazon"
+        experience3.internName = "Eliana Misa"
+        experience3.startDate = "September 2022"
+        experience3.endDate = "February 2023"
+        dao.addExperience(experience3)
 
         internshipExperienceArrayList = dao.getExperiences()
     }
@@ -90,6 +101,7 @@ class InternProfile : AppCompatActivity() {
                 binding.tvInternProfileName.text = it.child("name").value.toString()
                 binding.tvInternProfileNumber.text = it.child("number").value.toString()
                 binding.tvInternProfileAbout.text = it.child("about").value.toString()
+                binding.tvInternProfileEmail.text = it.child("email").value.toString()
                 binding.tvInternProfileSchool.text = it.child("school").value.toString()
                 binding.tvInternProfileCourse.text = it.child("course").value.toString()
                 binding.tvInternProfileGradYear.text = it.child("gradYear").value.toString()
