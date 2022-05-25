@@ -50,6 +50,8 @@ class CompanyProfile : AppCompatActivity() {
                 binding.tvCompanyProfileLocation.text = it.child("location").value.toString()
                 binding.tvCompanyProfileCompanyAboutText.text = it.child("about").value.toString()
                 binding.tvCompanyProfileContactNumber.text = it.child("number").value.toString()
+                binding.tvCompanyProfileEmail.text = FirebaseAuth.getInstance().currentUser!!.email
+                binding.tvCompanyProfileWebsite.text = it.child("website").value.toString()
                 //binding.tvCompanyProfileVideo.text = it.child("learnMore").value.toString()
             }
             else

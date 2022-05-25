@@ -46,15 +46,17 @@ class CompanyEditProfile : AppCompatActivity() {
         companyDB.child(currentUser).get().addOnSuccessListener {
             if (it.exists()) {
                 binding.etEditCompanyCompanyName.setText(it.child("name").value?.toString())
-                binding.etEditCompanyContactNumber.setText(it.child("number").value?.toString())
-                binding.etEditCompanyAbout.setText(it.child("about").value?.toString())
                 binding.etEditCompanyLocation.setText(it.child("location").value?.toString())
-                binding.etEditCompanyWebsite.setText(it.child("course").value?.toString())
+                binding.etEditCompanyAbout.setText(it.child("about").value?.toString())
+                binding.etEditCompanyContactNumber.setText(it.child("number").value?.toString())
+                binding.etEditCompanyWebsite.setText(it.child("website").value?.toString())
             }
         }
     }
 
     private fun updateCompanyData() {
+        val name = binding.etEditCompanyCompanyName.text.toString()
+        val industry = binding.spinnerIndustry.selectedItem.toString()
         val number = binding.etEditCompanyContactNumber.text.toString()
         val about = binding.etEditCompanyAbout.text.toString()
         val location = binding.etEditCompanyLocation.text.toString()
@@ -63,9 +65,11 @@ class CompanyEditProfile : AppCompatActivity() {
 
         val companyDB = FirebaseDatabase.getInstance(dblink).getReference("Companies")
         val company = mapOf<String, String>(
-            "number" to number,
-            "about" to about,
+            "name" to name,
+            "industry" to industry,
             "location" to location,
+            "about" to about,
+            "number" to number,
             "website" to website
         )
 

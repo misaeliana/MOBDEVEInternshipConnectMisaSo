@@ -68,21 +68,7 @@
                     android:textSize="14dp"
                     />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:text="@string/contact_number"
-                    android:textColor="@color/black"
-                    android:layout_marginTop="20dp"/>
 
-                <EditText
-                    android:id="@+id/et_editCompanyContactNumber"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="text|number"
-                    android:textSize="14dp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -104,6 +90,22 @@
                     android:minLines="5"
                     android:scrollHorizontally="false"
                     android:scrollbars="vertical"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:text="@string/contact_number"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="20dp"/>
+
+                <EditText
+                    android:id="@+id/et_editCompanyContactNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="text|number"
+                    android:textSize="14dp"/>
 
                 <TextView
                     android:layout_width="wrap_content"

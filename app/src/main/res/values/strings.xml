@@ -22,7 +22,7 @@
     <string name="industry">Industry</string>
     <string name="contact_number">Contact Number</string>
     <string name="location">Location</string>
-    <string name="website"></string>
+    <string name="website">Website</string>
 
     <string name="edit_profile">Edit Profile</string>
     <string name="save">Save</string>

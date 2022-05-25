@@ -32,22 +32,20 @@ class AddInternship : AppCompatActivity() {
             val companyName  = FirebaseAuth.getInstance().currentUser!!.uid
             val positionTitle = binding.textPositionTitle.text.toString()
             val jobDesc = binding.textJobDescription.text.toString()
-            //val function = binding.textFunction.toString() // removed .text first
-            //val type = binding.textType.toString() // removed .text first
-            //val benefits = binding.textBenefits.text.toString()
+            val function = binding.textFunction.selectedItem.toString() // removed .text first
+            val type = binding.textType.selectedItem.toString() // removed .text first
             val link = binding.textLink.text.toString()
 
 
             //getInstance defines the link of the db
             database = FirebaseDatabase.getInstance(dblink).getReference("Internships")
-            val internship = Internship(companyName, positionTitle, jobDesc, link)
+            val internship = Internship(companyName, positionTitle, jobDesc, function, type, link)
             database.push().setValue(internship)
 
             binding.textPositionTitle.text.clear()
             binding.textJobDescription.text.clear()
             //binding.textFunction.text.clear() COMMENTED OUT SINCE MAY ERROR
             //binding.textType.text.clear()
-            //binding.textBenefits.text.clear()
             binding.textLink.text.clear()
 
             val intent = Intent (this, CompanyJobListing::class.java)
