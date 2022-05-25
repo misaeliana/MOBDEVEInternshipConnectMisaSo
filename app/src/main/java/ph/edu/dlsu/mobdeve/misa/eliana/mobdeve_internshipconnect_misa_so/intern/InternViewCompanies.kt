@@ -24,7 +24,7 @@ class InternViewCompanies : AppCompatActivity() {
     private lateinit var companyAdapter: CompanyAdapter
     private lateinit var internCompaniesArrayList: ArrayList<Company>
 
-    //private lateinit var dbref:DatabaseReference
+    private lateinit var dbref:DatabaseReference
 
     lateinit var toggle: androidx.appcompat.app.ActionBarDrawerToggle
 
@@ -32,16 +32,15 @@ class InternViewCompanies : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityInternViewCompaniesBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        init()
         sidebar()
 
-        binding.rvCompanyList.setLayoutManager(LinearLayoutManager(applicationContext))
+        /*binding.rvCompanyList.setLayoutManager(LinearLayoutManager(applicationContext))
         // binding.rvList.setLayoutManager(GridLayoutManager(getApplicationContext(), 2))
 
         companyAdapter = CompanyAdapter(applicationContext, internCompaniesArrayList)
-        binding.rvCompanyList.setAdapter(companyAdapter)
+        binding.rvCompanyList.setAdapter(companyAdapter)*/
 
-        //getCompanyData()
+        getCompanyData()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -113,34 +112,34 @@ class InternViewCompanies : AppCompatActivity() {
         internCompaniesArrayList = dao.getCompanies()
     }
 
-//    private fun getCompanyData() {
-//        var companyArrayList = ArrayList<Company>()
-//
-//        dbref = FirebaseDatabase.getInstance("https://mobdeve-internshipconnect-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Companies")
-//        dbref.addValueEventListener(object: ValueEventListener {
-//
-//            override fun onDataChange(snapshot: DataSnapshot) {
-//                if (snapshot.exists()) {
-//                    for (companySnapshot in snapshot.children) {
-//                        //creating the object from list retrieved in db
-//                        val company = companySnapshot.getValue(Company::class.java)
-//                        companyArrayList.add(company!!)
-//                    }
-//                    //rv_companyList.adapter = CompanyAdapter(applicationContext, companyArrayList)
-//                    binding.rvCompanyList.setLayoutManager(LinearLayoutManager(applicationContext))
-//
-//                    companyAdapter = CompanyAdapter(applicationContext, companyArrayList)
-//                    binding.rvCompanyList.setAdapter(companyAdapter)
-//                }
-//            }
-//
-//            override fun onCancelled(error: DatabaseError) {
-//                TODO("Not yet implemented")
-//            }
-//
-//        })
-//
-//    }
+    private fun getCompanyData() {
+        var companyArrayList = ArrayList<Company>()
+
+        dbref = FirebaseDatabase.getInstance("https://mobdeve-internshipconnect-default-rtdb.asia-southeast1.firebasedatabase.app/").getReference("Companies")
+        dbref.addValueEventListener(object: ValueEventListener {
+
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    for (companySnapshot in snapshot.children) {
+                        //creating the object from list retrieved in db
+                        val company = companySnapshot.getValue(Company::class.java)
+                        companyArrayList.add(company!!)
+                    }
+                    //rv_companyList.adapter = CompanyAdapter(applicationContext, companyArrayList)
+                    binding.rvCompanyList.setLayoutManager(LinearLayoutManager(applicationContext))
+
+                    companyAdapter = CompanyAdapter(applicationContext, companyArrayList)
+                    binding.rvCompanyList.setAdapter(companyAdapter)
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+        })
+
+    }
 
     private fun sidebar() {
         toggle = androidx.appcompat.app.ActionBarDrawerToggle(this, binding.drawerLayout, R.string.open, R.string.close)

@@ -42,11 +42,17 @@ class InternUpdateExperience : AppCompatActivity() {
 
             experience.title = binding.etUpdateExperienceTitle.text.toString()
             experience.companyName = binding.etUpdateExperienceCompanyName.text.toString()
-            experience.internName = "Intern name"
+            experience.internID = "Intern name"
             experience.startDate = binding.etUpdateExperienceStartDate.text.toString()
             experience.endDate = binding.etUpdateExperienceEndDate.text.toString()
 
             internUpdateExperienceAdapter.addExperience(experience)
+
+            //clear fields
+            binding.etUpdateExperienceCompanyName.text.clear()
+            binding.etUpdateExperienceTitle.text.clear()
+            binding.etUpdateExperienceStartDate.text.clear()
+            binding.etUpdateExperienceEndDate.text.clear()
         }
 
         binding.btnUpdateExperienceSave.setOnClickListener {
@@ -74,7 +80,7 @@ class InternUpdateExperience : AppCompatActivity() {
 
         experience1.title = "Product Management Intern"
         experience1.companyName = "On Demand Deals"
-        experience1.internName = "Eliana Misa"
+        experience1.internID = "Eliana Misa"
         experience1.startDate = "March 2022"
         experience1.endDate = "June 2022"
 
@@ -84,7 +90,7 @@ class InternUpdateExperience : AppCompatActivity() {
 
         experience2.title = "Product Intern"
         experience2.companyName = "Shopee"
-        experience2.internName = "Eliana Misa"
+        experience2.internID = "Eliana Misa"
         experience2.startDate = "June 2022"
         experience2.endDate = "September 2022"
         dao.addExperience(experience2)
@@ -93,7 +99,7 @@ class InternUpdateExperience : AppCompatActivity() {
 
         experience3.title = "Systems Intern"
         experience3.companyName = "Amazon"
-        experience3.internName = "Eliana Misa"
+        experience3.internID = "Eliana Misa"
         experience3.startDate = "September 2022"
         experience3.endDate = "February 2023"
         dao.addExperience(experience3)

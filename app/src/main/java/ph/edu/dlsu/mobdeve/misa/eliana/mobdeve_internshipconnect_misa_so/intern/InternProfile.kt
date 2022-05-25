@@ -66,7 +66,7 @@ class InternProfile : AppCompatActivity() {
 
         experience.title = "title"
         experience.companyName = "company name"
-        experience.internName = "intern name"
+        experience.internID = "intern name"
         experience.startDate = "start date"
         experience.endDate = "end date"
 
@@ -88,6 +88,7 @@ class InternProfile : AppCompatActivity() {
         internDB.child(currentUser).get().addOnSuccessListener {
             if (it.exists()) {
                 binding.tvInternProfileName.text = it.child("name").value.toString()
+                binding.tvInternProfileEmail.text = FirebaseAuth.getInstance().currentUser!!.email.toString()
                 binding.tvInternProfileNumber.text = it.child("number").value.toString()
                 binding.tvInternProfileAbout.text = it.child("about").value.toString()
                 binding.tvInternProfileSchool.text = it.child("school").value.toString()

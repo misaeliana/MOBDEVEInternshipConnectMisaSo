@@ -53,8 +53,8 @@ class InternEditProfile : AppCompatActivity() {
 
     fun getInternData() {
         val currentUser:String = FirebaseAuth.getInstance().currentUser!!.uid
-        val companyDB = FirebaseDatabase.getInstance(dblink).getReference("Interns")
-        companyDB.child(currentUser).get().addOnSuccessListener {
+        val internDB = FirebaseDatabase.getInstance(dblink).getReference("Interns")
+        internDB.child(currentUser).get().addOnSuccessListener {
             if (it.exists()) {
                 binding.etEditInternName.setText(it.child("name").value?.toString())
                 binding.etEditInternContactNumber.setText(it.child("number").value?.toString())
@@ -68,6 +68,7 @@ class InternEditProfile : AppCompatActivity() {
     }
 
     private fun updateInternProfile() {
+        val name = binding.etEditInternName.text.toString()
         val number = binding.etEditInternContactNumber.text.toString()
         val about = binding.etEditInternAbout.text.toString()
         val school = binding.etEditInternSchool.text.toString()
@@ -77,6 +78,7 @@ class InternEditProfile : AppCompatActivity() {
 
         val internDB = FirebaseDatabase.getInstance(dblink).getReference("Interns")
         val intern = mapOf<String, String>(
+            "name" to name,
             "number" to number,
             "about" to about,
             "school" to school,
