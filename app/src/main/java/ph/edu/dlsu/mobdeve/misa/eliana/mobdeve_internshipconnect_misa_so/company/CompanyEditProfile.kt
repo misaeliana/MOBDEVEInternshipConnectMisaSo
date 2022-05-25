@@ -25,7 +25,7 @@ class CompanyEditProfile : AppCompatActivity() {
         sidebar()
 
         binding.btnEditCompanyCancel.setOnClickListener {
-            val intent = Intent (this, CompanyMenu::class.java)
+            val intent = Intent (this, CompanyProfile::class.java)
             startActivity (intent)
         }
 

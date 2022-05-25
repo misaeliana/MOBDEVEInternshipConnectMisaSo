@@ -102,7 +102,7 @@ class InternViewCompany : AppCompatActivity() {
 
         var companyInternship5 = Internship()
         companyInternship5.companyName = "Procter & Gamble"
-        companyInternship1.title = "Finance Internship (m/f/d)"
+        companyInternship5.title = "Finance Internship (m/f/d)"
         companyInternship5.description = "Are you looking to apply your finance knowledge to practice? Are you eager to lead exciting projects and have a meaningful impact with your ideas? Are you ready to sustainably shape the strategies behind our leading brands? If you relish a culture in which your development is key and you feel a hunger to learn, a dedication to lead, and a passion to win – this position is for you!"
         companyInternship5.function = "Finance"
         companyInternship5.type = "Full-time"

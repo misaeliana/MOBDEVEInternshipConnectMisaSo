@@ -36,7 +36,7 @@ class InternEditProfile : AppCompatActivity() {
         sidebar()
 
         binding.btnEditInternCancel.setOnClickListener {
-            val intent = Intent (this, InternMenu::class.java)
+            val intent = Intent (this, InternProfile::class.java)
             startActivity (intent)
         }
 
