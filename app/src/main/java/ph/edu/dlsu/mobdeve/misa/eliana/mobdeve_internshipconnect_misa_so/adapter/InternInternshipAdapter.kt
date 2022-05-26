@@ -7,13 +7,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.model.Internship
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.databinding.ItemInternshipBinding
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.intern.InternInternshipDetails
+import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.model.Company
 
 class InternInternshipAdapter: RecyclerView.Adapter<InternInternshipAdapter.InternshipViewHolder> {
     private var internshipArrayList = ArrayList<Internship>()
     private lateinit var context: Context
+    private var dblink:String ="https://mobdeve-internshipconnect-default-rtdb.asia-southeast1.firebasedatabase.app/"
 
     public constructor(context: Context, internshipArrayList: ArrayList<Internship>) {
         this.context = context
@@ -51,8 +57,16 @@ class InternInternshipAdapter: RecyclerView.Adapter<InternInternshipAdapter.Inte
         fun bindInternship(internship: Internship){
             this.internship = internship
             itemBinding.textTitle.text = internship.title
-            itemBinding.textCompany.text = internship.companyName
             itemBinding.textFunctionType.text = internship.function + ", " + internship.type
+
+            val companyName = internship.companyName
+            val companyDB = FirebaseDatabase.getInstance(dblink).getReference("Companies")
+
+            companyDB.child(companyName.toString()).get().addOnSuccessListener {
+                if (it.exists()) {
+                    itemBinding.textCompany.text = it.child("name").value?.toString()
+                }
+            }
         }
 
         override fun onClick(p0: View?) {
@@ -64,7 +78,15 @@ class InternInternshipAdapter: RecyclerView.Adapter<InternInternshipAdapter.Inte
             bundle.putString("type", internship.type)
             bundle.putString("description", internship.description)
             bundle.putString("link", internship.link)
-            bundle.putString("company", internship.companyName)
+
+            val companyID = internship.companyName
+            val companyDB = FirebaseDatabase.getInstance(dblink).getReference("Companies")
+            companyDB.child(companyID.toString()).get().addOnSuccessListener {
+                if (it.exists()) {
+                    bundle.putString("company", it.child("name").value?.toString())
+                }
+            }
+
 
             goToInternship.putExtras(bundle)
             goToInternship.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
