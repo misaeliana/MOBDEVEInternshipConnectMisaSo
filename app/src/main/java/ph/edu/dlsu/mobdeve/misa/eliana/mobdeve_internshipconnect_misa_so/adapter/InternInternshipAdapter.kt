@@ -52,8 +52,7 @@ class InternInternshipAdapter: RecyclerView.Adapter<InternInternshipAdapter.Inte
             this.internship = internship
             itemBinding.textTitle.text = internship.title
             itemBinding.textCompany.text = internship.companyName
-            itemBinding.textFunction.text = internship.function
-            itemBinding.textType.text = internship.type
+            itemBinding.textFunctionType.text = internship.function + ", " + internship.type
         }
 
         override fun onClick(p0: View?) {
@@ -65,6 +64,7 @@ class InternInternshipAdapter: RecyclerView.Adapter<InternInternshipAdapter.Inte
             bundle.putString("type", internship.type)
             bundle.putString("description", internship.description)
             bundle.putString("link", internship.link)
+            bundle.putString("company", internship.companyName)
 
             goToInternship.putExtras(bundle)
             goToInternship.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
