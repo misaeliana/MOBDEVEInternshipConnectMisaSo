@@ -54,7 +54,6 @@ class CompanyJobListing : AppCompatActivity() {
     private fun getCompanyJobListing() {
         var jobArrayList = ArrayList<Internship>()
 
-        val companyDB = FirebaseDatabase.getInstance(dblink).getReference("Companies")
         dbref = FirebaseDatabase.getInstance(dblink).getReference("Internships")
         var currentUser = FirebaseAuth.getInstance().currentUser!!.uid
 

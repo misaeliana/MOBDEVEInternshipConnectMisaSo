@@ -64,11 +64,11 @@ class InternProfile : AppCompatActivity() {
 
         var experience1 = Experience()
 
-        experience.title = "title"
-        experience.companyName = "company name"
-        experience.internID = "intern name"
-        experience.startDate = "start date"
-        experience.endDate = "end date"
+        experience1.title = "title"
+        experience1.companyName = "company name"
+        experience1.internID = "intern name"
+        experience1.startDate = "start date"
+        experience1.endDate = "end date"
 
         dao.addExperience(experience1)
 
@@ -76,7 +76,7 @@ class InternProfile : AppCompatActivity() {
 
         experience2.title = "Product Intern"
         experience2.companyName = "Shopee"
-        experience2.internName = "Eliana Misa"
+        experience2.internID = "Eliana Misa"
         experience2.startDate = "June 2022"
         experience2.endDate = "September 2022"
         dao.addExperience(experience2)
@@ -85,7 +85,7 @@ class InternProfile : AppCompatActivity() {
 
         experience3.title = "Systems Intern"
         experience3.companyName = "Amazon"
-        experience3.internName = "Eliana Misa"
+        experience3.internID = "Eliana Misa"
         experience3.startDate = "September 2022"
         experience3.endDate = "February 2023"
         dao.addExperience(experience3)

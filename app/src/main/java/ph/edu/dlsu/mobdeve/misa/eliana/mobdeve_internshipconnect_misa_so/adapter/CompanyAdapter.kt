@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.model.Company
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.databinding.ItemCompanyBinding
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.intern.InternViewCompany
@@ -63,7 +64,6 @@ class CompanyAdapter: RecyclerView.Adapter<CompanyAdapter.CompanyViewHolder> {
             bundle.putString("location", company.location)
             bundle.putString("about", company.about)
             bundle.putString("number", company.number)
-            bundle.putString("email", company.email)
             bundle.putString("website", company.website)
             //add for video
 
