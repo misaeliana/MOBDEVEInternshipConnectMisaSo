@@ -31,7 +31,7 @@ import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.model.I
 class InternProfile : AppCompatActivity() {
     private lateinit var binding : ActivityInternProfileBinding
     private lateinit var internExperienceAdapter: InternProfileExperienceAdapter
-    private lateinit var internshipExperienceArrayList: ArrayList<Experience>
+    private var internshipExperienceArrayList = ArrayList<Experience>()
     lateinit var toggle: androidx.appcompat.app.ActionBarDrawerToggle
     private var firestore = Firebase.firestore
 
@@ -40,14 +40,10 @@ class InternProfile : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityInternProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        init()
         sidebar()
 
-        binding.rvInternProfileExperiences.setLayoutManager(LinearLayoutManager(applicationContext))
-        internExperienceAdapter = InternProfileExperienceAdapter(applicationContext, internshipExperienceArrayList)
-        binding.rvInternProfileExperiences.setAdapter(internExperienceAdapter)
-
         getInternData()
+        //getInternExperience()
 
         binding.btnInternProfileEdit.setOnClickListener {
             val intent = Intent (this, InternEditProfile::class.java)
@@ -66,40 +62,6 @@ class InternProfile : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun init() {
-        var dao: ExperiencesDAO = ExperiencesDAOArrayImpl()
-
-        var experience1 = Experience()
-
-        experience1.title = "title"
-        experience1.companyName = "company name"
-        experience1.internID = "intern name"
-        experience1.startDate = "start date"
-        experience1.endDate = "end date"
-
-        dao.addExperience(experience1)
-
-        var experience2 = Experience()
-
-        experience2.title = "Product Intern"
-        experience2.companyName = "Shopee"
-        experience2.internID = "Eliana Misa"
-        experience2.startDate = "June 2022"
-        experience2.endDate = "September 2022"
-        dao.addExperience(experience2)
-
-        var experience3 = Experience()
-
-        experience3.title = "Systems Intern"
-        experience3.companyName = "Amazon"
-        experience3.internID = "Eliana Misa"
-        experience3.startDate = "September 2022"
-        experience3.endDate = "February 2023"
-        dao.addExperience(experience3)
-
-        internshipExperienceArrayList = dao.getExperiences()
-    }
-
     private fun getInternData() {
         val currentUser:String = FirebaseAuth.getInstance().currentUser!!.uid
         firestore.collection("Interns").document(currentUser).get().addOnSuccessListener { document ->
@@ -115,6 +77,16 @@ class InternProfile : AppCompatActivity() {
            }
             else
                 Toast.makeText(this, "no data", Toast.LENGTH_SHORT)
+        }
+
+        firestore.collection("Experience").whereEqualTo("internID", currentUser).get().addOnSuccessListener { documents ->
+            for (experience in documents) {
+                var experienceobj = experience.toObject<Experience>()
+                internshipExperienceArrayList.add(experienceobj)
+            }
+            binding.rvInternProfileExperiences.setLayoutManager(LinearLayoutManager(applicationContext))
+            internExperienceAdapter = InternProfileExperienceAdapter(applicationContext, internshipExperienceArrayList)
+            binding.rvInternProfileExperiences.setAdapter(internExperienceAdapter)
         }
     }
 

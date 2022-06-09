@@ -3,19 +3,27 @@ package ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.intern
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.toObject
+import com.google.firebase.ktx.Firebase
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.MainActivity
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.R
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.databinding.ActivityInternEditProfileBinding
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.databinding.ActivityInternInternshipDetailsBinding
+import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.model.Company
+import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.model.Internship
 
 class InternInternshipDetails : AppCompatActivity() {
 
     private lateinit var binding : ActivityInternInternshipDetailsBinding
 
     lateinit var toggle: androidx.appcompat.app.ActionBarDrawerToggle
+
+    private var firestore = Firebase.firestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +37,14 @@ class InternInternshipDetails : AppCompatActivity() {
         binding.tvInternshipDetailsType.text = bundle.getString("type")
         binding.tvInternshipDetailsDescription.text = bundle.getString("description")
         binding.tvInternshipDetailsLink.text = bundle.getString("link")
-        binding.tvInternshipDetailsCompany.text = bundle.getString("company")
+
+        var companyID = bundle.getString("companyID")
+        if (companyID != null) {
+            firestore.collection("Companies").document(companyID).get().addOnSuccessListener { document ->
+                var company = document.toObject<Company>()
+                binding.tvInternshipDetailsCompany.text = company?.name
+            }
+        }
 
         var source = bundle.getString("source")
 

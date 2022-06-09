@@ -78,14 +78,8 @@ class InternInternshipAdapter: RecyclerView.Adapter<InternInternshipAdapter.Inte
             bundle.putString("type", internship.type)
             bundle.putString("description", internship.description)
             bundle.putString("link", internship.link)
+            bundle.putString("companyID", internship.companyName)
 
-            val companyID = internship.companyName
-            val companyDB = FirebaseDatabase.getInstance(dblink).getReference("Companies")
-            companyDB.child(companyID.toString()).get().addOnSuccessListener {
-                if (it.exists()) {
-                    bundle.putString("company", it.child("name").value?.toString())
-                }
-            }
 
 
             goToInternship.putExtras(bundle)
