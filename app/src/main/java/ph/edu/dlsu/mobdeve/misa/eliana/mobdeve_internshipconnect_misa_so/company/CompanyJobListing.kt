@@ -7,6 +7,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.toObject
+import com.google.firebase.ktx.Firebase
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.MainActivity
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.R
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.adapter.CompanyJobListingAdapter
@@ -23,8 +26,8 @@ class CompanyJobListing : AppCompatActivity() {
 
     lateinit var toggle: androidx.appcompat.app.ActionBarDrawerToggle
 
-    private lateinit var dbref: DatabaseReference
-    private var dblink:String ="https://mobdeve-internshipconnect-default-rtdb.asia-southeast1.firebasedatabase.app/"
+    private var firestore = Firebase.firestore
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,30 +57,20 @@ class CompanyJobListing : AppCompatActivity() {
     private fun getCompanyJobListing() {
         var jobArrayList = ArrayList<Internship>()
 
-        dbref = FirebaseDatabase.getInstance(dblink).getReference("Internships")
         var currentUser = FirebaseAuth.getInstance().currentUser!!.uid
 
-        dbref.orderByChild("companyName").equalTo(currentUser).addValueEventListener(object: ValueEventListener {
+        firestore.collection("Internships").whereEqualTo("companyID", currentUser).get().addOnSuccessListener{ documents ->
 
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()) {
-                    for (companySnapshot in snapshot.children) {
-                        //creating the object from list retrieved in db
-                        val job = companySnapshot.getValue(Internship::class.java)
-                        jobArrayList.add(job!!)
-                    }
-                    //rv_companyList.adapter = CompanyAdapter(applicationContext, companyArrayList)
-                    binding.rvJobListing.setLayoutManager(LinearLayoutManager(applicationContext))
-
-                    companyJobListingAdapter = CompanyJobListingAdapter(applicationContext, jobArrayList)
-                    binding.rvJobListing.setAdapter(companyJobListingAdapter)
-                }
+            for (companySnapshot in documents) {
+                //creating the object from list retrieved in db
+                    val job = companySnapshot.toObject<Internship>()
+                jobArrayList.add(job!!)
             }
-
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
-        })
+            //rv_companyList.adapter = CompanyAdapter(applicationContext, companyArrayList)
+            binding.rvJobListing.setLayoutManager(LinearLayoutManager(applicationContext))
+            companyJobListingAdapter = CompanyJobListingAdapter(applicationContext, jobArrayList)
+            binding.rvJobListing.setAdapter(companyJobListingAdapter)
+        }
     }
 
     private fun sidebar() {

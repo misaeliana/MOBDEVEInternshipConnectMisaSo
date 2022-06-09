@@ -8,6 +8,8 @@ import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.MainActivity
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.R
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.databinding.ActivityAddInternshipBinding
@@ -17,8 +19,7 @@ import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.model.I
 class AddInternship : AppCompatActivity() {
 
     private lateinit var binding : ActivityAddInternshipBinding
-    private lateinit var database : DatabaseReference
-    private var dblink ="https://mobdeve-internshipconnect-default-rtdb.asia-southeast1.firebasedatabase.app/"
+    private var firestore = Firebase.firestore
 
     lateinit var toggle: androidx.appcompat.app.ActionBarDrawerToggle
 
@@ -29,18 +30,16 @@ class AddInternship : AppCompatActivity() {
         sidebar()
 
         binding.buttonAddInternship.setOnClickListener{
-            val companyName  = FirebaseAuth.getInstance().currentUser!!.uid
-            val positionTitle = binding.textPositionTitle.text.toString()
-            val jobDesc = binding.textJobDescription.text.toString()
-            val function = binding.textFunction.selectedItem.toString() // removed .text first
-            val type = binding.textType.selectedItem.toString() // removed .text first
-            val link = binding.textLink.text.toString()
 
-
-            //getInstance defines the link of the db
-            database = FirebaseDatabase.getInstance(dblink).getReference("Internships")
-            val internship = Internship(companyName, positionTitle, jobDesc, function, type, link)
-            database.push().setValue(internship)
+            var internship = hashMapOf(
+                "companyID" to  FirebaseAuth.getInstance().currentUser!!.uid,
+                "title" to binding.textPositionTitle.text.toString(),
+                "description" to binding.textJobDescription.text.toString(),
+                "function" to binding.textFunction.selectedItem.toString(),
+                "type" to binding.textType.selectedItem.toString(),
+                "link" to binding.textLink.text.toString()
+            )
+            firestore.collection("Internships").add(internship)
 
             binding.textPositionTitle.text.clear()
             binding.textJobDescription.text.clear()
