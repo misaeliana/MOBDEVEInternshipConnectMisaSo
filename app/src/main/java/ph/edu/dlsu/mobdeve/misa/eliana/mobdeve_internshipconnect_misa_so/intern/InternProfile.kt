@@ -1,13 +1,18 @@
 package ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.intern
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.toObject
+import com.google.firebase.ktx.Firebase
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.MainActivity
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.R
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.adapter.InternMyInternshipsAdapter
@@ -20,14 +25,16 @@ import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.dao.Int
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.databinding.ActivityCompanyViewApplicantInformationBinding
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.databinding.ActivityInternProfileBinding
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.model.Experience
+import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.model.Intern
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.model.Internship
 
 class InternProfile : AppCompatActivity() {
     private lateinit var binding : ActivityInternProfileBinding
     private lateinit var internExperienceAdapter: InternProfileExperienceAdapter
     private lateinit var internshipExperienceArrayList: ArrayList<Experience>
-    private var dblink:String ="https://mobdeve-internshipconnect-default-rtdb.asia-southeast1.firebasedatabase.app/"
     lateinit var toggle: androidx.appcompat.app.ActionBarDrawerToggle
+    private var firestore = Firebase.firestore
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -95,22 +102,19 @@ class InternProfile : AppCompatActivity() {
 
     private fun getInternData() {
         val currentUser:String = FirebaseAuth.getInstance().currentUser!!.uid
-        val internDB = FirebaseDatabase.getInstance(dblink).getReference("Interns")
-        internDB.child(currentUser).get().addOnSuccessListener {
-            if (it.exists()) {
-                binding.tvInternProfileName.text = it.child("name").value.toString()
-                binding.tvInternProfileEmail.text = FirebaseAuth.getInstance().currentUser!!.email.toString()
-                binding.tvInternProfileNumber.text = it.child("number").value.toString()
-                binding.tvInternProfileAbout.text = it.child("about").value.toString()
-                binding.tvInternProfileEmail.text = it.child("email").value.toString()
-                binding.tvInternProfileSchool.text = it.child("school").value.toString()
-                binding.tvInternProfileCourse.text = it.child("course").value.toString()
-                binding.tvInternProfileGradYear.text = it.child("gradYear").value.toString()
-            }
+        firestore.collection("Interns").document(currentUser).get().addOnSuccessListener { document ->
+           if (document !=null) {
+               var intern = document.toObject(Intern::class.java)
+               binding.tvInternProfileName.text = intern?.name.toString()
+               binding.tvInternProfileEmail.text = FirebaseAuth.getInstance().currentUser!!.email.toString()
+               //binding.tvInternProfileNumber.text = intern?.number.toString()
+               binding.tvInternProfileAbout.text = intern?.about.toString()
+               binding.tvInternProfileSchool.text = intern?.school.toString()
+               binding.tvInternProfileCourse.text = intern?.course.toString()
+               //binding.tvInternProfileGradYear.text = intern?.gradYear.toString()
+           }
             else
-                Toast.makeText(this, "User does not exist", Toast.LENGTH_SHORT).show()
-        }.addOnFailureListener{
-            Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "no data", Toast.LENGTH_SHORT)
         }
     }
 

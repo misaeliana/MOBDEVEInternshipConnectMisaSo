@@ -7,13 +7,19 @@ import android.view.MenuItem
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.toObject
+import com.google.firebase.ktx.Firebase
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.MainActivity
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.R
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.databinding.ActivityCompanyEditProfileBinding
+import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.model.Company
+import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.model.Intern
 
 class CompanyEditProfile : AppCompatActivity() {
     private lateinit var binding : ActivityCompanyEditProfileBinding
-    private var dblink:String ="https://mobdeve-internshipconnect-default-rtdb.asia-southeast1.firebasedatabase.app/"
+    private var firestore = Firebase.firestore
+
 
     lateinit var toggle: androidx.appcompat.app.ActionBarDrawerToggle
 
@@ -42,14 +48,14 @@ class CompanyEditProfile : AppCompatActivity() {
 
     private fun getCompanyData() {
         val currentUser:String = FirebaseAuth.getInstance().currentUser!!.uid
-        val companyDB = FirebaseDatabase.getInstance(dblink).getReference("Companies")
-        companyDB.child(currentUser).get().addOnSuccessListener {
+        firestore.collection("Companies").document(currentUser).get().addOnSuccessListener {
+            var company = it.toObject<Company>()
             if (it.exists()) {
-                binding.etEditCompanyCompanyName.setText(it.child("name").value?.toString())
-                binding.etEditCompanyLocation.setText(it.child("location").value?.toString())
-                binding.etEditCompanyAbout.setText(it.child("about").value?.toString())
-                binding.etEditCompanyContactNumber.setText(it.child("number").value?.toString())
-                binding.etEditCompanyWebsite.setText(it.child("website").value?.toString())
+                binding.etEditCompanyCompanyName.setText(company?.name)
+                binding.etEditCompanyLocation.setText(company?.location)
+                binding.etEditCompanyAbout.setText(company?.about)
+                binding.etEditCompanyContactNumber.setText(company?.number.toString())
+                binding.etEditCompanyWebsite.setText(company?.website)
             }
         }
     }
@@ -63,7 +69,6 @@ class CompanyEditProfile : AppCompatActivity() {
         val website = binding.etEditCompanyWebsite.text.toString()
         val currentUser:String = FirebaseAuth.getInstance().currentUser!!.uid
 
-        val companyDB = FirebaseDatabase.getInstance(dblink).getReference("Companies")
         val company = mapOf<String, String>(
             "name" to name,
             "industry" to industry,
@@ -73,7 +78,7 @@ class CompanyEditProfile : AppCompatActivity() {
             "website" to website
         )
 
-        companyDB.child(currentUser).updateChildren(company).addOnSuccessListener {
+        firestore.collection("Companies").document(currentUser).set(company).addOnSuccessListener {
             Toast.makeText(this, "Profile Updated", Toast.LENGTH_SHORT)
             val intent = Intent (this, CompanyProfile::class.java)
             startActivity (intent)
