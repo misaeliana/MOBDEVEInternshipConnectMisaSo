@@ -34,7 +34,7 @@ class Register : AppCompatActivity() {
             val type = binding.spAccountType.selectedItem.toString()
             val name = binding.etRegisterInternName.text.toString()
             val email = binding.etRegisterInternEmail.text.toString()
-            val number = Integer.parseInt(binding.etRegisterInternNumber.text.toString())
+            val number = binding.etRegisterInternNumber.text.toString()
             val password = binding.etRegisterInternPassword.text.toString()
 
             //checks if email or password is blank, add for other fields also
