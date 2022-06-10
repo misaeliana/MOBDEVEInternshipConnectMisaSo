@@ -1,7 +1,7 @@
 package ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.model
 
 data class Internship(
-    var companyName:String?=null,
+    var companyID:String?=null,
     var title:String?=null,
     var description:String?=null,
     var function:String?=null,

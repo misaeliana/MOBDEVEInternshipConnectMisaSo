@@ -7,6 +7,7 @@ import android.view.MenuItem
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
@@ -76,7 +77,7 @@ class CompanyEditProfile : AppCompatActivity() {
             "website" to website
         )
 
-        firestore.collection("Companies").document(currentUser).set(company).addOnSuccessListener {
+        firestore.collection("Companies").document(currentUser).set(company, SetOptions.merge()).addOnSuccessListener {
             Toast.makeText(this, "Profile Updated", Toast.LENGTH_SHORT)
             val intent = Intent (this, CompanyProfile::class.java)
             startActivity (intent)

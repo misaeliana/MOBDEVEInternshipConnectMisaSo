@@ -6,6 +6,9 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.toObject
+import com.google.firebase.ktx.Firebase
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.MainActivity
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.R
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.adapter.CompanyViewApplicantExperienceAdapter
@@ -23,6 +26,9 @@ class CompanyViewApplicantInformation : AppCompatActivity() {
 
     lateinit var toggle: androidx.appcompat.app.ActionBarDrawerToggle
 
+    private var firestore = Firebase.firestore
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCompanyViewApplicantInformationBinding.inflate(layoutInflater)
@@ -37,13 +43,9 @@ class CompanyViewApplicantInformation : AppCompatActivity() {
         binding.tvCompanyInternProfileCourse.text = bundle.getString("course")
         binding.tvCompanyInternProfileGradYear.text = bundle.getString("gradYear")
 
-        init()
+        var email = bundle.getString("email").toString()
+        getInternExperience(email)
         sidebar()
-
-        binding.rvCompanyInternExperiences.setLayoutManager(LinearLayoutManager(applicationContext))
-
-        companyViewApplicantExperienceAdapter = CompanyViewApplicantExperienceAdapter(applicationContext, companyViewApplicantExperienceArrayList)
-        binding.rvCompanyInternExperiences.setAdapter(companyViewApplicantExperienceAdapter)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -53,38 +55,25 @@ class CompanyViewApplicantInformation : AppCompatActivity() {
     }
 
 
-    private fun init() {
-        var dao: ExperiencesDAO = ExperiencesDAOArrayImpl()
+    private fun getInternExperience(email:String) {
 
-        var experience1 = Experience()
+        var internID = ""
 
-        experience1.title = "Product Management Intern"
-        experience1.companyName = "On Demand Deals"
-        experience1.internID = "Eliana Misa"
-        experience1.startDate = "March 2022"
-        experience1.endDate = "June 2022"
+        firestore.collection("Interns").whereEqualTo("email", email).get().addOnSuccessListener { documents1 ->
+            for (intern in documents1)
+                internID = intern.id
+        }
 
-        dao.addExperience(experience1)
+        firestore.collection("Experience").whereEqualTo("internID", internID).get().addOnSuccessListener { documents2 ->
+            for (experience in documents2) {
+                var experienceobj = experience.toObject<Experience>()
+                companyViewApplicantExperienceArrayList.add(experienceobj)
+            }
+        }
 
-        var experience2 = Experience()
-
-        experience2.title = "Product Intern"
-        experience2.companyName = "Shopee"
-        experience2.internID = "Eliana Misa"
-        experience2.startDate = "June 2022"
-        experience2.endDate = "September 2022"
-        dao.addExperience(experience2)
-
-        var experience3 = Experience()
-
-        experience3.title = "Systems Intern"
-        experience3.companyName = "Amazon"
-        experience3.internID = "Eliana Misa"
-        experience3.startDate = "September 2022"
-        experience3.endDate = "February 2023"
-        dao.addExperience(experience3)
-
-        companyViewApplicantExperienceArrayList = dao.getExperiences()
+        binding.rvCompanyInternExperiences.setLayoutManager(LinearLayoutManager(applicationContext))
+        companyViewApplicantExperienceAdapter = CompanyViewApplicantExperienceAdapter(applicationContext, companyViewApplicantExperienceArrayList)
+        binding.rvCompanyInternExperiences.setAdapter(companyViewApplicantExperienceAdapter)
     }
 
     private fun sidebar() {

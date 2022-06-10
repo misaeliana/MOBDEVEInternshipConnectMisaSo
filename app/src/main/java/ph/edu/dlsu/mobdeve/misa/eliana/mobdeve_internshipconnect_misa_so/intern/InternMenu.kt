@@ -12,6 +12,7 @@ import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_intern_menu.*
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.MainActivity
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.databinding.ActivityInternMenuBinding
+import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.model.Company
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.model.Intern
 
 class InternMenu : AppCompatActivity() {
@@ -23,7 +24,7 @@ class InternMenu : AppCompatActivity() {
         binding = ActivityInternMenuBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        /*val currentUser:String = FirebaseAuth.getInstance().currentUser!!.uid
+        /*
         firestore.collection("Interns").document(currentUser).get().addOnSuccessListener { documentSnapshot ->
             if (documentSnapshot.exists()) {
                 var intern =  documentSnapshot.toObject<Intern>()
@@ -35,6 +36,12 @@ class InternMenu : AppCompatActivity() {
         }.addOnFailureListener{
             Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
         }*/
+
+        val currentUser:String = FirebaseAuth.getInstance().currentUser!!.uid
+        firestore.collection("Interns").document(currentUser).get().addOnSuccessListener { document ->
+            var intern = document.toObject<Intern>()
+            binding.tvInternMenuGreeting.text = "Hello " + intern?.name
+        }
 
         binding.btnInternMenuMyJobs.setOnClickListener {
             val intent = Intent (this, InternMyInternships::class.java)

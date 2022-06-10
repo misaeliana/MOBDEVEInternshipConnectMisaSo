@@ -11,6 +11,7 @@ import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.MainActivity
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.databinding.ActivityCompanyMenuBinding
+import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.model.Company
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.model.Intern
 
 class CompanyMenu : AppCompatActivity() {
@@ -23,18 +24,11 @@ class CompanyMenu : AppCompatActivity() {
         binding = ActivityCompanyMenuBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        /*val currentUser:String = FirebaseAuth.getInstance().currentUser!!.uid
-        firestore.collection("Interns").document(currentUser).get().addOnSuccessListener { documentSnapshot ->
-            if (documentSnapshot.exists()) {
-                var company =  documentSnapshot.toObject<Intern>()
-                val companyName = company?.name
-                binding.tvCompanyMenuGreeting.text = "Hello " + companyName.toString()
-            }
-            else
-                Toast.makeText(this, "User does not exist", Toast.LENGTH_SHORT).show()
-        }.addOnFailureListener{
-            Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
-        }*/
+        val currentUser:String = FirebaseAuth.getInstance().currentUser!!.uid
+        firestore.collection("Companies").document(currentUser).get().addOnSuccessListener { document ->
+            var company = document.toObject<Company>()
+            binding.tvCompanyMenuGreeting.text = "Hello " + company?.name
+        }
 
         binding.btnCompanyMenuJobs.setOnClickListener {
             val intent = Intent (this, CompanyJobListing::class.java)

@@ -1,5 +1,6 @@
 package ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.intern
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -16,6 +17,7 @@ import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.databin
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.databinding.ActivityInternInternshipDetailsBinding
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.model.Company
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.model.Internship
+import java.time.LocalDateTime
 
 class InternInternshipDetails : AppCompatActivity() {
 
@@ -25,6 +27,7 @@ class InternInternshipDetails : AppCompatActivity() {
 
     private var firestore = Firebase.firestore
 
+    @SuppressLint("NewApi")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityInternInternshipDetailsBinding.inflate(layoutInflater)
@@ -62,8 +65,26 @@ class InternInternshipDetails : AppCompatActivity() {
         }
 
         binding.btnTvInternshipDetailsApply.setOnClickListener {
-            val intent = Intent (this, InternMyInternships::class.java)
-            startActivity (intent)
+            var internshipID = ""
+            println(bundle.getString("companyID"))
+            println(binding.tvInternshipDetailsTitle.text.toString())
+            firestore.collection("Internships").whereEqualTo("companyID", bundle.getString("companyID")).whereEqualTo("title", binding.tvInternshipDetailsTitle.text.toString()).get().addOnSuccessListener { documents ->
+                for (internship in documents) {
+                        internshipID = internship.id
+                    }
+
+                var startDate = LocalDateTime.now().month.toString() + " " + LocalDateTime.now().year.toString()
+                var applied = hashMapOf(
+                    "internID" to FirebaseAuth.getInstance().currentUser!!.uid,
+                    "internshipID" to internshipID,
+                    "startDate" to startDate
+                )
+
+                firestore.collection("AppliedInternship").add(applied)
+
+                val intent = Intent (this, InternMyInternships::class.java)
+                startActivity (intent)
+            }
         }
     }
 

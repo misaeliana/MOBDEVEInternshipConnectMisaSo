@@ -95,7 +95,7 @@ class InternUpdateExperience : AppCompatActivity() {
 
     private fun getInternExperience() {
         var currentUser = FirebaseAuth.getInstance().currentUser!!.uid
-        firestore.collection("InternExperience").whereEqualTo("interID", currentUser).get().addOnSuccessListener { documents ->
+        firestore.collection("Experience").whereEqualTo("interID", currentUser).get().addOnSuccessListener { documents ->
 
             for (companySnapshot in documents) {
                 //creating the object from list retrieved in db

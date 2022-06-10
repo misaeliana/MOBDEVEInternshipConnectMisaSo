@@ -11,6 +11,9 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.toObject
+import com.google.firebase.ktx.Firebase
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.model.Internship
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.databinding.ItemInternshipBinding
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.intern.InternInternshipDetails
@@ -19,7 +22,8 @@ import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.model.C
 class InternInternshipAdapter: RecyclerView.Adapter<InternInternshipAdapter.InternshipViewHolder> {
     private var internshipArrayList = ArrayList<Internship>()
     private lateinit var context: Context
-    private var dblink:String ="https://mobdeve-internshipconnect-default-rtdb.asia-southeast1.firebasedatabase.app/"
+    private var firestore = Firebase.firestore
+
 
     public constructor(context: Context, internshipArrayList: ArrayList<Internship>) {
         this.context = context
@@ -59,12 +63,12 @@ class InternInternshipAdapter: RecyclerView.Adapter<InternInternshipAdapter.Inte
             itemBinding.textTitle.text = internship.title
             itemBinding.textFunctionType.text = internship.function + ", " + internship.type
 
-            val companyName = internship.companyName
-            val companyDB = FirebaseDatabase.getInstance(dblink).getReference("Companies")
+            val companyID = internship.companyID
 
-            companyDB.child(companyName.toString()).get().addOnSuccessListener {
-                if (it.exists()) {
-                    itemBinding.textCompany.text = it.child("name").value?.toString()
+            if (companyID != null) {
+                firestore.collection("Companies").document(companyID).get().addOnSuccessListener { document->
+                    val company = document.toObject<Company>()
+                    itemBinding.textCompany.text = company?.name
                 }
             }
         }
@@ -78,7 +82,7 @@ class InternInternshipAdapter: RecyclerView.Adapter<InternInternshipAdapter.Inte
             bundle.putString("type", internship.type)
             bundle.putString("description", internship.description)
             bundle.putString("link", internship.link)
-            bundle.putString("companyID", internship.companyName)
+            bundle.putString("companyID", internship.companyID)
 
 
 

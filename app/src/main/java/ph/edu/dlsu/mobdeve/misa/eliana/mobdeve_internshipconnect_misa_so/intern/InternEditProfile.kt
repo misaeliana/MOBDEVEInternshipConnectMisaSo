@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
@@ -87,7 +88,7 @@ class InternEditProfile : AppCompatActivity() {
             "gradYear" to gradYear
         )
 
-        firestore.collection("Interns").document(currentUser).set(intern).addOnSuccessListener {
+        firestore.collection("Interns").document(currentUser).set(intern, SetOptions.merge()).addOnSuccessListener {
             Toast.makeText(this, "Profile Updated", Toast.LENGTH_SHORT)
             val intent = Intent (this, InternProfile::class.java)
             startActivity (intent)
