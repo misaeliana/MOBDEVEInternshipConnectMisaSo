@@ -54,7 +54,7 @@ class CompanySpecificJobPosting : AppCompatActivity() {
 
         intern1.name = "Eliana Misa"
         intern1.email = "eliana_misa@dlsu.edu.ph"
-        intern1.number = 123412313
+        intern1.number = "09181182787"
         intern1.about = "I aspire to pursue a career in Technology and am currently exploring the fields of Solutions Design, Project Management, and UI/UX. I’m seeking to obtain internships to further deepen my knowledge and experience in these fields. "
         intern1.school = "De La Salle University"
         intern1.course = "BS Information Systems"
@@ -65,7 +65,7 @@ class CompanySpecificJobPosting : AppCompatActivity() {
 
         intern2.name = "Tiffany So"
         intern2.email = "tiffany_so@dlsu.edu.ph"
-        intern2.number = 123412313
+        intern2.number = "0983792983"
         intern2.about = "Tiffany So is a junior and is taking up a Bachelor of Science degree in Information Systems. She took up the course because she was interested in both business and technology, thus this was the course that fits her interests and allows her to solve business problems with technology."
         intern2.school = "De La Salle University"
         intern2.course = "BS Information Systems"

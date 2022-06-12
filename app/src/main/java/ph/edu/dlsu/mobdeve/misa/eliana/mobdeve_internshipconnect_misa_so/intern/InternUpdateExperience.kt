@@ -46,6 +46,11 @@ class InternUpdateExperience : AppCompatActivity() {
             experience.startDate = binding.etUpdateExperienceStartDate.text.toString()
             experience.endDate = binding.etUpdateExperienceEndDate.text.toString()
 
+            binding.etUpdateExperienceTitle.text.clear()
+            binding.etUpdateExperienceCompanyName.text.clear()
+            binding.etUpdateExperienceStartDate.text.clear()
+            binding.etUpdateExperienceEndDate.text.clear()
+
             internUpdateExperienceAdapter.addExperience(experience)
 
             //clear fields
