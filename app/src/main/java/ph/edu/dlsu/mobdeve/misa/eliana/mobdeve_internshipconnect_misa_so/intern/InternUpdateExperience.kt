@@ -6,6 +6,9 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.toObject
+import com.google.firebase.ktx.Firebase
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.MainActivity
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.R
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.adapter.CompanyAdapter
@@ -22,27 +25,24 @@ import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.model.E
 class InternUpdateExperience : AppCompatActivity() {
     private lateinit var binding : ActivityInternUpdateExperienceBinding
     private lateinit var internUpdateExperienceAdapter: InternUpdateProfileExperienceAdapter
-    private lateinit var internUpdateExperienceArrayList: ArrayList<Experience>
+    private var internUpdateExperienceArrayList = ArrayList<Experience>()
     lateinit var toggle: androidx.appcompat.app.ActionBarDrawerToggle
+
+    private var firestore = Firebase.firestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityInternUpdateExperienceBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        init()
         sidebar()
-
-        binding.rvCompanyInternExperiences.setLayoutManager(LinearLayoutManager(applicationContext))
-
-        internUpdateExperienceAdapter = InternUpdateProfileExperienceAdapter(applicationContext, internUpdateExperienceArrayList)
-        binding.rvCompanyInternExperiences.setAdapter(internUpdateExperienceAdapter)
+        getInternExperience()
 
         binding.btnUpdateExperienceAdd.setOnClickListener{
             var experience = Experience()
 
             experience.title = binding.etUpdateExperienceTitle.text.toString()
             experience.companyName = binding.etUpdateExperienceCompanyName.text.toString()
-            experience.internID = "Intern name"
+            experience.internID =  FirebaseAuth.getInstance().currentUser!!.uid
             experience.startDate = binding.etUpdateExperienceStartDate.text.toString()
             experience.endDate = binding.etUpdateExperienceEndDate.text.toString()
 
@@ -52,6 +52,7 @@ class InternUpdateExperience : AppCompatActivity() {
             binding.etUpdateExperienceEndDate.text.clear()
 
             internUpdateExperienceAdapter.addExperience(experience)
+            //internUpdateExperienceArrayList.add(experience)
 
             //clear fields
             binding.etUpdateExperienceCompanyName.text.clear()
@@ -61,7 +62,26 @@ class InternUpdateExperience : AppCompatActivity() {
         }
 
         binding.btnUpdateExperienceSave.setOnClickListener {
-            //save updated data in db
+            //delete previous experience first
+            /*var currentUser = FirebaseAuth.getInstance().currentUser!!.uid
+            firestore.collection("InternExperience").whereEqualTo("interID", currentUser).get().addOnSuccessListener { documents ->
+                for (experience in documents) {
+
+
+                }
+            }*/
+            for (experience in internUpdateExperienceArrayList) {
+                var experiencedb = mapOf(
+                    "title" to experience.title,
+                    "companyName" to experience.companyName,
+                    "internID" to FirebaseAuth.getInstance().currentUser!!.uid,
+                    "startDate" to experience.startDate,
+                    "endDate" to experience.endDate
+                )
+                firestore.collection("Experience").add(experiencedb).addOnSuccessListener {
+
+                }
+            }
             val intent = Intent (this, InternProfile::class.java)
             startActivity (intent)
         }
@@ -78,38 +98,20 @@ class InternUpdateExperience : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun init() {
-        var dao: ExperiencesDAO = ExperiencesDAOArrayImpl()
+    private fun getInternExperience() {
+        var currentUser = FirebaseAuth.getInstance().currentUser!!.uid
+        firestore.collection("Experience").whereEqualTo("interID", currentUser).get().addOnSuccessListener { documents ->
 
-        var experience1 = Experience()
+            for (companySnapshot in documents) {
+                //creating the object from list retrieved in db
+                    val experience = companySnapshot.toObject<Experience>()
+                    internUpdateExperienceArrayList.add(experience!!)
+                }
 
-        experience1.title = "Product Management Intern"
-        experience1.companyName = "On Demand Deals"
-        experience1.internID = "Eliana Misa"
-        experience1.startDate = "March 2022"
-        experience1.endDate = "June 2022"
-
-        dao.addExperience(experience1)
-
-        var experience2 = Experience()
-
-        experience2.title = "Product Intern"
-        experience2.companyName = "Shopee"
-        experience2.internID = "Eliana Misa"
-        experience2.startDate = "June 2022"
-        experience2.endDate = "September 2022"
-        dao.addExperience(experience2)
-
-        var experience3 = Experience()
-
-        experience3.title = "Systems Intern"
-        experience3.companyName = "Amazon"
-        experience3.internID = "Eliana Misa"
-        experience3.startDate = "September 2022"
-        experience3.endDate = "February 2023"
-        dao.addExperience(experience3)
-
-        internUpdateExperienceArrayList = dao.getExperiences()
+            binding.rvCompanyInternExperiences.setLayoutManager(LinearLayoutManager(applicationContext))
+            internUpdateExperienceAdapter = InternUpdateProfileExperienceAdapter(applicationContext, internUpdateExperienceArrayList)
+            binding.rvCompanyInternExperiences.setAdapter(internUpdateExperienceAdapter)
+        }
     }
 
     private fun sidebar() {

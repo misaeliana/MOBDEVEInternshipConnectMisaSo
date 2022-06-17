@@ -1,15 +1,23 @@
 package ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.intern
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.toObject
+import com.google.firebase.ktx.Firebase
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.MainActivity
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.R
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.databinding.ActivityInternEditProfileBinding
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.databinding.ActivityInternInternshipDetailsBinding
+import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.model.Company
+import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.model.Internship
+import java.time.LocalDateTime
 
 class InternInternshipDetails : AppCompatActivity() {
 
@@ -17,6 +25,9 @@ class InternInternshipDetails : AppCompatActivity() {
 
     lateinit var toggle: androidx.appcompat.app.ActionBarDrawerToggle
 
+    private var firestore = Firebase.firestore
+
+    @SuppressLint("NewApi")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityInternInternshipDetailsBinding.inflate(layoutInflater)
@@ -29,7 +40,14 @@ class InternInternshipDetails : AppCompatActivity() {
         binding.tvInternshipDetailsType.text = bundle.getString("type")
         binding.tvInternshipDetailsDescription.text = bundle.getString("description")
         binding.tvInternshipDetailsLink.text = bundle.getString("link")
-        binding.tvInternshipDetailsCompany.text = bundle.getString("company")
+
+        var companyID = bundle.getString("companyID")
+        if (companyID != null) {
+            firestore.collection("Companies").document(companyID).get().addOnSuccessListener { document ->
+                var company = document.toObject<Company>()
+                binding.tvInternshipDetailsCompany.text = company?.name
+            }
+        }
 
         var source = bundle.getString("source")
 
@@ -47,8 +65,26 @@ class InternInternshipDetails : AppCompatActivity() {
         }
 
         binding.btnTvInternshipDetailsApply.setOnClickListener {
-            val intent = Intent (this, InternMyInternships::class.java)
-            startActivity (intent)
+            var internshipID = ""
+            println(bundle.getString("companyID"))
+            println(binding.tvInternshipDetailsTitle.text.toString())
+            firestore.collection("Internships").whereEqualTo("companyID", bundle.getString("companyID")).whereEqualTo("title", binding.tvInternshipDetailsTitle.text.toString()).get().addOnSuccessListener { documents ->
+                for (internship in documents) {
+                        internshipID = internship.id
+                    }
+
+                var startDate = LocalDateTime.now().month.toString() + " " + LocalDateTime.now().year.toString()
+                var applied = hashMapOf(
+                    "internID" to FirebaseAuth.getInstance().currentUser!!.uid,
+                    "internshipID" to internshipID,
+                    "startDate" to startDate
+                )
+
+                firestore.collection("AppliedInternship").add(applied)
+
+                val intent = Intent (this, InternMyInternships::class.java)
+                startActivity (intent)
+            }
         }
     }
 

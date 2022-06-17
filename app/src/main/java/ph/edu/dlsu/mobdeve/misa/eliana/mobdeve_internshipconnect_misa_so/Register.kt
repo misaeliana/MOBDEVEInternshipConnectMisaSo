@@ -7,12 +7,11 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.widget.ArrayAdapter
 import android.widget.Toast
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.company.CompanyEditProfile
-import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.model.*
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.databinding.ActivityRegisterBinding
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.intern.InternEditProfile
 
@@ -20,8 +19,8 @@ import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.intern.
 class Register : AppCompatActivity() {
 
     private lateinit var binding : ActivityRegisterBinding
-    private lateinit var database : DatabaseReference
-    private var dblink:String ="https://mobdeve-internshipconnect-default-rtdb.asia-southeast1.firebasedatabase.app/"
+
+    private var firestore = Firebase.firestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,8 +61,6 @@ class Register : AppCompatActivity() {
                     FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password).addOnCompleteListener { task ->
                         if (task.isSuccessful) {
                             //registers the user
-                            var firebaseUser: FirebaseUser = task.result!!.user!!
-                            val user = User(name, email, number)
 
                             var path = ""
                             if (type == "Intern")
@@ -71,15 +68,22 @@ class Register : AppCompatActivity() {
                             else if (type == "Company")
                                 path = "Companies"
 
-                            FirebaseDatabase.getInstance(dblink).getReference(path).child(
-                                FirebaseAuth.getInstance().currentUser!!.uid).setValue(user).addOnSuccessListener {
-                                binding.etRegisterInternName.text.clear()
-                                binding.etRegisterInternEmail.text.clear()
-                                binding.etRegisterInternNumber.text.clear()
-                                binding.etRegisterInternPassword.text.clear()
-                            }
+                            var user = hashMapOf(
+                                "name" to name,
+                                "email" to email,
+                                "number" to number
+                                )
 
-                            Toast.makeText(this, "You are registered", Toast.LENGTH_SHORT).show()
+                            var currentUser = FirebaseAuth.getInstance().currentUser!!.uid
+                            firestore.collection(path).document(currentUser).set(user)
+                                .addOnSuccessListener {
+                                    Toast.makeText(this, "You are registered", Toast.LENGTH_SHORT).show()
+                                //Log.d(TAG, "Added document with ID ${it.id}")
+                                }
+                                .addOnFailureListener { exception ->
+                                    Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
+                                    //Log.w(TAG, "Error adding document $exception")
+                                }
 
                             if (type == "Intern") {
                                 val intent = Intent (this, InternEditProfile::class.java)

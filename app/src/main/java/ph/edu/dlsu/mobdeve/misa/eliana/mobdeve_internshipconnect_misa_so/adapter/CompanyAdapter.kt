@@ -65,6 +65,7 @@ class CompanyAdapter: RecyclerView.Adapter<CompanyAdapter.CompanyViewHolder> {
             bundle.putString("about", company.about)
             bundle.putString("number", company.number)
             bundle.putString("website", company.website)
+            bundle.putString("email", company.email)
             //add for video
 
             goToCompany.putExtras(bundle)

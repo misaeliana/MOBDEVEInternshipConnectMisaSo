@@ -7,6 +7,9 @@ import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.toObject
+import com.google.firebase.ktx.Firebase
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.MainActivity
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.R
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.adapter.CompanyAdapter
@@ -24,8 +27,7 @@ class InternViewCompanies : AppCompatActivity() {
     private lateinit var companyAdapter: CompanyAdapter
     private lateinit var internCompaniesArrayList: ArrayList<Company>
 
-    private lateinit var dbref:DatabaseReference
-    private var dblink:String ="https://mobdeve-internshipconnect-default-rtdb.asia-southeast1.firebasedatabase.app/"
+    private var firestore = Firebase.firestore
 
     lateinit var toggle: androidx.appcompat.app.ActionBarDrawerToggle
 
@@ -53,29 +55,18 @@ class InternViewCompanies : AppCompatActivity() {
     private fun getCompanyData() {
         var companyArrayList = ArrayList<Company>()
 
-        dbref = FirebaseDatabase.getInstance(dblink).getReference("Companies")
-        dbref.addValueEventListener(object: ValueEventListener {
+        firestore.collection("Companies").get().addOnSuccessListener { documents ->
 
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()) {
-                    for (companySnapshot in snapshot.children) {
-                        //creating the object from list retrieved in db
-                        val company = companySnapshot.getValue(Company::class.java)
-                        companyArrayList.add(company!!)
-                    }
-                    //rv_companyList.adapter = CompanyAdapter(applicationContext, companyArrayList)
-                    binding.rvCompanyList.setLayoutManager(LinearLayoutManager(applicationContext))
-
-                    companyAdapter = CompanyAdapter(applicationContext, companyArrayList)
-                    binding.rvCompanyList.setAdapter(companyAdapter)
-                }
+            for (companySnapshot in documents) {
+                //creating the object from list retrieved in db
+                    val company = companySnapshot.toObject<Company>()
+                companyArrayList.add(company!!)
             }
-
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
-
-        })
+            //rv_companyList.adapter = CompanyAdapter(applicationContext, companyArrayList)
+            binding.rvCompanyList.setLayoutManager(LinearLayoutManager(applicationContext))
+            companyAdapter = CompanyAdapter(applicationContext, companyArrayList)
+            binding.rvCompanyList.setAdapter(companyAdapter)
+        }
 
     }
 

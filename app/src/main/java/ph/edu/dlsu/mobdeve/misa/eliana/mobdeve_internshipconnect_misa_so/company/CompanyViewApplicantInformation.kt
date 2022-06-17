@@ -6,6 +6,14 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.toObject
+import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.withContext
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.MainActivity
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.R
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.adapter.CompanyViewApplicantExperienceAdapter
@@ -19,9 +27,12 @@ import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.model.E
 class CompanyViewApplicantInformation : AppCompatActivity() {
     private lateinit var binding : ActivityCompanyViewApplicantInformationBinding
     private lateinit var companyViewApplicantExperienceAdapter: CompanyViewApplicantExperienceAdapter
-    private lateinit var companyViewApplicantExperienceArrayList: ArrayList<Experience>
+    private var companyViewApplicantExperienceArrayList = ArrayList<Experience>()
 
     lateinit var toggle: androidx.appcompat.app.ActionBarDrawerToggle
+
+    private var firestore = Firebase.firestore
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,13 +48,17 @@ class CompanyViewApplicantInformation : AppCompatActivity() {
         binding.tvCompanyInternProfileCourse.text = bundle.getString("course")
         binding.tvCompanyInternProfileGradYear.text = bundle.getString("gradYear")
 
-        init()
+        var email = bundle.getString("email").toString()
+        GlobalScope.launch(Dispatchers.IO) {
+            var finalArrayList = getInternExperience(email)
+            withContext(Dispatchers.Main) {
+                binding.rvCompanyInternExperiences.setLayoutManager(LinearLayoutManager(applicationContext))
+                companyViewApplicantExperienceAdapter = CompanyViewApplicantExperienceAdapter(applicationContext, finalArrayList)
+                binding.rvCompanyInternExperiences.setAdapter(companyViewApplicantExperienceAdapter)
+            }
+
+        }
         sidebar()
-
-        binding.rvCompanyInternExperiences.setLayoutManager(LinearLayoutManager(applicationContext))
-
-        companyViewApplicantExperienceAdapter = CompanyViewApplicantExperienceAdapter(applicationContext, companyViewApplicantExperienceArrayList)
-        binding.rvCompanyInternExperiences.setAdapter(companyViewApplicantExperienceAdapter)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -53,38 +68,21 @@ class CompanyViewApplicantInformation : AppCompatActivity() {
     }
 
 
-    private fun init() {
-        var dao: ExperiencesDAO = ExperiencesDAOArrayImpl()
+    private suspend fun getInternExperience(email:String): ArrayList<Experience> {
 
-        var experience1 = Experience()
+        var internID = ""
 
-        experience1.title = "Product Management Intern"
-        experience1.companyName = "On Demand Deals"
-        experience1.internID = "Eliana Misa"
-        experience1.startDate = "March 2022"
-        experience1.endDate = "June 2022"
+        var fsInterns = firestore.collection("Interns").whereEqualTo("email", email).get().await()
+            for (intern in fsInterns)
+                internID = intern.id
 
-        dao.addExperience(experience1)
 
-        var experience2 = Experience()
-
-        experience2.title = "Product Intern"
-        experience2.companyName = "Shopee"
-        experience2.internID = "Eliana Misa"
-        experience2.startDate = "June 2022"
-        experience2.endDate = "September 2022"
-        dao.addExperience(experience2)
-
-        var experience3 = Experience()
-
-        experience3.title = "Systems Intern"
-        experience3.companyName = "Amazon"
-        experience3.internID = "Eliana Misa"
-        experience3.startDate = "September 2022"
-        experience3.endDate = "February 2023"
-        dao.addExperience(experience3)
-
-        companyViewApplicantExperienceArrayList = dao.getExperiences()
+        var fsExperience = firestore.collection("Experience").whereEqualTo("internID", internID).get().await()
+            for (experience in fsExperience) {
+                var experienceobj = experience.toObject<Experience>()
+                companyViewApplicantExperienceArrayList.add(experienceobj)
+            }
+        return companyViewApplicantExperienceArrayList
     }
 
     private fun sidebar() {

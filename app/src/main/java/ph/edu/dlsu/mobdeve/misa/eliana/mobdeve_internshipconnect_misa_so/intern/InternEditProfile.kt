@@ -9,6 +9,10 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.firestore.SetOptions
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.toObject
+import com.google.firebase.ktx.Firebase
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.MainActivity
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.R
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.adapter.InternUpdateProfileExperienceAdapter
@@ -19,13 +23,15 @@ import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.company
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.databinding.ActivityAddInternshipBinding
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.databinding.ActivityInternEditProfileBinding
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.model.Experience
+import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.model.Intern
 
 class InternEditProfile : AppCompatActivity() {
 
     private lateinit var binding : ActivityInternEditProfileBinding
-    private var dblink:String ="https://mobdeve-internshipconnect-default-rtdb.asia-southeast1.firebasedatabase.app/"
 
     lateinit var toggle: androidx.appcompat.app.ActionBarDrawerToggle
+
+    private var firestore = Firebase.firestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,17 +59,14 @@ class InternEditProfile : AppCompatActivity() {
 
     fun getInternData() {
         val currentUser:String = FirebaseAuth.getInstance().currentUser!!.uid
-        val internDB = FirebaseDatabase.getInstance(dblink).getReference("Interns")
-        internDB.child(currentUser).get().addOnSuccessListener {
-            if (it.exists()) {
-                binding.etEditInternName.setText(it.child("name").value?.toString())
-                binding.etEditInternContactNumber.setText(it.child("number").value?.toString())
-                binding.etEditInternAbout.setText(it.child("about").value?.toString())
-                binding.etEditInternSchool.setText(it.child("school").value?.toString())
-                binding.etEditInternCourse.setText(it.child("course").value?.toString())
-                binding.etEditInternGradYear.setText(it.child("gradYear").value?.toString())
-
-            }
+        firestore.collection("Interns").document(currentUser).get().addOnSuccessListener { documentSnapshot ->
+            var intern = documentSnapshot.toObject<Intern>()
+            binding.etEditInternName.setText(intern?.name.toString())
+            binding.etEditInternContactNumber.setText(intern?.number.toString())
+            binding.etEditInternAbout.setText(intern?.about.toString())
+            binding.etEditInternSchool.setText(intern?.school.toString())
+            binding.etEditInternCourse.setText(intern?.course.toString())
+            binding.etEditInternGradYear.setText(intern?.gradYear.toString())
         }
     }
 
@@ -76,7 +79,6 @@ class InternEditProfile : AppCompatActivity() {
         val gradYear = binding.etEditInternGradYear.text.toString()
         val currentUser:String = FirebaseAuth.getInstance().currentUser!!.uid
 
-        val internDB = FirebaseDatabase.getInstance(dblink).getReference("Interns")
         val intern = mapOf<String, String>(
             "name" to name,
             "number" to number,
@@ -86,7 +88,7 @@ class InternEditProfile : AppCompatActivity() {
             "gradYear" to gradYear
         )
 
-        internDB.child(currentUser).updateChildren(intern).addOnSuccessListener {
+        firestore.collection("Interns").document(currentUser).set(intern, SetOptions.merge()).addOnSuccessListener {
             Toast.makeText(this, "Profile Updated", Toast.LENGTH_SHORT)
             val intent = Intent (this, InternProfile::class.java)
             startActivity (intent)

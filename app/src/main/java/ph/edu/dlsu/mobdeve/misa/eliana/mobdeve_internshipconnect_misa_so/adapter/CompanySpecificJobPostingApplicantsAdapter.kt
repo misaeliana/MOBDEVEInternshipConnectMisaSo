@@ -49,9 +49,10 @@ class CompanySpecificJobPostingApplicantsAdapter: RecyclerView.Adapter<CompanySp
         }
 
         fun bindApplicant(intern: Intern){
+            println(intern.name)
             this.intern = intern
             itemBinding.tvName.text = intern.name
-            itemBinding.tvSchool.text = "School"
+            itemBinding.tvSchool.text = intern.school
         }
 
         override fun onClick(p0: View?) {

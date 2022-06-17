@@ -7,5 +7,5 @@ data class Intern(
     var about:String?=null,
     var school:String?=null,
     var course:String?=null,
-    var gradYear:Int?=null
+    var gradYear:String?=null
 )

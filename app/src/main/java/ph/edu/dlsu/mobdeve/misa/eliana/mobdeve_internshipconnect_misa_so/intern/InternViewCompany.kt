@@ -8,6 +8,8 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.MainActivity
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.R
@@ -26,8 +28,7 @@ class InternViewCompany : AppCompatActivity() {
 
     lateinit var toggle: androidx.appcompat.app.ActionBarDrawerToggle
 
-    private lateinit var dbref: DatabaseReference
-    private var dblink:String ="https://mobdeve-internshipconnect-default-rtdb.asia-southeast1.firebasedatabase.app/"
+    private var firestore = Firebase.firestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,21 +43,16 @@ class InternViewCompany : AppCompatActivity() {
         binding.tvViewCompanyProfileCompanyAboutText.text = bundle.getString("about")
         binding.tvViewCompanyProfileContactNumber.text = bundle.getString("number")
         binding.tvViewCompanyProfileWebsite.text = bundle.getString("website")
+        binding.tvViewCompanyProfileEmail.text = bundle.getString("email")
 
-        val companyName = bundle.getString("name")
-        val companyDB = FirebaseDatabase.getInstance(dblink).getReference("Companies")
-        companyDB.orderByChild("name").equalTo(companyName).addListenerForSingleValueEvent(object: ValueEventListener {
-            override fun onDataChange(dataSnapshot:DataSnapshot) {
-                dataSnapshot.children.forEach{
-                        val companyID: String = it.key.toString()
-                        getInternships(companyID)
-                }
+        val name = bundle.getString("name")
+        firestore.collection("Companies").whereEqualTo("name", name).get().addOnSuccessListener { documents ->
+            for (companySnapshot in documents) {
+                //var company = companySnapshot.toObject<Company>()
+                //if (email == company.email)
+                getInternships(companySnapshot.id)
             }
-
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
-        })
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -69,28 +65,18 @@ class InternViewCompany : AppCompatActivity() {
     private fun getInternships(companyID:String) {
         var internViewCompanyInternshipsArrayList = ArrayList<Internship>()
         Toast.makeText(this, companyID, Toast.LENGTH_SHORT)
-        val internshipsDB = FirebaseDatabase.getInstance(dblink).getReference("Internships")
 
-        internshipsDB.orderByChild("companyName").equalTo(companyID).addListenerForSingleValueEvent(object: ValueEventListener {
-            override fun onDataChange(snapshot:DataSnapshot) {
-                if (snapshot.exists()) {
-                    for (internshipSnapshot in snapshot.children) {
-                        val dbInternship = internshipSnapshot.getValue(Internship::class.java)
-                        var internship = Internship(dbInternship?.companyName.toString(),
-                            dbInternship?.title.toString(), dbInternship?.description.toString(),
-                            dbInternship?.function.toString(), dbInternship?.type.toString(), dbInternship?.link.toString())
-                        internViewCompanyInternshipsArrayList.add(internship!!)
-                    }
-                }
-                binding.rvInternViewCompanyInternships.setLayoutManager(LinearLayoutManager(applicationContext))
-                internViewCompanyInternshipsAdapter = InternCompanyDetailsInternshipsAdapter(applicationContext, internViewCompanyInternshipsArrayList)
-                binding.rvInternViewCompanyInternships.setAdapter(internViewCompanyInternshipsAdapter)
+        firestore.collection("Internships").whereEqualTo("companyID", companyID).get().addOnSuccessListener { documents ->
+
+            for (internshipSnapshot in documents) {
+                var internship = internshipSnapshot.toObject<Internship>()
+                internViewCompanyInternshipsArrayList.add(internship!!)
             }
 
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
-        })
+            binding.rvInternViewCompanyInternships.setLayoutManager(LinearLayoutManager(applicationContext))
+            internViewCompanyInternshipsAdapter = InternCompanyDetailsInternshipsAdapter(applicationContext, internViewCompanyInternshipsArrayList)
+            binding.rvInternViewCompanyInternships.setAdapter(internViewCompanyInternshipsAdapter)
+        }
     }
 
     private fun sidebar() {
