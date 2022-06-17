@@ -85,7 +85,6 @@ class CompanySpecificJobPosting : AppCompatActivity() {
                     var internobj = intern.toObject<AppliedInternship>()
                     companySpecificJobPostingApplicant.add(internobj!!)
                 }
-        println(companySpecificJobPostingApplicant.size)
 
                 //get intern information
                 for (applicant in companySpecificJobPostingApplicant) {
