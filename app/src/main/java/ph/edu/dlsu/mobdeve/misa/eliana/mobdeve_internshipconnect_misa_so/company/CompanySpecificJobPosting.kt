@@ -6,17 +6,29 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.toObject
+import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.tasks.await
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.MainActivity
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.R
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.adapter.CompanySpecificJobPostingApplicantsAdapter
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.dao.*
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.databinding.ActivityCompanySpecificJobPostingBinding
+import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.model.AppliedInternship
+import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.model.Experience
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.model.Intern
+import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.model.Internship
 
 class CompanySpecificJobPosting : AppCompatActivity() {
     private lateinit var binding: ActivityCompanySpecificJobPostingBinding
     private lateinit var companySpecificJobPostingAdapter: CompanySpecificJobPostingApplicantsAdapter
-    private lateinit var companySpecificJobPostingArrayList: ArrayList<Intern>
+    private var companySpecificJobPostingApplicant = ArrayList<AppliedInternship>()
+    private var companySpecificJobPostingArrayList = ArrayList<Intern>()
+
+    private var firestore = Firebase.firestore
 
     lateinit var toggle: androidx.appcompat.app.ActionBarDrawerToggle
 
@@ -32,13 +44,9 @@ class CompanySpecificJobPosting : AppCompatActivity() {
         binding.tvInternshipDetailsDescription.text = bundle.getString("description")
         binding.tvInternshipDetailsLink.text = bundle.getString("link")
 
-        init()
+        getApplicantList(bundle.getString("title").toString())
+
         sidebar()
-
-        binding.rvCompanySpecificJobPostingApplicants.setLayoutManager(LinearLayoutManager(applicationContext))
-
-        companySpecificJobPostingAdapter = CompanySpecificJobPostingApplicantsAdapter(applicationContext, companySpecificJobPostingArrayList)
-        binding.rvCompanySpecificJobPostingApplicants.setAdapter(companySpecificJobPostingAdapter)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -47,33 +55,46 @@ class CompanySpecificJobPosting : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun init() {
-        var dao: InternsDAO = InternsDAOArrayImpl()
+    private fun getApplicantList(title:String) {
+        GlobalScope.launch(Dispatchers.IO) {
+            var finalArrayList = getData(title)
 
-        var intern1 = Intern()
-
-        intern1.name = "Eliana Misa"
-        intern1.email = "eliana_misa@dlsu.edu.ph"
-        intern1.number = "123412313"
-        intern1.about = "I aspire to pursue a career in Technology and am currently exploring the fields of Solutions Design, Project Management, and UI/UX. I’m seeking to obtain internships to further deepen my knowledge and experience in these fields. "
-        intern1.school = "De La Salle University"
-        intern1.course = "BS Information Systems"
-        intern1.gradYear = "2023"
-        dao.addIntern(intern1)
-
-        var intern2 = Intern()
-
-        intern2.name = "Tiffany So"
-        intern2.email = "tiffany_so@dlsu.edu.ph"
-        intern2.number = "123412313"
-        intern2.about = "Tiffany So is a junior and is taking up a Bachelor of Science degree in Information Systems. She took up the course because she was interested in both business and technology, thus this was the course that fits her interests and allows her to solve business problems with technology."
-        intern2.school = "De La Salle University"
-        intern2.course = "BS Information Systems"
-        intern2.gradYear = "2023"
-        dao.addIntern(intern2)
-
-        companySpecificJobPostingArrayList = dao.getInterns()
+            withContext(Dispatchers.Main) {
+                println("binding")
+                binding.rvCompanySpecificJobPostingApplicants.setLayoutManager(LinearLayoutManager(applicationContext))
+                companySpecificJobPostingAdapter = CompanySpecificJobPostingApplicantsAdapter(applicationContext, finalArrayList)
+                binding.rvCompanySpecificJobPostingApplicants.setAdapter(companySpecificJobPostingAdapter)
+            }
+        }
     }
+
+    private suspend fun getData(title:String):ArrayList<Intern> {
+        println("in get data")
+        var internshipID = ""
+        var currentUser = FirebaseAuth.getInstance().currentUser!!.uid
+        //get internshipid based on company id and title
+        var fsinternshipID = firestore.collection("Internships").whereEqualTo("companyID", currentUser).whereEqualTo("title", title).get().await()
+            for (internship in fsinternshipID) {
+                internshipID = internship.id
+            }
+
+        println(internshipID)
+        //get interns who applied for position
+        var fsExperience = firestore.collection("AppliedInternship").whereEqualTo("internshipID", internshipID).get().await()
+                for (intern in fsExperience) {
+                    var internobj = intern.toObject<AppliedInternship>()
+                    companySpecificJobPostingApplicant.add(internobj!!)
+                }
+        println(companySpecificJobPostingApplicant.size)
+
+                //get intern information
+                for (applicant in companySpecificJobPostingApplicant) {
+                    var internData = firestore.collection("Interns").document(applicant.internID.toString()).get().await().toObject<Intern>()
+                    companySpecificJobPostingArrayList.add(internData!!)
+                }
+        return companySpecificJobPostingArrayList
+    }
+
 
     private fun sidebar() {
         toggle = androidx.appcompat.app.ActionBarDrawerToggle(this, binding.drawerLayout, R.string.open, R.string.close)

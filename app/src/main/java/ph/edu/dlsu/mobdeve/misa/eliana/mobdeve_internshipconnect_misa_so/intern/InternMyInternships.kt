@@ -1,20 +1,20 @@
 package ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.intern
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.tasks.await
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.MainActivity
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.R
-import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.adapter.InternInternshipAdapter
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.adapter.InternMyInternshipsAdapter
-import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.dao.InternshipsDAO
-import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.dao.InternshipsDAOArrayImpl
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.databinding.ActivityInternMyInternshipsBinding
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.model.AppliedInternship
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.model.Internship
@@ -23,6 +23,7 @@ class InternMyInternships : AppCompatActivity() {
     private lateinit var binding : ActivityInternMyInternshipsBinding
     private lateinit var internMyInternshipsAdapter: InternMyInternshipsAdapter
     private var myInternshipArrayList = ArrayList<Internship>()
+    var appliedInternshipArrayList = ArrayList<AppliedInternship>()
     lateinit var toggle: androidx.appcompat.app.ActionBarDrawerToggle
 
     private var firestore = Firebase.firestore
@@ -43,21 +44,38 @@ class InternMyInternships : AppCompatActivity() {
     }
 
     private fun getMyInternships() {
-        var currentUser = FirebaseAuth.getInstance().currentUser!!.uid
-        var appliedInternshipobj:AppliedInternship
-        firestore.collection("AppliedInternship").whereEqualTo("internID", currentUser).get().addOnSuccessListener { documents ->
-            for (internship in documents) {
-                appliedInternshipobj = internship.toObject<AppliedInternship>()
-                firestore.collection("Internships").document(appliedInternshipobj.internshipID.toString()).get().addOnSuccessListener { documents2 ->
-                    var internshipObj = documents2.toObject<Internship>()
-                    myInternshipArrayList.add(internshipObj!!)
-                }
-            }
-        }
 
-        binding.rvList.setLayoutManager(LinearLayoutManager(applicationContext))
-        internMyInternshipsAdapter = InternMyInternshipsAdapter(applicationContext, myInternshipArrayList)
-        binding.rvList.setAdapter(internMyInternshipsAdapter)
+                GlobalScope.launch(Dispatchers.IO) {
+                    var finalArrayList = addData()
+
+                    withContext(Dispatchers.Main) {
+                        println("bind data")
+                        binding.rvList.setLayoutManager(LinearLayoutManager(applicationContext))
+                        internMyInternshipsAdapter = InternMyInternshipsAdapter(applicationContext, finalArrayList)
+                        binding.rvList.setAdapter(internMyInternshipsAdapter)
+                    }
+                }
+    }
+
+    private suspend fun addData():ArrayList<Internship> {
+        println("in add data")
+        var currentUser = FirebaseAuth.getInstance().currentUser!!.uid
+        var fsAppliedInternship = firestore.collection("AppliedInternship").whereEqualTo("internID", currentUser).get().await()
+            println(fsAppliedInternship.size())
+            for (internship in fsAppliedInternship) {
+                var appliedInternshipobj = internship.toObject<AppliedInternship>()
+                appliedInternshipArrayList.add(appliedInternshipobj)
+            }
+
+        println(appliedInternshipArrayList.size)
+        for (appliedInternship in appliedInternshipArrayList) {
+            val internshipObj = firestore.collection("Internships")
+                .document(appliedInternship.internshipID.toString()).get().await()
+                .toObject<Internship>()
+            myInternshipArrayList.add(internshipObj!!)
+            println("add data")
+        }
+        return myInternshipArrayList
     }
 
     private fun sidebar() {

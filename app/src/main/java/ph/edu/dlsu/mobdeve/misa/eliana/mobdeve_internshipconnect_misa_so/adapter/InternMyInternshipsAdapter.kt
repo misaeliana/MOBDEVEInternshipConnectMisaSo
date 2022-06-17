@@ -8,9 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.databinding.ItemInternshipBinding
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.intern.InternInternshipDetails
+import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.model.Company
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.model.Internship
 
 class InternMyInternshipsAdapter: RecyclerView.Adapter<InternMyInternshipsAdapter.InternMyInternshipViewHolder> {
@@ -57,8 +59,13 @@ class InternMyInternshipsAdapter: RecyclerView.Adapter<InternMyInternshipsAdapte
         fun bindInternship(internship: Internship){
             this.internship = internship
             itemBinding.textTitle.text = internship.title
-            itemBinding.textCompany.text = internship.companyID
             itemBinding.textFunctionType.text = internship.function + ", " + internship.type
+            firestore.collection("Companies").document(internship.companyID.toString()).get().addOnSuccessListener { document ->
+                if (document != null) {
+                    var company = document.toObject<Company>()
+                    itemBinding.textCompany.text = company?.name
+                }
+            }
         }
 
         override fun onClick(p0: View?) {

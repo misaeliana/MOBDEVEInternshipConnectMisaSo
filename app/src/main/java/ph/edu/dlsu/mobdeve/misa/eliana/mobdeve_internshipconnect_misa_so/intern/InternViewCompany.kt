@@ -43,7 +43,7 @@ class InternViewCompany : AppCompatActivity() {
         binding.tvViewCompanyProfileCompanyAboutText.text = bundle.getString("about")
         binding.tvViewCompanyProfileContactNumber.text = bundle.getString("number")
         binding.tvViewCompanyProfileWebsite.text = bundle.getString("website")
-        //binding.tvViewCompanyProfileEmail.text = bundle.getString("email")
+        binding.tvViewCompanyProfileEmail.text = bundle.getString("email")
 
         val name = bundle.getString("name")
         firestore.collection("Companies").whereEqualTo("name", name).get().addOnSuccessListener { documents ->

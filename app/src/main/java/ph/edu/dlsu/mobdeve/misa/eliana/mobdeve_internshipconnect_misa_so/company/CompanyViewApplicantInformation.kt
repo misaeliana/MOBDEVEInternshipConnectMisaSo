@@ -9,6 +9,11 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.withContext
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.MainActivity
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.R
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.adapter.CompanyViewApplicantExperienceAdapter
@@ -22,7 +27,7 @@ import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.model.E
 class CompanyViewApplicantInformation : AppCompatActivity() {
     private lateinit var binding : ActivityCompanyViewApplicantInformationBinding
     private lateinit var companyViewApplicantExperienceAdapter: CompanyViewApplicantExperienceAdapter
-    private lateinit var companyViewApplicantExperienceArrayList: ArrayList<Experience>
+    private var companyViewApplicantExperienceArrayList = ArrayList<Experience>()
 
     lateinit var toggle: androidx.appcompat.app.ActionBarDrawerToggle
 
@@ -44,7 +49,15 @@ class CompanyViewApplicantInformation : AppCompatActivity() {
         binding.tvCompanyInternProfileGradYear.text = bundle.getString("gradYear")
 
         var email = bundle.getString("email").toString()
-        getInternExperience(email)
+        GlobalScope.launch(Dispatchers.IO) {
+            var finalArrayList = getInternExperience(email)
+            withContext(Dispatchers.Main) {
+                binding.rvCompanyInternExperiences.setLayoutManager(LinearLayoutManager(applicationContext))
+                companyViewApplicantExperienceAdapter = CompanyViewApplicantExperienceAdapter(applicationContext, finalArrayList)
+                binding.rvCompanyInternExperiences.setAdapter(companyViewApplicantExperienceAdapter)
+            }
+
+        }
         sidebar()
     }
 
@@ -55,25 +68,21 @@ class CompanyViewApplicantInformation : AppCompatActivity() {
     }
 
 
-    private fun getInternExperience(email:String) {
+    private suspend fun getInternExperience(email:String): ArrayList<Experience> {
 
         var internID = ""
 
-        firestore.collection("Interns").whereEqualTo("email", email).get().addOnSuccessListener { documents1 ->
-            for (intern in documents1)
+        var fsInterns = firestore.collection("Interns").whereEqualTo("email", email).get().await()
+            for (intern in fsInterns)
                 internID = intern.id
-        }
 
-        firestore.collection("Experience").whereEqualTo("internID", internID).get().addOnSuccessListener { documents2 ->
-            for (experience in documents2) {
+
+        var fsExperience = firestore.collection("Experience").whereEqualTo("internID", internID).get().await()
+            for (experience in fsExperience) {
                 var experienceobj = experience.toObject<Experience>()
                 companyViewApplicantExperienceArrayList.add(experienceobj)
             }
-        }
-
-        binding.rvCompanyInternExperiences.setLayoutManager(LinearLayoutManager(applicationContext))
-        companyViewApplicantExperienceAdapter = CompanyViewApplicantExperienceAdapter(applicationContext, companyViewApplicantExperienceArrayList)
-        binding.rvCompanyInternExperiences.setAdapter(companyViewApplicantExperienceAdapter)
+        return companyViewApplicantExperienceArrayList
     }
 
     private fun sidebar() {
