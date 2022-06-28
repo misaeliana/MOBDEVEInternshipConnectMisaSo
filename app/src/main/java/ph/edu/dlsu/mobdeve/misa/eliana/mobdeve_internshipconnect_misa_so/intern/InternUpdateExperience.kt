@@ -1,15 +1,15 @@
 package ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.intern
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
-import com.squareup.okhttp.Dispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -17,16 +17,10 @@ import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.MainActivity
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.R
-import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.adapter.CompanyAdapter
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.adapter.InternUpdateProfileExperienceAdapter
-import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.dao.CompaniesDAO
-import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.dao.CompaniesDAOArrayImpl
-import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.dao.ExperiencesDAO
-import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.dao.ExperiencesDAOArrayImpl
-import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.databinding.ActivityInternMenuBinding
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.databinding.ActivityInternUpdateExperienceBinding
-import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.model.Company
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.model.Experience
+import java.util.*
 
 class InternUpdateExperience : AppCompatActivity() {
     private lateinit var binding : ActivityInternUpdateExperienceBinding
@@ -49,17 +43,17 @@ class InternUpdateExperience : AppCompatActivity() {
             experience.title = binding.etUpdateExperienceTitle.text.toString()
             experience.companyName = binding.etUpdateExperienceCompanyName.text.toString()
             experience.internID =  FirebaseAuth.getInstance().currentUser!!.uid
-            experience.startDate = binding.etUpdateExperienceStartDate.text.toString()
-            experience.endDate = binding.etUpdateExperienceEndDate.text.toString()
+            experience.startDate = (binding.etUpdateExperienceStartDate.month + 1).toString() + "/" + (binding.etUpdateExperienceStartDate.dayOfMonth).toString() + "/" + (binding.etUpdateExperienceStartDate.year).toString()
+            experience.endDate = (binding.etUpdateExperienceEndDate.month + 1).toString() + "/" + (binding.etUpdateExperienceEndDate.dayOfMonth).toString() + "/" + (binding.etUpdateExperienceEndDate.year).toString()
 
             internUpdateExperienceAdapter.addExperience(experience)
-            //internUpdateExperienceArrayList.add(experience)
+           // internUpdateExperienceArrayList.add(experience)
 
             //clear fields
             binding.etUpdateExperienceCompanyName.text.clear()
             binding.etUpdateExperienceTitle.text.clear()
-            binding.etUpdateExperienceStartDate.text.clear()
-            binding.etUpdateExperienceEndDate.text.clear()
+//            binding.etUpdateExperienceStartDate.set text.clear()
+//            binding.etUpdateExperienceEndDate.text.clear()
         }
 
         binding.btnUpdateExperienceSave.setOnClickListener {

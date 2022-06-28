@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".intern.InternUpdateExperience"
     android:orientation="vertical"
@@ -74,14 +73,12 @@
                 android:textColor="@color/black"
                 android:layout_marginTop="20dp"/>
 
-            <EditText
+            <DatePicker
                 android:id="@+id/et_updateExperience_startDate"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/start_date"
-                android:ems="10"
-                android:inputType="text"
-                android:textSize="14dp"/>
+                android:layout_height="100dp"
+                android:calendarViewShown="false"
+                android:datePickerMode="spinner" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -91,14 +88,12 @@
                 android:textColor="@color/black"
                 android:layout_marginTop="20dp"/>
 
-            <EditText
+            <DatePicker
                 android:id="@+id/et_updateExperience_endDate"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/end_date"
-                android:ems="10"
-                android:inputType="text"
-                android:textSize="14dp"/>
+                android:layout_height="100dp"
+                android:calendarViewShown="false"
+                android:datePickerMode="spinner" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_updateExperience_add"
