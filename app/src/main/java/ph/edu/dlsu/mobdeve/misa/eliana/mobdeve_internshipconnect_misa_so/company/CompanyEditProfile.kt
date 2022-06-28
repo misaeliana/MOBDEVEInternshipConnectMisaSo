@@ -3,6 +3,7 @@ package ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.compan
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
@@ -61,6 +62,16 @@ class CompanyEditProfile : AppCompatActivity() {
                 binding.etEditCompanyContactNumber.setText(company?.number.toString())
             if (company?.website != null)
                 binding.etEditCompanyWebsite.setText(company?.website)
+            if (company?.industry != null) {
+                var industryArrayList = getResources().getStringArray(R.array.industry_list)
+                var industryIndex: Int = 0
+
+                for (i in industryArrayList.indices)
+                    if (industryArrayList[i].toString() == company?.industry.toString())
+                        industryIndex = i
+
+                binding.spinnerIndustry.setSelection(industryIndex)
+            }
         }
     }
 
