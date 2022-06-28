@@ -69,7 +69,7 @@ class CompanySpecificJobPosting : AppCompatActivity() {
     }
 
     private suspend fun getData(title:String):ArrayList<Intern> {
-        println("in get data")
+        //println("in get data")
         var internshipID = ""
         var currentUser = FirebaseAuth.getInstance().currentUser!!.uid
         //get internshipid based on company id and title
@@ -78,19 +78,19 @@ class CompanySpecificJobPosting : AppCompatActivity() {
                 internshipID = internship.id
             }
 
-        println(internshipID)
+        //println(internshipID)
         //get interns who applied for position
         var fsExperience = firestore.collection("AppliedInternship").whereEqualTo("internshipID", internshipID).get().await()
-                for (intern in fsExperience) {
-                    var internobj = intern.toObject<AppliedInternship>()
-                    companySpecificJobPostingApplicant.add(internobj!!)
-                }
+        for (intern in fsExperience) {
+            var internobj = intern.toObject<AppliedInternship>()
+            companySpecificJobPostingApplicant.add(internobj!!)
+        }
 
-                //get intern information
-                for (applicant in companySpecificJobPostingApplicant) {
-                    var internData = firestore.collection("Interns").document(applicant.internID.toString()).get().await().toObject<Intern>()
-                    companySpecificJobPostingArrayList.add(internData!!)
-                }
+        //get intern information
+        for (applicant in companySpecificJobPostingApplicant) {
+            var internData = firestore.collection("Interns").document(applicant.internID.toString()).get().await().toObject<Intern>()
+            companySpecificJobPostingArrayList.add(internData!!)
+        }
         return companySpecificJobPostingArrayList
     }
 

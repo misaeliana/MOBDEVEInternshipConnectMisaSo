@@ -56,6 +56,8 @@ class InternUpdateProfileExperienceAdapter: RecyclerView.Adapter<InternUpdatePro
             itemBinding.tvExperienceTitle.text = experience.title
             itemBinding.tvExperienceCompanyName.text = experience.companyName
             itemBinding.tvExperienceDuration.text = experience.startDate +" - " + experience.endDate
+
+            itemBinding.btnUpdateExperienceDelete.setOnClickListener{removeExperience(position)}
         }
 
         override fun onClick(p0: View?) {

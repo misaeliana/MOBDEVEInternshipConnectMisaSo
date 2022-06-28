@@ -9,6 +9,12 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
+import com.squareup.okhttp.Dispatcher
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.withContext
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.MainActivity
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.R
 import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.adapter.CompanyAdapter
@@ -46,11 +52,6 @@ class InternUpdateExperience : AppCompatActivity() {
             experience.startDate = binding.etUpdateExperienceStartDate.text.toString()
             experience.endDate = binding.etUpdateExperienceEndDate.text.toString()
 
-            binding.etUpdateExperienceTitle.text.clear()
-            binding.etUpdateExperienceCompanyName.text.clear()
-            binding.etUpdateExperienceStartDate.text.clear()
-            binding.etUpdateExperienceEndDate.text.clear()
-
             internUpdateExperienceAdapter.addExperience(experience)
             //internUpdateExperienceArrayList.add(experience)
 
@@ -62,28 +63,7 @@ class InternUpdateExperience : AppCompatActivity() {
         }
 
         binding.btnUpdateExperienceSave.setOnClickListener {
-            //delete previous experience first
-            /*var currentUser = FirebaseAuth.getInstance().currentUser!!.uid
-            firestore.collection("InternExperience").whereEqualTo("interID", currentUser).get().addOnSuccessListener { documents ->
-                for (experience in documents) {
-
-
-                }
-            }*/
-            for (experience in internUpdateExperienceArrayList) {
-                var experiencedb = mapOf(
-                    "title" to experience.title,
-                    "companyName" to experience.companyName,
-                    "internID" to FirebaseAuth.getInstance().currentUser!!.uid,
-                    "startDate" to experience.startDate,
-                    "endDate" to experience.endDate
-                )
-                firestore.collection("Experience").add(experiencedb).addOnSuccessListener {
-
-                }
-            }
-            val intent = Intent (this, InternProfile::class.java)
-            startActivity (intent)
+            updateExperience()
         }
 
         binding.btnUpdateExperienceCancel.setOnClickListener{
@@ -98,9 +78,52 @@ class InternUpdateExperience : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    private fun updateExperience() {
+        //delete previous experience first
+        /*var currentUser = FirebaseAuth.getInstance().currentUser!!.uid
+        firestore.collection("InternExperience").whereEqualTo("interID", currentUser).get().addOnSuccessListener { documents ->
+            for (experience in documents) {
+
+
+            }
+        }*/
+
+        GlobalScope.launch(Dispatchers.IO) {
+            println("delete")
+            deleteData()
+            withContext(Dispatchers.Main) {
+                for (experience in internUpdateExperienceArrayList) {
+                    var experiencedb = mapOf(
+                        "title" to experience.title,
+                        "companyName" to experience.companyName,
+                        "internID" to FirebaseAuth.getInstance().currentUser!!.uid,
+                        "startDate" to experience.startDate,
+                        "endDate" to experience.endDate
+                    )
+                    firestore.collection("Experience").add(experiencedb).addOnSuccessListener {
+                    }
+                    println("add")
+                }
+            }
+        }
+
+        val intent = Intent (this, InternProfile::class.java)
+        startActivity (intent)
+        finish()
+    }
+
+    private suspend fun deleteData() {
+        var currentUser = FirebaseAuth.getInstance().currentUser!!.uid
+        var currentExperience = firestore.collection("Experience").whereEqualTo("internID", currentUser).get().await()
+        for (experience in currentExperience) {
+            println(experience.id)
+            firestore.collection("Experience").document(experience.id).delete().await()
+        }
+    }
+
     private fun getInternExperience() {
         var currentUser = FirebaseAuth.getInstance().currentUser!!.uid
-        firestore.collection("Experience").whereEqualTo("interID", currentUser).get().addOnSuccessListener { documents ->
+        firestore.collection("Experience").whereEqualTo("internID", currentUser).get().addOnSuccessListener { documents ->
 
             for (companySnapshot in documents) {
                 //creating the object from list retrieved in db

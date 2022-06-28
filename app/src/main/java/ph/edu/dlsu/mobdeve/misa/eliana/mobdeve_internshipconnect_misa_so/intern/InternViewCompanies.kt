@@ -24,8 +24,8 @@ import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.model.I
 
 class InternViewCompanies : AppCompatActivity() {
     private lateinit var binding: ActivityInternViewCompaniesBinding
-    private lateinit var companyAdapter: CompanyAdapter
     private lateinit var internCompaniesArrayList: ArrayList<Company>
+    private lateinit var companyAdapter:CompanyAdapter
 
     private var firestore = Firebase.firestore
 

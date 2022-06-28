@@ -51,10 +51,15 @@ class CompanyEditProfile : AppCompatActivity() {
         val currentUser:String = FirebaseAuth.getInstance().currentUser!!.uid
         firestore.collection("Companies").document(currentUser).get().addOnSuccessListener {
             var company = it.toObject<Company>()
+            if (company?.name != null)
                 binding.etEditCompanyCompanyName.setText(company?.name)
+            if (company?.location != null)
                 binding.etEditCompanyLocation.setText(company?.location)
+            if (company?.about != null)
                 binding.etEditCompanyAbout.setText(company?.about)
+            if (company?.number != null)
                 binding.etEditCompanyContactNumber.setText(company?.number.toString())
+            if (company?.website != null)
                 binding.etEditCompanyWebsite.setText(company?.website)
         }
     }

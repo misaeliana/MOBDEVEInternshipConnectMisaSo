@@ -42,15 +42,14 @@
                 android:text="January 2021-February 2022"/>
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_updateExperience_add"
+                android:id="@+id/btn_updateExperience_delete"
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
-                android:text="X"
-                android:backgroundTint="@color/red"
-                android:textColor="@color/white"
                 android:layout_alignParentRight="true"
                 android:layout_centerInParent="true"
                 android:layout_marginRight="10dp"
-                />
+                android:backgroundTint="@color/red"
+                android:text="X"
+                android:textColor="@color/white" />
         </RelativeLayout>
 </androidx.cardview.widget.CardView>

@@ -51,13 +51,19 @@ class CompanyProfile : AppCompatActivity() {
         firestore.collection("Companies").document(currentUser).get().addOnSuccessListener { document  ->
             if (document != null) {
                 var company = document.toObject(Company::class.java)
-                binding.tvCompanyProfileCompanyName.text = company?.name.toString()
-                binding.tvCompanyProfileIndustry.text = company?.industry.toString()
-                binding.tvCompanyProfileLocation.text = company?.location.toString()
-                binding.tvCompanyProfileCompanyAboutText.text = company?.about.toString()
-                binding.tvCompanyProfileContactNumber.text = company?.number.toString()
-                binding.tvCompanyProfileEmail.text = FirebaseAuth.getInstance().currentUser!!.email
-                binding.tvCompanyProfileWebsite.text = company?.website.toString()
+                if (company?.name != null)
+                    binding.tvCompanyProfileCompanyName.text = company?.name.toString()
+                if (company?.industry != null)
+                    binding.tvCompanyProfileIndustry.text = company?.industry.toString()
+                if (company?.location != null)
+                    binding.tvCompanyProfileLocation.text = company?.location.toString()
+                if (company?.about != null)
+                    binding.tvCompanyProfileCompanyAboutText.text = company?.about.toString()
+                if (company?.number != null)
+                    binding.tvCompanyProfileContactNumber.text = company?.number.toString()
+                    binding.tvCompanyProfileEmail.text = FirebaseAuth.getInstance().currentUser!!.email
+                if (company?.website != null)
+                    binding.tvCompanyProfileWebsite.text = company?.website.toString()
                 //binding.tvCompanyProfileVideo.text = it.child("learnMore").value.toString()
             }
             else

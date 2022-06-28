@@ -61,12 +61,18 @@ class InternEditProfile : AppCompatActivity() {
         val currentUser:String = FirebaseAuth.getInstance().currentUser!!.uid
         firestore.collection("Interns").document(currentUser).get().addOnSuccessListener { documentSnapshot ->
             var intern = documentSnapshot.toObject<Intern>()
-            binding.etEditInternName.setText(intern?.name.toString())
-            binding.etEditInternContactNumber.setText(intern?.number.toString())
-            binding.etEditInternAbout.setText(intern?.about.toString())
-            binding.etEditInternSchool.setText(intern?.school.toString())
-            binding.etEditInternCourse.setText(intern?.course.toString())
-            binding.etEditInternGradYear.setText(intern?.gradYear.toString())
+            if (intern?.name != null)
+                binding.etEditInternName.setText(intern?.name.toString())
+            if (intern?.number != null)
+                binding.etEditInternContactNumber.setText(intern?.number.toString())
+            if (intern?.about != null)
+                binding.etEditInternAbout.setText(intern?.about.toString())
+            if (intern?.school != null)
+                binding.etEditInternSchool.setText(intern?.school.toString())
+            if (intern?.course != null)
+                binding.etEditInternCourse.setText(intern?.course.toString())
+            if (intern?.gradYear != null)
+                binding.etEditInternGradYear.setText(intern?.gradYear.toString())
         }
     }
 

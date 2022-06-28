@@ -45,16 +45,16 @@ class InternMyInternships : AppCompatActivity() {
 
     private fun getMyInternships() {
 
-                GlobalScope.launch(Dispatchers.IO) {
-                    var finalArrayList = addData()
+        GlobalScope.launch(Dispatchers.IO) {
+            var finalArrayList = addData()
 
-                    withContext(Dispatchers.Main) {
-                        println("bind data")
-                        binding.rvList.setLayoutManager(LinearLayoutManager(applicationContext))
-                        internMyInternshipsAdapter = InternMyInternshipsAdapter(applicationContext, finalArrayList)
-                        binding.rvList.setAdapter(internMyInternshipsAdapter)
-                    }
-                }
+            withContext(Dispatchers.Main) {
+                println("bind data")
+                binding.rvList.setLayoutManager(LinearLayoutManager(applicationContext))
+                internMyInternshipsAdapter = InternMyInternshipsAdapter(applicationContext, finalArrayList)
+                binding.rvList.setAdapter(internMyInternshipsAdapter)
+            }
+        }
     }
 
     private suspend fun addData():ArrayList<Internship> {
