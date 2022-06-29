@@ -95,15 +95,16 @@ class InternUpdateExperience : AppCompatActivity() {
                         "endDate" to experience.endDate
                     )
                     firestore.collection("Experience").add(experiencedb).addOnSuccessListener {
+                        val intent = Intent (this@InternUpdateExperience, InternProfile::class.java)
+                        startActivity (intent)
+                        finish()
                     }
                     println("add")
                 }
             }
         }
 
-        val intent = Intent (this, InternProfile::class.java)
-        startActivity (intent)
-        finish()
+
     }
 
     private suspend fun deleteData() {
