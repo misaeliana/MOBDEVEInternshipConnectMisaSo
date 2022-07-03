@@ -55,15 +55,6 @@
                         android:textColor="@color/white"
                         android:backgroundTint="@color/blue"/>
 
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/btn_tv_internshipDetails_feedback"
-                        android:layout_width="100dp"
-                        android:layout_height="40dp"
-                        android:text="@string/share"
-                        android:textColor="@color/white"
-                        android:backgroundTint="@color/blue"
-                        android:visibility="gone"/>
-
                 </LinearLayout>
 
                 <TextView

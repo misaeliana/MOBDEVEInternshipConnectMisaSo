@@ -86,21 +86,29 @@ class InternUpdateExperience : AppCompatActivity() {
             println("delete")
             deleteData()
             withContext(Dispatchers.Main) {
-                for (experience in internUpdateExperienceArrayList) {
-                    var experiencedb = mapOf(
-                        "title" to experience.title,
-                        "companyName" to experience.companyName,
-                        "internID" to FirebaseAuth.getInstance().currentUser!!.uid,
-                        "startDate" to experience.startDate,
-                        "endDate" to experience.endDate
-                    )
-                    firestore.collection("Experience").add(experiencedb).addOnSuccessListener {
-                        val intent = Intent (this@InternUpdateExperience, InternProfile::class.java)
-                        startActivity (intent)
-                        finish()
+                if (internUpdateExperienceArrayList.size!=0) {
+                    for (experience in internUpdateExperienceArrayList) {
+                        var experiencedb = mapOf(
+                            "title" to experience.title,
+                            "companyName" to experience.companyName,
+                            "internID" to FirebaseAuth.getInstance().currentUser!!.uid,
+                            "startDate" to experience.startDate,
+                            "endDate" to experience.endDate
+                        )
+                        firestore.collection("Experience").add(experiencedb).addOnSuccessListener {
+                            val intent = Intent (this@InternUpdateExperience, InternProfile::class.java)
+                            startActivity (intent)
+                            finish()
+                        }
+                        println("add")
                     }
-                    println("add")
                 }
+                else {
+                    val intent = Intent (this@InternUpdateExperience, InternProfile::class.java)
+                    startActivity (intent)
+                    finish()
+                }
+
             }
         }
 

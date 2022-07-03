@@ -61,7 +61,8 @@ class InternInternshipAdapter: RecyclerView.Adapter<InternInternshipAdapter.Inte
         fun bindInternship(internship: Internship){
             this.internship = internship
             itemBinding.textTitle.text = internship.title
-            itemBinding.textFunctionType.text = internship.function + ", " + internship.type
+            itemBinding.textFunction.text = internship.function
+            itemBinding.textType.text = internship.type
 
             val companyID = internship.companyID
 

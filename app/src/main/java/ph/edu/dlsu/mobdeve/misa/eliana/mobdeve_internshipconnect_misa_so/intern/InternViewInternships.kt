@@ -4,6 +4,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
@@ -21,11 +25,13 @@ import ph.edu.dlsu.mobdeve.misa.eliana.mobdeve_internshipconnect_misa_so.model.I
 class InternViewInternships : AppCompatActivity() {
     private lateinit var binding: ActivityInternViewInternshipsBinding
     private lateinit var internInternshipAdapter: InternInternshipAdapter
-    private lateinit var internshipArrayList: ArrayList<Internship>
+    private var internshipArrayList = ArrayList<Internship>()
 
     lateinit var toggle: androidx.appcompat.app.ActionBarDrawerToggle
     private var firestore = Firebase.firestore
 
+    private lateinit var functions:Array<String>
+    private lateinit var types: Array<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,11 +39,30 @@ class InternViewInternships : AppCompatActivity() {
         setContentView(binding.root)
         sidebar()
         getInternships()
-        /*binding.rvInternViewInternships.setLayoutManager(LinearLayoutManager(applicationContext))
-        // binding.rvList.setLayoutManager(GridLayoutManager(getApplicationContext(), 2))
 
-        internInternshipAdapter = InternInternshipAdapter(applicationContext, internshipArrayList)
-        binding.rvInternViewInternships.setAdapter(internInternshipAdapter)*/
+        functions = resources.getStringArray(R.array.function_list)
+        types  = resources.getStringArray(R.array.type_list)
+
+        binding.spinnerFunction.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                filterInternships()
+            }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+                TODO("Not yet implemented")
+            }
+        }
+
+        binding.spinnerType.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                filterInternships()
+            }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+                TODO("Not yet implemented")
+            }
+        }
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -47,20 +72,87 @@ class InternViewInternships : AppCompatActivity() {
     }
 
     private fun getInternships() {
-        var jobArrayList = ArrayList<Internship>()
 
         firestore.collection("Internships").get().addOnSuccessListener { documents ->
             for (internshipSnapshot in documents) {
                 //creating the object from list retrieved in db
                 val job = internshipSnapshot.toObject<Internship>()
-                jobArrayList.add(job!!)
+                internshipArrayList.add(job!!)
             }
             //rv_companyList.adapter = CompanyAdapter(applicationContext, companyArrayList)
             binding.rvInternViewInternships.setLayoutManager(LinearLayoutManager(applicationContext))
 
-            internInternshipAdapter = InternInternshipAdapter(applicationContext, jobArrayList)
+            internInternshipAdapter = InternInternshipAdapter(applicationContext, internshipArrayList)
             binding.rvInternViewInternships.setAdapter(internInternshipAdapter)
         }
+    }
+
+    private fun filterInternships() {
+        var selectedFunction = functions[binding.spinnerFunction.selectedItemPosition]
+        var selectedType = types[binding.spinnerType.selectedItemPosition]
+
+        var itemCount = internshipArrayList.size
+
+        for (i in 0 until itemCount) {
+            val holder = binding.rvInternViewInternships.findViewHolderForAdapterPosition(i)
+
+            if (holder != null) {
+                holder.itemView.visibility = View.VISIBLE
+                holder.itemView.layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
+                holder.itemView.layoutParams.width= ViewGroup.LayoutParams.MATCH_PARENT
+            }
+
+        }
+
+        //only type has filter
+        if (selectedFunction == "--Job Function--" && selectedType!= "--Type--") {
+            for (i in 0 until itemCount) {
+                val holder = binding.rvInternViewInternships.findViewHolderForAdapterPosition(i)
+                if (holder != null) {
+                    val type = holder.itemView.findViewById<View>(R.id.text_type) as TextView
+                    if (selectedType != type.text) {
+                        holder.itemView.visibility = View.GONE
+                        holder.itemView.layoutParams.height = 0
+                        holder.itemView.layoutParams.width = 0
+                    }
+                }
+            }
+        }
+        //only function has filter
+        else if (selectedFunction != "--Job Function--" && selectedType== "--Type--"){
+            for (i in 0 until itemCount) {
+                val holder = binding.rvInternViewInternships.findViewHolderForAdapterPosition(i)
+                if (holder != null) {
+                    val function = holder.itemView.findViewById<View>(R.id.text_function) as TextView
+                    if (selectedFunction != function.text) {
+                        holder.itemView.visibility = View.GONE
+                        holder.itemView.layoutParams.height = 0
+                        holder.itemView.layoutParams.width = 0
+                    }
+
+                }
+            }
+        }
+        //both has filter
+        else if (selectedFunction != "--Job Function--" && selectedType!= "--Type--"){
+            for (i in 0 until itemCount) {
+                val holder = binding.rvInternViewInternships.findViewHolderForAdapterPosition(i)
+                if (holder != null) {
+                    val function = holder.itemView.findViewById<View>(R.id.text_function) as TextView
+                    val type = holder.itemView.findViewById<View>(R.id.text_type) as TextView
+                    println(selectedFunction)
+                    println(function.text)
+                    println(selectedType)
+                    println(type.text)
+                    if (selectedFunction != function.text ||x selectedType != type.text) {
+                        holder.itemView.visibility = View.GONE
+                        holder.itemView.layoutParams.height = 0
+                        holder.itemView.layoutParams.width = 0
+                    }
+                }
+            }
+        }
+
     }
 
     private fun sidebar() {

@@ -46,7 +46,7 @@
                 android:id="@+id/et_editInternName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Jose Rizal"
+                android:hint="Name"
                 android:textSize="14dp"
                 android:ems="10"
                 android:inputType="text"/>
@@ -63,7 +63,7 @@
                 android:id="@+id/et_editInternContactNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="09173098555"
+                android:hint="Contact Number"
                 android:textSize="14dp"
                 android:ems="10"
                 android:inputType="text|number"/>
@@ -80,11 +80,11 @@
                 android:id="@+id/et_editInternAbout"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
-                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat"
                 android:ems="10"
                 android:inputType="text|textMultiLine"
                 android:gravity="top|left"
                 android:textSize="14dp"
+                android:hint="Introduce yourself"
                 android:lines="20"
                 android:minLines="5"
                 android:scrollHorizontally="false"
@@ -110,7 +110,7 @@
                 android:id="@+id/et_editInternSchool"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="School Name"
+                android:hint="School Name"
                 android:textSize="14dp"
                 android:ems="10"
                 android:inputType="text"/>
@@ -127,7 +127,7 @@
                 android:id="@+id/et_editInternCourse"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Course Name"
+                android:hint="Course"
                 android:textSize="14dp"
                 android:ems="10"
                 android:inputType="text"/>
@@ -144,7 +144,7 @@
                 android:id="@+id/et_editInternGradYear"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Grad "
+                android:hint="Graduation year"
                 android:textSize="14dp"
                 android:ems="10"
                 android:inputType="date"/>

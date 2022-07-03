@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:textSize="16sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tv_industry"
@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_companyName"
             android:textColor="@color/black"
-            android:textSize="16sp"/>
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tv_location"
@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_industry"
             android:textColor="@color/black"
-            android:textSize="16sp"/>
+            android:textSize="16sp" />
     </RelativeLayout>
 
 <!--    <LinearLayout-->

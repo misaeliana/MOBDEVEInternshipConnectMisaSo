@@ -49,20 +49,6 @@ class InternInternshipDetails : AppCompatActivity() {
             }
         }
 
-        var source = bundle.getString("source")
-
-        if (source == "myInternships") {
-            binding.btnTvInternshipDetailsApply.visibility = View.GONE
-            binding.btnTvInternshipDetailsFeedback.visibility = View.VISIBLE
-        } else {
-            binding.btnTvInternshipDetailsApply.visibility = View.VISIBLE
-            binding.btnTvInternshipDetailsFeedback.visibility = View.GONE
-        }
-
-        binding.btnTvInternshipDetailsFeedback.setOnClickListener {
-            val intent = Intent (this, InternFeedback::class.java)
-            startActivity (intent)
-        }
 
         binding.btnTvInternshipDetailsApply.setOnClickListener {
             var internshipID = ""

@@ -59,7 +59,8 @@ class InternMyInternshipsAdapter: RecyclerView.Adapter<InternMyInternshipsAdapte
         fun bindInternship(internship: Internship){
             this.internship = internship
             itemBinding.textTitle.text = internship.title
-            itemBinding.textFunctionType.text = internship.function + ", " + internship.type
+            itemBinding.textFunction.text = internship.function
+            itemBinding.textType.text = internship.type
             firestore.collection("Companies").document(internship.companyID.toString()).get().addOnSuccessListener { document ->
                 if (document != null) {
                     var company = document.toObject<Company>()

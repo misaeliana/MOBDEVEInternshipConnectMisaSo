@@ -68,6 +68,7 @@
     <string name="websitee">Website</string>
 
     <string-array name="function_list">
+        <item>--Job Function--</item>
         <item>Technology/Software Development</item>
         <item>Product</item>
         <item>UI/UX</item>
@@ -82,6 +83,7 @@
     </string-array>
 
     <string-array name="type_list">
+        <item>--Type--</item>
         <item>Full-time</item>
         <item>Part-time</item>
         <item>Project-based</item>
@@ -89,6 +91,7 @@
     </string-array>
 
     <string-array name="industry_list">
+        <item>All</item>
         <item>Information Technology</item>
         <item>Health Care</item>
         <item>Finance</item>
