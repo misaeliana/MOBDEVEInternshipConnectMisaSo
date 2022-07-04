@@ -21,7 +21,8 @@
             android:text="Name"
             android:textColor="@color/black"
             android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:maxLines="1"/>
 
         <TextView
             android:id="@+id/text_company"
@@ -30,7 +31,8 @@
             android:layout_below="@id/text_title"
             android:text="Company"
             android:textColor="@color/black"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:maxLines="1"/>
 
         <TextView
             android:id="@+id/text_function"
@@ -39,7 +41,8 @@
             android:layout_below="@id/text_company"
             android:text="Function"
             android:textColor="@color/black"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:maxLines="1"/>
 
         <TextView
             android:id="@+id/text_type"
@@ -48,7 +51,8 @@
             android:layout_below="@id/text_function"
             android:text="Type"
             android:textColor="@color/black"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:maxLines="1"/>
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

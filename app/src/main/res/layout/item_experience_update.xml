@@ -21,7 +21,8 @@
                 android:text="Experience Title"
                 android:textColor="@color/black"
                 android:textSize="16sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:maxLines="1"/>
 
             <TextView
                 android:id="@+id/tv_experience_companyName"
@@ -30,7 +31,8 @@
                 android:layout_below="@id/tv_experienceTitle"
                 android:text="Company Name"
                 android:textSize="16sp"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black"
+                android:maxLines="1"/>
 
             <TextView
                 android:id="@+id/tv_experience_duration"

@@ -144,7 +144,7 @@ class InternViewInternships : AppCompatActivity() {
                     println(function.text)
                     println(selectedType)
                     println(type.text)
-                    if (selectedFunction != function.text ||x selectedType != type.text) {
+                    if (selectedFunction != function.text || selectedType != type.text) {
                         holder.itemView.visibility = View.GONE
                         holder.itemView.layoutParams.height = 0
                         holder.itemView.layoutParams.width = 0

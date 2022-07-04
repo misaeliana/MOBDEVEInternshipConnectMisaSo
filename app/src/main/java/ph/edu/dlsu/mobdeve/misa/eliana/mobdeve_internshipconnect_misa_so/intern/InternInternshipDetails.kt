@@ -49,6 +49,13 @@ class InternInternshipDetails : AppCompatActivity() {
             }
         }
 
+        var source = bundle.getString("source")
+
+        if (source == "myInternships") {
+            binding.btnTvInternshipDetailsApply.visibility = View.GONE
+        } else {
+            binding.btnTvInternshipDetailsApply.visibility = View.VISIBLE
+        }
 
         binding.btnTvInternshipDetailsApply.setOnClickListener {
             var internshipID = ""
